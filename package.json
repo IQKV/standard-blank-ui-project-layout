@@ -87,7 +87,7 @@
     "@tanstack/eslint-plugin-query": "^5.74.7",
     "@tanstack/react-query-devtools": "^5.74.11",
     "@tanstack/router-devtools": "^1.116.0",
-    "@tanstack/router-plugin": "^1.116.1",
+    "@tanstack/router-plugin": "^1.120.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
