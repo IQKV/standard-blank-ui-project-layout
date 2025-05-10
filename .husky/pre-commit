@@ -1,0 +1,28 @@
+#!/bin/bash
+
+npm exec lint-staged
+
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+main_branch="(main|master|dev|develop)"
+if [[ $current_branch =~ $main_branch ]]; then
+    echo -e "\n⚠️ Please don't commit directly to $current_branch.";
+    exit 1
+fi
+
+valid_branch_names="^(feature|rfc|bugfix|improvement|library|prerelease|hotfix)\/[a-z0-9._-]+$"
+if [[ ! $current_branch =~ $valid_branch_names ]]; then
+    echo -e "\n🚧 Your branch name is illegal. Please rename your branch with using following regex: $valid_branch_names"
+    exit 1
+fi
+
+valid_commit="^(feat|fix|rfc|docs|style|refactor|perf|test|chore|build|ci|revert)(.+?)?: .+"
+if [[ ! $1 =~ $valid_commit ]]; then
+   echo -e "\n🚨 Your commit title did not follow semantic versioning."
+    exit 1
+fi
+
+npx --no -- commitlint --edit "${1}"
+
+exit 0
