@@ -31,6 +31,9 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 
 The latest lts for node js and pnpm were installed.
 
+Start local dev services in docker using `docker compose -f compose.yaml up -d`
+
+
 ### Getting Started
 
 ```bash
