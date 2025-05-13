@@ -129,7 +129,7 @@
     "lint-staged": "^16.0.0",
     "lru-cache": "^11.1.0",
     "msw": "^2.7.5",
-    "nx": "^20.8.1",
+    "nx": "^21.0.3",
     "postcss": "^8.5.2",
     "postcss-preset-mantine": "1.17.0",
     "postcss-simple-vars": "^7.0.1",
