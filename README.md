@@ -35,6 +35,7 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 > [!TIP]
 > #### Install Prerequisites:
 > - [Node LTS version](https://nodejs.org/en/blog/release/v22.15.0/)
+> - [pnpm](https://pnpm.io/installation)
 > - [Git](https://git-scm.com/)
 > - [Docker](https://www.docker.com/get-started/)
 > - [Docker Compose](https://docs.docker.com/compose/)
