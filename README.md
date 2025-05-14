@@ -1,10 +1,14 @@
-# Standard UI Project Layout
+# ✨ Standard UI Project Layout
+
+<a name="description"></a>
+## 📜 Description
 
 React + TypeScript + Vite + TanStack Router + Mantine UI Template
 
 > A modern, feature-rich template for building scalable React applications with the latest tools and best practices.
 
-## ✨ Key Features
+<a name="keyfeatures"></a>
+## 🔑 Key Features
 
 - 🚀 **React 19** - Experience the future with the stable React version
 - ⚡ **Vite** - Lightning-fast development with instant HMR
@@ -25,20 +29,21 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 - 👷 **GitHub Actions** for easy workflow automation
 - 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up-to-date
 
+<a name="documentation"></a>
 ## 📚 Documentation
 
-### Preretirement
+> [!TIP]
+> #### Install Prerequisites:
+> - [Node LTS version](https://nodejs.org/en/blog/release/v22.15.0/)
+> - [Git](https://git-scm.com/)
+> - [Docker](https://www.docker.com/get-started/)
+> - [Docker Compose](https://docs.docker.com/compose/)
 
-The latest lts for node js and pnpm were installed.
-
-Start local dev services in docker using `docker compose -f compose.yaml up -d`
-
-
-### Getting Started
+### 🔺 Local development
 
 ```bash
 # Clone the repository
-git clone https://github.com/gh-buddy/frontend-template.git my-app
+git clone https://github.com/expertness/standard-ui-project-layout.git my-app
 
 # Navigate to project directory
 cd my-app
@@ -46,12 +51,14 @@ cd my-app
 # Install dependencies
 pnpm install
 
+# Start local dev services in Docker using the command:
+docker compose -f compose.yaml up -d
 
 # Start development server
 pnpm dev
 ```
 
-### Available Scripts
+### 📃 Available Scripts
 
 | Command                 | Description                |
 | ----------------------- | -------------------------- |
@@ -62,3 +69,8 @@ pnpm dev
 | \`pnpm prettier:write\` | Run Prettier over the code |
 | \`pnpm lint\`           | Lint code                  |
 | \`pnpm type-check\`     | Check types                |
+
+<a name="license"></a>
+## 📑 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
