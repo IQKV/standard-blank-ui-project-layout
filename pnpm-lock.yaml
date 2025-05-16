@@ -148,8 +148,8 @@ importers:
         specifier: ^8.5.8
         version: 8.6.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.13(prettier@3.5.3))
       '@storybook/preview-api':
-        specifier: ^8.6.12
-        version: 8.6.12(storybook@8.6.13(prettier@3.5.3))
+        specifier: ^8.6.13
+        version: 8.6.13(storybook@8.6.13(prettier@3.5.3))
       '@storybook/react':
         specifier: ^8.6.10
         version: 8.6.12(@storybook/test@8.6.12(storybook@8.6.13(prettier@3.5.3)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.13(prettier@3.5.3))(typescript@5.8.3)
@@ -1956,6 +1956,11 @@ packages:
 
   '@storybook/preview-api@8.6.12':
     resolution: {integrity: sha512-84FE3Hrs0AYKHqpDZOwx1S/ffOfxBdL65lhCoeI8GoWwCkzwa9zEP3kvXBo/BnEDO7nAfxvMhjASTZXbKRJh5Q==}
+    peerDependencies:
+      storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+
+  '@storybook/preview-api@8.6.13':
+    resolution: {integrity: sha512-+Rz+RZVm28mATIXlSre/1zhgv4NOUoQ3/B9aAyI7/hX73XEwFWiRcuB6o+oJ06sJfxghXBrEfIpSriyS40lOsA==}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
@@ -9981,6 +9986,10 @@ snapshots:
       storybook: 8.6.13(prettier@3.5.3)
 
   '@storybook/preview-api@8.6.12(storybook@8.6.13(prettier@3.5.3))':
+    dependencies:
+      storybook: 8.6.13(prettier@3.5.3)
+
+  '@storybook/preview-api@8.6.13(storybook@8.6.13(prettier@3.5.3))':
     dependencies:
       storybook: 8.6.13(prettier@3.5.3)
 
