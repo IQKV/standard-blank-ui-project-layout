@@ -1,6 +1,7 @@
 # ✨ Standard UI Project Layout
 
 <a name="description"></a>
+
 ## 📜 Description
 
 React + TypeScript + Vite + TanStack Router + Mantine UI Template
@@ -8,6 +9,7 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 > A modern, feature-rich template for building scalable React applications with the latest tools and best practices.
 
 <a name="keyfeatures"></a>
+
 ## 🔑 Key Features
 
 - 🚀 **React 19** - Experience the future with the stable React version
@@ -30,10 +32,13 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 - 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up-to-date
 
 <a name="documentation"></a>
+
 ## 📚 Documentation
 
 > [!TIP]
+>
 > #### Install Prerequisites:
+>
 > - [Node LTS version](https://nodejs.org/en/blog/release/v22.15.0/)
 > - [pnpm](https://pnpm.io/installation)
 > - [Git](https://git-scm.com/)
@@ -71,34 +76,40 @@ pnpm dev
 | \`pnpm lint\`           | Lint code                  |
 | \`pnpm type-check\`     | Check types                |
 
---- 
+---
 
 <a name="changelog"></a>
+
 ## 📆 Changelog
 
 Conventional changelog located [here](CHANGELOG.md).
 
 <a name="acknowledgments"></a>
+
 ## 👍 Acknowledgments
 
 ...
 
 <a name="contributing"></a>
+
 ## 🙏 Contributing
 
 Please, follow [Contributing](.github/CONTRIBUTING.md) page.
 
 <a name="codeofconduct"></a>
+
 ## 📙 Code of Conduct
 
 Please, follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 
 <a name="troubleshooting"></a>
+
 ## 💥 Troubleshooting
 
 ...
 
 <a name="license"></a>
+
 ## 📑 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
