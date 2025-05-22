@@ -76,7 +76,7 @@ pnpm dev
 <a name="changelog"></a>
 ## 📆 Changelog
 
-Can be found in [CHANGELOG](CHANGELOG.md).
+Conventional changelog located [here](CHANGELOG.md).
 
 <a name="acknowledgments"></a>
 ## 👍 Acknowledgments
