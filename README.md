@@ -1,4 +1,4 @@
-# ✨ Standard UI Project Layout
+# 🚀 Standard UI Project Layout
 
 <a name="description"></a>
 
@@ -12,7 +12,7 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 
 ## 🔑 Key Features
 
-- 🚀 **React 19** - Experience the future with the stable React version
+- ✨ **React 19** - Experience the future with the latest React version
 - ⚡ **Vite** - Lightning-fast development with instant HMR
 - 🎯 **TypeScript** - Type-safe development with latest features
 - 📦 **PNPM** - Fast, disk space efficient package manager
