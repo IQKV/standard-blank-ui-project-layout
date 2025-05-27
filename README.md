@@ -49,7 +49,7 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 
 ```bash
 # Clone the repository
-git clone https://github.com/expertness/standard-ui-project-layout.git my-app
+git clone https://github.com/expertness/standard-mantine-ui-project-layout.git my-app
 
 # Navigate to project directory
 cd my-app
