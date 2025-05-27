@@ -6,7 +6,7 @@
 > - Manage issues with **20 issue labels**.
 > - Make _community healthier_ with all the guides like code of conduct, contributing, support, security...
 > - Learn more with the [official GitHub guide on creating repositories from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-> - To start using it; "**[click use this template](https://github.com/expertness/standard-mantine-ui-project-layout/generate)**" and create your new repository,
+> - To start using it, click **[Use this template](https://github.com/expertness/standard-mantine-ui-project-layout/generate)** to create your new repository.
 
 ---
 
