@@ -82,7 +82,7 @@
     "@storybook/blocks": "^8.6.14",
     "@storybook/preview-api": "^8.6.13",
     "@storybook/react": "^8.6.10",
-    "@storybook/react-vite": "^8.6.10",
+    "@storybook/react-vite": "^8.6.14",
     "@storybook/test": "^8.6.9",
     "@tanstack/eslint-plugin-query": "^5.74.7",
     "@tanstack/react-query-devtools": "^5.76.1",
