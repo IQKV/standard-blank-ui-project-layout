@@ -3,6 +3,7 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
+import pluginRouter from "@tanstack/eslint-plugin-router";
 
 export default tseslint.config(
   { ignores: ["dist"] },
@@ -16,9 +17,11 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
+      "@tanstack/router": pluginRouter,
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "@tanstack/router/create-route-property-order": "error",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
