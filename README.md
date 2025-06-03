@@ -88,6 +88,12 @@ pnpm dev
 | \`pnpm lint\`           | Lint code                  |
 | \`pnpm type-check\`     | Check types                |
 
+### Environment Variables
+
+| Variable   | Description                | Default       |
+| ---------- | -------------------------- | ------------- |
+| `NODE_ENV` | Defines nodejs environment | `development` |
+
 ---
 
 <a name="changelog"></a>
