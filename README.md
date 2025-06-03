@@ -16,7 +16,7 @@
 
 ## 📜 Description
 
-React + TypeScript + Vite + TanStack Router + Mantine UI Template
+React + TypeScript + Vite + TanStack Router Template
 
 > A modern, feature-rich template for building scalable React applications with the latest tools and best practices.
 
@@ -30,7 +30,6 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 - 📦 **PNPM** - Fast, disk space efficient package manager
 - 🔍 **ESLint + Prettier** - Modern linting and code formatting
 - 🛠️ **Redux Toolkit** for state management
-- 🎨 **Mantine UI** for styling
 - 🔄 **TanStack Router** - Type-safe routing with code splitting
 - 🔄 **TanStack Query** for powerful data synchronization
 - 📡 **Axios** for API calls
