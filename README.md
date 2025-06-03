@@ -6,7 +6,7 @@
 > - Manage issues with **20 issue labels**.
 > - Make _community healthier_ with all the guides like code of conduct, contributing, support, security...
 > - Learn more with the [official GitHub guide on creating repositories from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-> - To start using it, click **[Use this template](https://github.com/IQKV/standard-mantine-ui-project-layout/generate)** to create your new repository.
+> - To start using it, click **[Use this template](https://github.com/IQKV/standard-ui-project-layout/generate)** to create your new repository.
 
 ---
 
@@ -61,7 +61,7 @@ React + TypeScript + Vite + TanStack Router + Mantine UI Template
 
 ```bash
 # Clone the repository
-git clone https://github.com/IQKV/standard-mantine-ui-project-layout.git my-app
+git clone https://github.com/IQKV/standard-ui-project-layout.git my-app
 
 # Navigate to project directory
 cd my-app
