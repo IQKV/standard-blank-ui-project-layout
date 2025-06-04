@@ -33,6 +33,7 @@ React + TypeScript + Vite + TanStack Router Template
 - 🔄 **TanStack Router** - Type-safe routing with code splitting
 - 🔄 **TanStack Query** for powerful data synchronization
 - 📡 **Axios** for API calls
+- 📡 **graphql-request** for GraphQL support
 - 🧱 **storybook** for building UIs in isolation
 - 🧪 **vitest** for fast testing
 - 🧪 **Playwright** for fast and reliable e2e testing
