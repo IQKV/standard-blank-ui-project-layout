@@ -3,6 +3,7 @@
 node_modules
 package-lock.json
 pnpm-lock.yaml
+.tanstack
 .git
 build/
 dist/
