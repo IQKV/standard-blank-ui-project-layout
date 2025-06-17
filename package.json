@@ -117,7 +117,7 @@
     "jiti": "2.4.2",
     "jsdom": "^26.1.0",
     "knip": "5.61.0",
-    "lefthook": "1.11.13",
+    "lefthook": "1.11.14",
     "lerna": "^8.2.2",
     "lint-staged": "^16.1.2",
     "lru-cache": "^11.1.0",
