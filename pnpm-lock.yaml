@@ -232,8 +232,8 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3(eslint@9.29.0(jiti@2.4.2))
       gitzy:
-        specifier: 5.8.1
-        version: 5.8.1
+        specifier: 5.9.0
+        version: 5.9.0
       globals:
         specifier: ^16.2.0
         version: 16.2.0
@@ -4230,8 +4230,8 @@ packages:
   gitconfiglocal@1.0.0:
     resolution: {integrity: sha512-spLUXeTAVHxDtKsJc8FkFVgFtMdEN9qPGpL23VfSHx4fP4+Ds097IXLvymbnDH8FnmxX5Nr9bPw3A+AQ6mWEaQ==}
 
-  gitzy@5.8.1:
-    resolution: {integrity: sha512-OndtQLjEUxGrxeG4se+q2rvVExL9dsQ3KL3SN2TaQoni6vEkjX+9PWwNgU6hGEufXEYiK4mWHXrbG5VQrFSjDQ==}
+  gitzy@5.9.0:
+    resolution: {integrity: sha512-fbS7UT5GXl3B30hIadj70IoaWhK2h7lp/cfG4DL8izWhCKHvKRMQnl3G3hfkEcDfL86+FR8YBWTjATf5tTlAjg==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -12176,7 +12176,7 @@ snapshots:
     dependencies:
       ini: 1.3.8
 
-  gitzy@5.8.1:
+  gitzy@5.9.0:
     dependencies:
       commander: 12.1.0
       enquirer: 2.3.6
