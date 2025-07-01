@@ -23,7 +23,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "node_modules:clear": "rm -rf node_modules"
   },
   "config": {
     "commitizen": {
