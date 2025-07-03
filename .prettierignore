@@ -25,3 +25,6 @@ tsconfig.json
 
 # Optional stylelint cache
 .stylelintcache
+
+CLAUDE.md
+CLAUDE.local.md
