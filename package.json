@@ -121,7 +121,7 @@
     "lint-staged": "^16.1.2",
     "lru-cache": "^11.1.0",
     "msw": "^2.10.2",
-    "nx": "^21.2.1",
+    "nx": "^21.2.2",
     "postcss": "^8.5.6",
     "postcss-simple-vars": "^7.0.1",
     "prettier": "3.6.2",
