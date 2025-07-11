@@ -79,7 +79,7 @@
     "@storybook/test": "^8.6.9",
     "@tanstack/eslint-plugin-query": "^5.74.7",
     "@tanstack/eslint-plugin-router": "^1.125.0",
-    "@tanstack/react-query-devtools": "^5.81.5",
+    "@tanstack/react-query-devtools": "^5.82.0",
     "@tanstack/router-devtools": "^1.125.6",
     "@tanstack/router-plugin": "^1.125.6",
     "@testing-library/dom": "^10.4.0",
