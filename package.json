@@ -38,7 +38,7 @@
     "@reduxjs/toolkit": "^2.8.2",
     "@tabler/icons-react": "^3.34.0",
     "@tanstack/react-query": "^5.82.0",
-    "@tanstack/react-router": "^1.127.0",
+    "@tanstack/react-router": "^1.127.9",
     "@types/sanitize-html": "^2.16.0",
     "axios": "^1.10.0",
     "clsx": "^2.1.1",
