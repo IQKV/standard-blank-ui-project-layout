@@ -10,7 +10,7 @@
 
 ---
 
-# 🚀 Standard UI Project Layout
+# 🚀 React UI Blank Project Layout
 
 <a name="description"></a>
 
@@ -29,7 +29,6 @@ React + TypeScript + Vite + TanStack Router Template
 - 🎯 **TypeScript** - Type-safe development with latest features
 - 📦 **PNPM** - Fast, disk space efficient package manager
 - 🔍 **ESLint + Prettier** - Modern linting and code formatting
-- 🛠️ **Redux Toolkit** for state management
 - 🔄 **TanStack Router** - Type-safe routing with code splitting
 - 🔄 **TanStack Query** for powerful data synchronization
 - 📡 **Axios** for API calls
