@@ -91,7 +91,7 @@ pnpm dev
 
 | Variable   | Description                | Default       |
 | ---------- | -------------------------- | ------------- |
-|    `TZ`    | Defines timezone           |    `UTC`      |
+| `TZ`       | Defines timezone           | `UTC`         |
 | `NODE_ENV` | Defines nodejs environment | `development` |
 
 ---
