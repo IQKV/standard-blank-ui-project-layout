@@ -40,7 +40,7 @@ React + TypeScript + Vite + TanStack Router Template
 - ✅ **React Hook Form + Yup** for form validation
 - 🎭 **React Icons** for beautiful icons
 - 👷 **GitHub Actions** for easy workflow automation
-- 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up-to-date
+- 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up to date
 
 <a name="documentation"></a>
 
