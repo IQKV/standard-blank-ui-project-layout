@@ -132,3 +132,23 @@ Please, follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 ## 📑 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+
+---
+
+## GitHub Project Tooling Overview
+
+### GitHub Actions
+- **Build & Test** - Node.js project build validation
+- **PR Title Check** - Ensures proper PR naming conventions
+- **Commit Message Check** - Validates commit message format
+- **Template Setup** - Automated template configuration
+
+### Git Hooks (Husky)
+- **Pre-commit** - Runs linting and formatting on staged files
+- **Commit-msg** - Validates commit message format
+
+### Quality Gates
+- **ESLint** - JavaScript/TypeScript linting
+- **Prettier** - Code formatting enforcement
+- **Stylelint** - CSS/SCSS linting
