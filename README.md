@@ -58,7 +58,7 @@ React + TypeScript + Vite + TanStack Router Template
 
 ### 🔺 Local development
 
-```bash
+```shell script
 # Clone the repository
 git clone https://github.com/dimdnk/standard-blank-ui-project-layout.git my-app
 
@@ -113,13 +113,13 @@ Conventional changelog located [here](CHANGELOG.md).
 
 ## 🙏 Community & Contributions
 
-Please, follow [Contributing](.github/CONTRIBUTING.md) page.
+Please follow [Contributing](.github/CONTRIBUTING.md) page.
 
 <a name="codeofconduct"></a>
 
 ## 📙 Code of Conduct
 
-Please, follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
+Please follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 
 <a name="troubleshooting"></a>
 
@@ -135,7 +135,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-## GitHub Project Tooling Overview
+## _GitHub Project Tooling Overview_
 
 ### GitHub Actions
 
