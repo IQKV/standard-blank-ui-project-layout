@@ -1,4 +1,4 @@
-FROM node:22.14.0-bookworm-slim
+FROM node:22.18.0-bookworm-slim
 
 RUN mkdir -p -m 755 /etc/apt/keyrings \
   && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
