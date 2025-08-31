@@ -32,3 +32,4 @@ dist-ssr
 *.sw?
 
 CLAUDE.local.md
+.release-it.json
