@@ -119,7 +119,7 @@
     "jsdom": "^26.1.0",
     "knip": "5.63.1",
     "lefthook": "1.12.3",
-    "lint-staged": "^16.1.4",
+    "lint-staged": "^16.1.6",
     "lru-cache": "^11.1.0",
     "msw": "^2.11.1",
     "msw-storybook-addon": "^2.0.5",
