@@ -95,6 +95,18 @@ pnpm dev
 | `TZ`       | Defines timezone           | `UTC`         |
 | `NODE_ENV` | Defines nodejs environment | `development` |
 
+### Cursor Rules
+
+This project includes a built-in Cursor rule for enforcing best practices when using React Query. The rule covers:
+
+- Code organization and structure
+- Common patterns and anti-patterns
+- Performance optimization techniques
+- Security best practices
+- Testing approaches
+
+Cursor rules help maintain code quality and consistency across the project. You can find the rules in the `.cursor/rules` directory.
+
 ---
 
 <a name="changelog"></a>
