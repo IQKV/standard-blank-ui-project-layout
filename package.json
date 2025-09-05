@@ -120,7 +120,7 @@
     "knip": "5.63.1",
     "lefthook": "1.12.3",
     "lint-staged": "^16.1.6",
-    "lru-cache": "^11.1.0",
+    "lru-cache": "^11.2.1",
     "msw": "^2.11.1",
     "msw-storybook-addon": "^2.0.5",
     "nx": "^21.4.1",
