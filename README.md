@@ -37,7 +37,7 @@ React + TypeScript + Vite + TanStack Router Template
 - 🧪 **vitest** for fast testing
 - 🧪 **Playwright** for fast and reliable e2e testing
 - 🧪 **Mock Service Worker** for client-agnostic API mocks
-- ✅ **React Hook Form + Yup** for form validation
+- ✅ **React Hook Form + zod** for form validation
 - 🎭 **React Icons** for beautiful icons
 - 👷 **GitHub Actions** for easy workflow automation
 - 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up to date
