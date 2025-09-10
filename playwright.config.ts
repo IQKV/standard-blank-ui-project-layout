@@ -1,8 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const port = process.env["PORT"] ?? "5173";
-const baseURL = process.env["BASE_URL"] ?? `http://localhost:${port}`;
-const isCI = Boolean(process.env["CI"]);
+const port = process.env.PORT ?? "5173";
+const baseURL = process.env.BASE_URL ?? `http://localhost:${port}`;
+const isCI = Boolean(process.env.CI);
 
 export default defineConfig({
   forbidOnly: isCI,
