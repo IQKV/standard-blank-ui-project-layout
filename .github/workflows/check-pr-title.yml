@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: deepakputhraya/action-pr-title@master
         with:
-          regex: "^(feat|fix|rfc|docs|style|improvement|refactor|perf|test|chore|build|ci|revert)(.+?)?: .+" # Regex the title should match.
+          regex: "^(feat|fix|rfc|docs|style|improvement|enhancement|refactor|perf|test|chore|build|ci|revert)(.+?)?: .+" # Regex the title should match.
           allowed_prefixes: "feat,fix,docs,style,refactor,perf,test,chore,build,ci" # title should start with the given prefix
           prefix_case_sensitive: true # title prefix are case insensitive
           min_length: 6
