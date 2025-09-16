@@ -1,3 +1,4 @@
+/* eslint-disable dot-notation */
 import { api } from "../api/client.ts";
 import { publicApi } from "../api/public-client.ts";
 
