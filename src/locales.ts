@@ -36,10 +36,10 @@ export const getClientLocale = () => {
 };
 
 export async function dynamicActivateLocale(locale: string) {
-  locale = availableLocales.includes(locale) ? locale : "en";
+  const activeLocale = availableLocales.includes(locale) ? locale : "en";
   const module = await import(`./locales/${locale}.po`);
-  i18n.load(locale, module.messages);
-  i18n.activate(locale);
+  i18n.load(activeLocale, module.messages);
+  i18n.activate(activeLocale);
 }
 
 export const getSupportedLocale = (userLocale: string) => {
