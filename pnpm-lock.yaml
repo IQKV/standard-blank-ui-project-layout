@@ -150,6 +150,9 @@ importers:
       '@eslint/js':
         specifier: ^9.35.0
         version: 9.35.0
+      '@lingui/cli':
+        specifier: ^5.5.0
+        version: 5.5.0(babel-plugin-macros@3.1.0)(typescript@5.9.2)
       '@lingui/vite-plugin':
         specifier: ^5.5.0
         version: 5.5.0(babel-plugin-macros@3.1.0)(typescript@5.9.2)(vite@6.3.5(@types/node@24.5.0)(jiti@2.5.1)(tsx@4.20.5)(yaml@2.8.1))
@@ -13593,7 +13596,7 @@ snapshots:
   threads@1.7.0:
     dependencies:
       callsites: 3.1.0
-      debug: 4.4.1
+      debug: 4.4.3
       is-observable: 2.1.0
       observable-fns: 0.6.1
     optionalDependencies:
