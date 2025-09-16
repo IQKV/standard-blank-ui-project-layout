@@ -4,8 +4,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "tsc -b && vite build",
-    "ci": "pnpm run ci:lint && pnpm run ci:test",
+    "build": "tsc -b && pnpm messages:extract && pnpm messages:compile && vite build",
+    "ci": "pnpm ci:lint && pnpm ci:test",
     "ci:lint": "pnpm lint",
     "ci:test": "pnpm test",
     "dev": "vite",
@@ -15,6 +15,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:stylelint": "stylelint \"**/*.css\" --cache",
+    "messages:compile": "lingui compile",
+    "messages:extract": "lingui extract",
     "node_modules:clear": "rm -rf node_modules",
     "prepare": "husky",
     "prettier:check": "prettier . --check",
@@ -24,8 +26,8 @@
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
     "test": "vitest",
-    "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
     "type-check": "tsc --noEmit"
   },
   "config": {
@@ -39,6 +41,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@emotion/react": "^11.14.0",
     "@hookform/resolvers": "^5.2.1",
+    "@lingui/core": "^5.5.0",
     "@lingui/macro": "^5.5.0",
     "@lingui/react": "^5.5.0",
     "@microsoft/fetch-event-source": "^2.0.1",

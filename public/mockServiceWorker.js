@@ -101,7 +101,7 @@ async function resolveResponse(event, client, allClients) {
   if (!pooledRequest) {
     console.warn(
       'MSW: cannot resolve a response for the request with ID "%s": the request is not present in the pool. This is likely an issue with the library.',
-      requestId,
+      requestId
     );
 
     return;
@@ -243,6 +243,6 @@ self.addEventListener("fetch", async function (event) {
       setTimeout(() => {
         resolve(passthrough());
       }, 5000);
-    }).catch(passthrough),
+    }).catch(passthrough)
   );
 });

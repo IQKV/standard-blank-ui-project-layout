@@ -2,7 +2,7 @@ import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
-import pluginLingui from 'eslint-plugin-lingui'
+import pluginLingui from "eslint-plugin-lingui";
 import pluginQuery from "@tanstack/eslint-plugin-query";
 import pluginRouter from "@tanstack/eslint-plugin-router";
 
@@ -18,7 +18,7 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      "lingui": pluginLingui,
+      lingui: pluginLingui,
       "@tanstack/query": pluginQuery,
       "@tanstack/router": pluginRouter,
     },
@@ -34,7 +34,7 @@ export default tseslint.config(
       "lingui/no-single-variables-to-translate": 2,
       "lingui/no-expression-in-message": 2,
       "lingui/no-single-tag-to-translate": 2,
-      "lingui/no-trans-inside-trans": 2
+      "lingui/no-trans-inside-trans": 2,
     },
-  },
+  }
 );

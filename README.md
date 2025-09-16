@@ -97,7 +97,7 @@ pnpm dev
 
 ### Cursor Rules
 
-Enforces React Query best practices for structure, patterns, performance, security, and testing. 
+Enforces React Query best practices for structure, patterns, performance, security, and testing.
 
 Rules live in `.cursor/rules` to keep code clean and consistent.
 

@@ -37,6 +37,6 @@ if (!rootElement.innerHTML) {
         <RouterProvider router={router} />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
-    </StrictMode>,
+    </StrictMode>
   );
 }
