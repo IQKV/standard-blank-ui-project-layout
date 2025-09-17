@@ -1,6 +1,5 @@
 /**
- * All dates are stored in UTC in the database. The timezone for the account or event should be used to
- * display the date in the correct timezone.
+ * All dates are stored in UTC in the database.
  */
 
 import dayjs from "dayjs";
