@@ -1,0 +1,13 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2025-09-18 12:17+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: en\n"
+
+#. placeholder {0}: localeToNameMap[locale]
+#: src/locales.ts:18
+msgid "{0}"
+msgstr "{0}"
