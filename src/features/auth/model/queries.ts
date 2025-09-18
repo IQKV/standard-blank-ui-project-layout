@@ -1,6 +1,8 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { authApi } from "@/entities/auth";
+import { authApi, loginSchema, forgotPasswordSchema, resetPasswordWithTokenSchema, tokenVerificationSchema, registerSchema } from "@/entities/auth";
 import { userApi } from "@/entities/user";
+import type { LoginInput, ForgotPasswordInput, ResetPasswordWithTokenInput, TokenVerificationInput } from "@/entities/auth";
+import type { UserRegistrationInput } from "@/entities/user";
 
 export const authKeys = {
   all: ['auth'] as const,
@@ -17,9 +19,12 @@ export const useAuthMe = () => {
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-
+  
   return useMutation({
-    mutationFn: authApi.login,
+    mutationFn: (loginData: LoginInput) => {
+      const validatedData = loginSchema.parse(loginData);
+      return authApi.login(validatedData);
+    },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: authKeys.me() });
     },
@@ -28,7 +33,7 @@ export const useLogin = () => {
 
 export const useLogout = () => {
   const queryClient = useQueryClient();
-
+  
   return useMutation({
     mutationFn: authApi.logout,
     onSuccess: () => {
@@ -39,20 +44,36 @@ export const useLogout = () => {
 
 export const useRegister = () => {
   return useMutation({
-    mutationFn: authApi.register,
+    mutationFn: (registerData: UserRegistrationInput) => {
+      const validatedData = registerSchema.parse(registerData);
+      return authApi.register(validatedData);
+    },
   });
 };
 
 export const useForgotPassword = () => {
   return useMutation({
-    mutationFn: authApi.forgotPassword,
+    mutationFn: (emailData: ForgotPasswordInput) => {
+      const validatedData = forgotPasswordSchema.parse(emailData);
+      return authApi.forgotPassword(validatedData);
+    },
+  });
+};
+
+export const useVerifyPasswordResetToken = () => {
+  return useMutation({
+    mutationFn: (tokenData: TokenVerificationInput) => {
+      const validatedData = tokenVerificationSchema.parse(tokenData);
+      return authApi.verifyPasswordResetToken(validatedData.token);
+    },
   });
 };
 
 export const useResetPassword = () => {
   return useMutation({
-    // eslint-disable-next-line
-    mutationFn: ({ token, resetData }: { token: string; resetData: any }) =>
-      authApi.resetPassword(token, resetData),
+    mutationFn: ({ token, resetData }: ResetPasswordWithTokenInput) => {
+      const validatedInput = resetPasswordWithTokenSchema.parse({ token, resetData });
+      return authApi.resetPassword(validatedInput.token, validatedInput.resetData);
+    },
   });
 };
