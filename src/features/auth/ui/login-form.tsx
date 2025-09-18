@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLogin } from "../model/queries";
+import { useLoginProcess } from "@/processes/auth-session";
 import { loginSchema, type LoginInput } from "@/entities/auth";
 
 interface LoginFormProps {
@@ -9,7 +9,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSuccess, onError }: LoginFormProps) {
-  const login = useLogin();
+  const login = useLoginProcess();
 
   const {
     register,

@@ -1,5 +1,16 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { userApi } from "@/entities/user";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  useUsers,
+  useUser,
+  useUserEmailConfirmation,
+  useUserEmailChange,
+  useUserEmailChangeCancel,
+  useUserConfirmationResend,
+  useUserEmailConfirmationWithCode,
+  userKeys,
+  userApi
+} from "@/entities/user";
 import {
   validateUserMeUpdate,
   validateUserUpdate,
@@ -12,32 +23,12 @@ import {
   type EmailConfirmationWithCodeInput,
 } from "./validation";
 
-export const userKeys = {
-  all: ['users'] as const,
-  lists: () => [...userKeys.all, 'list'] as const,
-  list: (filters: string) => [...userKeys.lists(), { filters }] as const,
-  details: () => [...userKeys.all, 'detail'] as const,
-  detail: (id: string | number) => [...userKeys.details(), id] as const,
-};
+// Feature-level user management queries with business logic
 
-export const useUsers = () => {
-  return useQuery({
-    queryKey: userKeys.lists(),
-    queryFn: userApi.all,
-  });
-};
+// Re-export entity queries for convenience
+export { useUsers, useUser };
 
-export const useUser = (userId: string | number) => {
-  return useQuery({
-    queryKey: userKeys.detail(userId),
-    queryFn: () => {
-      const validatedInput = validateUserQuery({ userId });
-      return userApi.findByID(validatedInput.userId);
-    },
-    enabled: !!userId,
-  });
-};
-
+// Feature-specific user update with business logic
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
 
@@ -49,12 +40,15 @@ export const useUpdateUser = () => {
       return userApi.updateUser(validatedUserId, validatedParams);
     },
     onSuccess: (_, { userId }) => {
+      // Business logic: invalidate related queries
       queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
       queryClient.invalidateQueries({ queryKey: userKeys.lists() });
+      // Could add notifications, analytics, etc.
     },
   });
 };
 
+// Feature-specific profile update with business logic
 export const useUpdateMe = () => {
   const queryClient = useQueryClient();
 
@@ -64,76 +58,95 @@ export const useUpdateMe = () => {
       return userApi.updateMe(validatedParams);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
+      // Business logic: invalidate user session data
+      queryClient.invalidateQueries({ queryKey: userKeys.me() });
+      // Could add success notifications, analytics, etc.
     },
   });
 };
 
+// Feature-specific email confirmation with business logic
 export const useConfirmEmail = () => {
-  const queryClient = useQueryClient();
 
-  return useMutation({
-    mutationFn: ({ userId, token }: EmailConfirmationInput) => {
+  const confirmEmailMutation = useUserEmailConfirmation();
+
+  return {
+    ...confirmEmailMutation,
+    mutateAsync: async ({ userId, token }: EmailConfirmationInput) => {
       const validatedInput = validateEmailConfirmation({ userId, token });
-      return userApi.confirmEmailAddress(validatedInput.userId, validatedInput.token);
+      const result = await confirmEmailMutation.mutateAsync({
+        userId: validatedInput.userId,
+        token: validatedInput.token,
+      });
+      // Additional business logic could go here
+      return result;
     },
-    onSuccess: (_, { userId }) => {
-      queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-    },
-  });
+  };
 };
 
+// Feature-specific email change confirmation with business logic
 export const useConfirmEmailChange = () => {
-  const queryClient = useQueryClient();
 
-  return useMutation({
-    mutationFn: ({ userId, token }: EmailConfirmationInput) => {
+  const confirmEmailChangeMutation = useUserEmailChange();
+
+  return {
+    ...confirmEmailChangeMutation,
+    mutateAsync: async ({ userId, token }: EmailConfirmationInput) => {
       const validatedInput = validateEmailConfirmation({ userId, token });
-      return userApi.confirmEmailChange(validatedInput.userId, validatedInput.token);
+      const result = await confirmEmailChangeMutation.mutateAsync({
+        userId: validatedInput.userId,
+        token: validatedInput.token,
+      });
+      // Additional business logic could go here
+      return result;
     },
-    onSuccess: (_, { userId }) => {
-      queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-    },
-  });
+  };
 };
 
+// Feature-specific email change cancellation with business logic
 export const useCancelEmailChange = () => {
-  const queryClient = useQueryClient();
+  const cancelEmailChangeMutation = useUserEmailChangeCancel();
 
-  return useMutation({
-    mutationFn: (userId: string | number) => {
+  return {
+    ...cancelEmailChangeMutation,
+    mutateAsync: async (userId: string | number) => {
       const validatedInput = validateUserQuery({ userId });
-      return userApi.cancelEmailChange(validatedInput.userId);
+      const result = await cancelEmailChangeMutation.mutateAsync(validatedInput.userId);
+      // Additional business logic could go here
+      return result;
     },
-    onSuccess: (_, userId) => {
-      queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-    },
-  });
+  };
 };
 
+// Feature-specific confirmation resend with business logic
 export const useResendConfirmation = () => {
-  return useMutation({
-    mutationFn: (userId: string | number) => {
+  const resendConfirmationMutation = useUserConfirmationResend();
+
+  return {
+    ...resendConfirmationMutation,
+    mutateAsync: async (userId: string | number) => {
       const validatedInput = validateUserQuery({ userId });
-      return userApi.resendConfirmation(validatedInput.userId);
+      const result = await resendConfirmationMutation.mutateAsync(validatedInput.userId);
+      // Additional business logic: could add rate limiting, notifications, etc.
+      return result;
     },
-  });
+  };
 };
 
+// Feature-specific email confirmation with code and business logic
 export const useConfirmEmailWithCode = () => {
-  const queryClient = useQueryClient();
+  const confirmEmailWithCodeMutation = useUserEmailConfirmationWithCode();
 
-  return useMutation({
-    mutationFn: ({ userId, code }: EmailConfirmationWithCodeInput) => {
+  return {
+    ...confirmEmailWithCodeMutation,
+    mutateAsync: async ({ userId, code }: EmailConfirmationWithCodeInput) => {
       const validatedInput = validateEmailConfirmationWithCode({ userId, code });
-      return userApi.confirmEmailAddressWithCode(validatedInput.userId, validatedInput.code);
+      const result = await confirmEmailWithCodeMutation.mutateAsync({
+        userId: validatedInput.userId,
+        code: validatedInput.code,
+      });
+      // Additional business logic could go here
+      return result;
     },
-    onSuccess: (_, { userId }) => {
-      queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
-    },
-  });
+  };
 };
