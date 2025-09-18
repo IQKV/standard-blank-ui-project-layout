@@ -40,7 +40,6 @@ export interface SortableItem {
 
 export interface User {
   id?: IdParam;
-  account_id?: IdParam;
   first_name: string;
   last_name: string;
   full_name: string;
@@ -53,21 +52,10 @@ export interface User {
   pending_email?: string;
   last_login_at?: string;
   status?: "ACTIVE" | "INACTIVE";
-  role?: "ADMIN";
-  is_account_owner?: boolean;
+  role?: "ADMIN" | "GUEST";
   locale?: SupportedLocales;
 }
 
-export interface Account {
-  id?: IdParam;
-  name: string;
-  email: string;
-  timezone?: string;
-  currency_code?: string;
-  password?: string;
-  is_account_email_confirmed?: boolean;
-  requires_manual_verification?: boolean;
-}
 
 export interface LoginData {
   email: string;
@@ -81,7 +69,7 @@ export interface LoginResponse {
   user: User;
 }
 
-export interface RegisterAccountRequest {
+export interface UserRegistrationRequest {
   first_name: string;
   last_name: string;
   email: string;

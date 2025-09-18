@@ -2,11 +2,11 @@ import {
   GenericDataResponse,
   LoginData,
   LoginResponse,
-  RegisterAccountRequest,
   ResetPasswordRequest,
   User,
-} from "../types.ts";
-import { api } from "./client.ts";
+  UserRegistrationRequest,
+} from "@/types";
+import { api } from "@/api/client";
 
 export const authClient = {
   refreshAccessTokenFn: async () => {
@@ -14,7 +14,7 @@ export const authClient = {
     return response.data;
   },
 
-  register: async (registerData: RegisterAccountRequest) => {
+  register: async (registerData: UserRegistrationRequest) => {
     const response = await api.post<GenericDataResponse<User>>(
       "auth/register",
       registerData

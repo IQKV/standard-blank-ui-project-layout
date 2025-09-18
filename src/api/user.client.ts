@@ -1,5 +1,5 @@
-import { api } from "./client";
-import { GenericDataResponse, IdParam, User } from "../types";
+import { api } from "@/api/client";
+import { GenericDataResponse, IdParam, User } from "@/types";
 
 export interface UserMeRequest {
   first_name: string;

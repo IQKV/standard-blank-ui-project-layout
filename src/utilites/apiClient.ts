@@ -1,6 +1,6 @@
 /* eslint-disable dot-notation */
-import { api } from "../api/client.ts";
-import { publicApi } from "../api/public-client.ts";
+import { api } from "@/api/client";
+import { publicApi } from "@/api/public-client";
 
 export const setAuthToken = (token?: string | undefined | null) => {
   if (!token) {

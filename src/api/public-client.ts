@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getConfig } from "../utilites/config";
+import { getConfig } from "@/utilites/config";
 
 export const publicApi = axios.create({
   withCredentials: true,
