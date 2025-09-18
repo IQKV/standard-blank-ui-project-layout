@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useUpdateMe, userMeUpdateSchema, type UserMeUpdateInput } from "../model/validation";
+import { userMeUpdateSchema, type UserMeUpdateInput } from "@/entities/user";
+import { useUpdateMe } from "../model/queries";
 
 interface UserProfileFormProps {
   onSuccess?: () => void;

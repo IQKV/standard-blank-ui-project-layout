@@ -43,3 +43,4 @@ export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
 export type ResetPasswordWithTokenInput = z.infer<typeof resetPasswordWithTokenSchema>;
 export type TokenVerificationInput = z.infer<typeof tokenVerificationSchema>;
+export type RegisterInput = z.infer<typeof userRegistrationSchema>;

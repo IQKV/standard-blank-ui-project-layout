@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRegister } from "../model/queries";
-import { registerSchema, type UserRegistrationInput } from "@/entities/auth";
+import { registerSchema, type RegisterInput } from "@/entities/auth";
 
 interface RegisterFormProps {
   onSuccess?: () => void;
@@ -15,14 +15,14 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
     register: registerField,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<UserRegistrationInput>({
+  } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       locale: "en",
     },
   });
 
-  const onSubmit = async (data: UserRegistrationInput) => {
+  const onSubmit = async (data: RegisterInput) => {
     try {
       await register.mutateAsync(data);
       onSuccess?.();

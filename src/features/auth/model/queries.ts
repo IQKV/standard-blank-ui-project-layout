@@ -1,8 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { authApi, loginSchema, forgotPasswordSchema, resetPasswordWithTokenSchema, tokenVerificationSchema, registerSchema } from "@/entities/auth";
 import { userApi } from "@/entities/user";
-import type { LoginInput, ForgotPasswordInput, ResetPasswordWithTokenInput, TokenVerificationInput } from "@/entities/auth";
-import type { UserRegistrationInput } from "@/entities/user";
+import type { LoginInput, ForgotPasswordInput, ResetPasswordWithTokenInput, TokenVerificationInput, RegisterInput } from "@/entities/auth";
 
 export const authKeys = {
   all: ['auth'] as const,
@@ -44,7 +43,7 @@ export const useLogout = () => {
 
 export const useRegister = () => {
   return useMutation({
-    mutationFn: (registerData: UserRegistrationInput) => {
+    mutationFn: (registerData: RegisterInput) => {
       const validatedData = registerSchema.parse(registerData);
       return authApi.register(validatedData);
     },

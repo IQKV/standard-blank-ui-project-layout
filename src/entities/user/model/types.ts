@@ -43,5 +43,5 @@ export interface UserRegistrationRequest {
   email: string;
   password: string;
   password_confirmation: string;
-  locale: SupportedLocales;
+  locale: SupportedLocales | string;
 }
