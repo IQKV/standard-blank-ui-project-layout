@@ -1,7 +1,7 @@
 {
   "appDirectory": "src",
   "rootDirectory": ".",
-  "routesDirectory": "./src/routes",
+  "routesDirectory": "./src/pages",
   "generatedRouteTree": "./src/routeTree.gen.ts",
   "quoteStyle": "double"
 }

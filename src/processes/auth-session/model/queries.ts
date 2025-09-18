@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthLogin, useAuthLogout, authKeys } from "@/entities/auth";
 import { useUserMe, userKeys } from "@/entities/user";
-import type { LoginInput } from "@/entities/auth";
+import type { LoginInput } from "@/features/auth";
 
 // Cross-entity process: Authentication session management
 // This handles the complex business process of managing user authentication state

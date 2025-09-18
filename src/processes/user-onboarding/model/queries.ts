@@ -1,7 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuthRegister } from "@/entities/auth";
 import { userKeys } from "@/entities/user";
-import type { RegisterInput } from "@/entities/auth";
+import type { RegisterInput } from "@/features/auth";
 
 // Cross-entity process: User onboarding
 // This handles the complex business process of user registration and initial setup
