@@ -24,23 +24,45 @@ React + TypeScript + Vite + TanStack Router Template
 
 ## 🔑 Key Features
 
+### 🏗️ **Architecture & Design**
+
+- 🎯 **Feature-Sliced Design (FSD)** - Scalable architecture with clear layer separation
+- 🔒 **Public API Pattern** - Encapsulated modules with barrel file exports
+- 📁 **Proper Layer Hierarchy** - App → Processes → Pages → Features → Entities → Shared
+
+### ⚛️ **React & TypeScript**
+
 - ✨ **React 19** - Experience the future with the latest React version
-- ⚡ **Vite** - Lightning-fast development with instant HMR
 - 🎯 **TypeScript** - Type-safe development with latest features
+- ⚡ **Vite** - Lightning-fast development with instant HMR
 - 📦 **PNPM** - Fast, disk space efficient package manager
+
+### 🔄 **Data & Routing**
+
+- 🔄 **TanStack Router** - Type-safe routing with file-based routing
+- 🔄 **TanStack Query** - Powerful data synchronization with proper FSD integration
+- 📡 **Axios** - HTTP client with interceptors and error handling
+- 📡 **GraphQL Request** - GraphQL support for modern APIs
+
+### ✅ **Validation & Forms**
+
+- ✅ **Zod Validation** - Runtime type validation with comprehensive schemas
+- 📝 **React Hook Form** - Performant forms with validation integration
+- 🔐 **Type-safe Forms** - End-to-end type safety from validation to submission
+
+### 🧪 **Testing & Quality**
+
+- 🧪 **Vitest** - Fast unit and integration testing
+- 🧪 **Playwright** - Reliable end-to-end testing
+- 🧪 **Mock Service Worker** - Client-agnostic API mocking
+- 🧱 **Storybook** - Component development in isolation
+
+### 🔍 **Code Quality**
+
 - 🔍 **ESLint + Prettier** - Modern linting and code formatting
-- 🔄 **TanStack Router** - Type-safe routing with code splitting
-- 🔄 **TanStack Query** for powerful data synchronization
-- 📡 **Axios** for API calls
-- 📡 **graphql-request** for GraphQL support
-- 🧱 **storybook** for building UIs in isolation
-- 🧪 **vitest** for fast testing
-- 🧪 **Playwright** for fast and reliable e2e testing
-- 🧪 **Mock Service Worker** for client-agnostic API mocks
-- ✅ **React Hook Form + zod** for form validation
-- 🎭 **React Icons** for beautiful icons
-- 👷 **GitHub Actions** for easy workflow automation
-- 🔒️ **Dependabot** for monitoring vulnerabilities and keeping dependencies up to date
+- 🎭 **React Icons** - Beautiful icon library
+- 👷 **GitHub Actions** - Automated workflow and CI/CD
+- 🔒️ **Dependabot** - Automated dependency updates and security monitoring
 
 <a name="documentation"></a>
 
@@ -87,6 +109,80 @@ pnpm dev
 | `pnpm lint`           | Lint code                                  |
 | `pnpm type-check`     | Check types                                |
 | `pnpm release`        | Automate versioning and package publishing |
+
+## 🏗️ **Feature-Sliced Design Architecture**
+
+This project follows **Feature-Sliced Design (FSD)** methodology for scalable frontend architecture.
+
+### 📁 **Project Structure**
+
+```
+src/
+├── app/                    # Application layer
+│   ├── app.tsx            # App component with providers
+│   ├── router.ts          # Router configuration
+│   └── index.ts           # Public API
+├── processes/              # Cross-entity business processes
+│   ├── auth-session/      # Authentication session management
+│   └── user-onboarding/   # User registration workflow
+├── pages/                  # Pages layer (owns routing)
+│   ├── __root.tsx         # Root route with layout
+│   ├── index.tsx          # Home route
+│   ├── about.tsx          # About route
+│   ├── home/              # Home page components
+│   └── about/             # About page components
+├── features/              # Business features
+│   ├── auth/              # Authentication feature
+│   │   ├── model/         # Validation & business logic
+│   │   ├── ui/            # Feature UI components
+│   │   └── index.ts       # Public API
+│   └── user-management/   # User management feature
+├── entities/              # Business entities (pure data)
+│   ├── user/              # User entity
+│   │   ├── model/         # Types & pure queries
+│   │   ├── api/           # API methods
+│   │   ├── ui/            # Data display components
+│   │   └── index.ts       # Public API
+│   └── auth/              # Auth entity
+└── shared/                # Reusable utilities
+    ├── api/               # Base API configuration
+    ├── lib/               # Utilities & helpers
+    ├── types/             # Common types
+    └── ui/                # Reusable UI components
+```
+
+### 🎯 **Layer Responsibilities**
+
+| Layer         | Purpose                                            | Can Import From                       |
+| ------------- | -------------------------------------------------- | ------------------------------------- |
+| **App**       | Application initialization, global providers       | All layers                            |
+| **Processes** | Cross-entity workflows, complex business processes | Features, Entities, Shared            |
+| **Pages**     | Route components, page composition                 | Processes, Features, Entities, Shared |
+| **Features**  | Business logic, validation, feature UI             | Entities, Shared                      |
+| **Entities**  | Pure data access, basic UI components              | Shared only                           |
+| **Shared**    | Reusable utilities, no business logic              | External libraries only               |
+
+### 🔒 **Public API Pattern**
+
+Every slice exposes its functionality through barrel files (`index.ts`):
+
+```typescript
+// ✅ Correct: Use public APIs
+import { useLogin, LoginForm } from "@/features/auth";
+import { User, UserCard } from "@/entities/user";
+
+// ❌ Wrong: Bypass public API
+import { LoginForm } from "@/features/auth/ui/login-form";
+```
+
+### 📚 **Architecture Documentation**
+
+- 📚 [**Documentation Index**](DOCUMENTATION_INDEX.md) - Complete documentation guide
+- 📖 [**FSD Architecture Guide**](FSD_ARCHITECTURE.md) - Complete architecture overview
+- 🔒 [**Public API Enforcement**](PUBLIC_API_ENFORCEMENT.md) - API patterns and rules
+- ✅ [**Validation Guide**](VALIDATION_GUIDE.md) - Zod validation patterns
+- 🛠️ [**Development Guide**](DEVELOPMENT_GUIDE.md) - Step-by-step development patterns
+- 📋 [**Final FSD Summary**](FINAL_FSD_SUMMARY.md) - Implementation summary
 
 ### Environment Variables
 

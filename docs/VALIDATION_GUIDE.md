@@ -18,6 +18,7 @@ src/
 ## Validation Layers
 
 ### 1. Entity Layer Validation
+
 Located in `entities/{entity}/model/validation.ts`
 
 **Purpose**: Define core validation schemas for business entities
@@ -31,7 +32,9 @@ export const userRegistrationSchema = z
     last_name: nameSchema,
     email: emailSchema,
     password: passwordSchema,
-    password_confirmation: z.string().min(1, "Password confirmation is required"),
+    password_confirmation: z
+      .string()
+      .min(1, "Password confirmation is required"),
     locale: localeSchema,
   })
   .refine((data) => data.password === data.password_confirmation, {
@@ -41,6 +44,7 @@ export const userRegistrationSchema = z
 ```
 
 ### 2. Feature Layer Validation
+
 Located in `features/{feature}/model/validation.ts`
 
 **Purpose**: Feature-specific validation logic and validation functions
@@ -54,6 +58,7 @@ export const validateUserMeUpdate = (data: unknown): UserMeUpdateInput => {
 ```
 
 ### 3. Shared Validation Utilities
+
 Located in `shared/lib/validation.ts`
 
 **Purpose**: Common validation patterns and utilities
@@ -64,13 +69,17 @@ Located in `shared/lib/validation.ts`
 ### User Validation
 
 #### Basic Schemas
+
 ```typescript
 // Name validation
 const nameSchema = z
   .string()
   .min(2, "Name must be at least 2 characters")
   .max(50, "Name must not exceed 50 characters")
-  .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes");
+  .regex(
+    /^[a-zA-Z\s'-]+$/,
+    "Name can only contain letters, spaces, hyphens, and apostrophes"
+  );
 
 // Email validation
 const emailSchema = z
@@ -85,10 +94,14 @@ const passwordSchema = z
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
   .regex(/[a-z]/, "Password must contain at least one lowercase letter")
   .regex(/[0-9]/, "Password must contain at least one number")
-  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
+  .regex(
+    /[^A-Za-z0-9]/,
+    "Password must contain at least one special character"
+  );
 ```
 
 #### Complex Schemas
+
 ```typescript
 // User profile update with conditional validation
 const userMeUpdateSchema = z
@@ -109,7 +122,8 @@ const userMeUpdateSchema = z
       return true;
     },
     {
-      message: "Current password and password confirmation are required when changing password",
+      message:
+        "Current password and password confirmation are required when changing password",
       path: ["password_current"],
     }
   );
@@ -128,7 +142,9 @@ const loginSchema = z.object({
 const resetPasswordSchema = z
   .object({
     password: passwordSchema,
-    password_confirmation: z.string().min(1, "Password confirmation is required"),
+    password_confirmation: z
+      .string()
+      .min(1, "Password confirmation is required"),
   })
   .refine((data) => data.password === data.password_confirmation, {
     message: "Passwords do not match",
@@ -139,10 +155,14 @@ const resetPasswordSchema = z
 ## Integration with React Hook Form
 
 ### Basic Form Setup
+
 ```typescript
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { userMeUpdateSchema, type UserMeUpdateInput } from "../model/validation";
+import {
+  userMeUpdateSchema,
+  type UserMeUpdateInput,
+} from "../model/validation";
 
 const {
   register,
@@ -154,6 +174,7 @@ const {
 ```
 
 ### Form Submission with Validation
+
 ```typescript
 const onSubmit = async (data: UserMeUpdateInput) => {
   try {
@@ -169,10 +190,11 @@ const onSubmit = async (data: UserMeUpdateInput) => {
 ## Integration with Tanstack Query
 
 ### Mutation with Validation
+
 ```typescript
 export const useUpdateMe = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (updateParams: UserMeUpdateInput) => {
       // Validate data before API call
@@ -180,13 +202,14 @@ export const useUpdateMe = () => {
       return userApi.updateMe(validatedParams);
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['auth', 'me'] });
+      queryClient.invalidateQueries({ queryKey: ["auth", "me"] });
     },
   });
 };
 ```
 
 ### Query Parameter Validation
+
 ```typescript
 export const useUser = (userId: string | number) => {
   return useQuery({
@@ -204,6 +227,7 @@ export const useUser = (userId: string | number) => {
 ## Error Handling
 
 ### Zod Error Formatting
+
 ```typescript
 import { formatZodError } from "@/shared/lib/validation";
 
@@ -218,6 +242,7 @@ try {
 ```
 
 ### Safe Validation
+
 ```typescript
 import { safeValidate } from "@/shared/lib/validation";
 
@@ -234,6 +259,7 @@ if (result.success) {
 ## Best Practices
 
 ### 1. Schema Composition
+
 ```typescript
 // ✅ Good: Compose schemas from smaller pieces
 const baseUserSchema = z.object({
@@ -249,6 +275,7 @@ const userRegistrationSchema = baseUserSchema.extend({
 ```
 
 ### 2. Validation at Boundaries
+
 ```typescript
 // ✅ Good: Validate at API boundaries
 export const useLogin = () => {
@@ -262,6 +289,7 @@ export const useLogin = () => {
 ```
 
 ### 3. Type Safety
+
 ```typescript
 // ✅ Good: Export and use inferred types
 export type UserMeUpdateInput = z.infer<typeof userMeUpdateSchema>;
@@ -273,6 +301,7 @@ const MyComponent = ({ data }: { data: UserMeUpdateInput }) => {
 ```
 
 ### 4. Custom Validation Messages
+
 ```typescript
 // ✅ Good: Provide clear, user-friendly messages
 const emailSchema = z
@@ -282,6 +311,7 @@ const emailSchema = z
 ```
 
 ### 5. Conditional Validation
+
 ```typescript
 // ✅ Good: Use refine for complex conditional logic
 const schema = z
@@ -306,6 +336,7 @@ const schema = z
 ## Common Patterns
 
 ### Optional Fields
+
 ```typescript
 // Make field optional but validate when present
 const optionalEmailSchema = z.string().email().optional();
@@ -315,6 +346,7 @@ const optionalEmailSchema = createOptionalField(z.string().email());
 ```
 
 ### Array Validation
+
 ```typescript
 const userIdsSchema = z
   .array(z.union([z.string(), z.number()]))
@@ -322,6 +354,7 @@ const userIdsSchema = z
 ```
 
 ### Enum Validation
+
 ```typescript
 const statusSchema = z.enum(["ACTIVE", "INACTIVE"], {
   errorMap: () => ({ message: "Status must be either ACTIVE or INACTIVE" }),
