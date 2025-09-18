@@ -1,4 +1,4 @@
-import { SupportedLocales } from "@/shared/lib/locales";
+import { SupportedLocales } from "@/shared/lib";
 import { IdParam } from "@/shared/types";
 
 export interface User {

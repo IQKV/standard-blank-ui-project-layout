@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { availableLocales } from "@/shared/lib/locales";
+import { availableLocales } from "@/shared/lib";
 
 // Base validation schemas for user management
 export const userIdSchema = z.union([
