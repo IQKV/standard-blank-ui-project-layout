@@ -177,12 +177,12 @@ import { LoginForm } from "@/features/auth/ui/login-form";
 
 ### 📚 **Architecture Documentation**
 
-- 📚 [**Documentation Index**](DOCUMENTATION_INDEX.md) - Complete documentation guide
-- 📖 [**FSD Architecture Guide**](FSD_ARCHITECTURE.md) - Complete architecture overview
-- 🔒 [**Public API Enforcement**](PUBLIC_API_ENFORCEMENT.md) - API patterns and rules
-- ✅ [**Validation Guide**](VALIDATION_GUIDE.md) - Zod validation patterns
-- 🛠️ [**Development Guide**](DEVELOPMENT_GUIDE.md) - Step-by-step development patterns
-- 📋 [**Final FSD Summary**](FINAL_FSD_SUMMARY.md) - Implementation summary
+- 📚 [**Documentation Index**](docs/index.md) - Complete documentation guide
+- 📖 [**FSD Architecture Guide**](docs/fsd-architecture.md) - Complete architecture overview
+- 🔒 [**Public API Enforcement**](docs/public-api-enforcement.md) - API patterns and rules
+- ✅ [**Validation Guide**](docs/validation-guide.md) - Zod validation patterns
+- 🛠️ [**Development Guide**](docs/development-guide.md) - Step-by-step development patterns
+- 📋 [**Final FSD Summary**](docs/final-fsd-summary.md) - Implementation summary
 
 ### Environment Variables
 
