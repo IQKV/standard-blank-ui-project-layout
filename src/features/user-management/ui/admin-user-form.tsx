@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {  userUpdateSchema, type UserUpdateInput } from "@/entities/user";
 import { useUpdateUser } from "../model/queries";
+import { userUpdateSchema, type UserUpdateInput } from "../model/validation";
 
 interface AdminUserFormProps {
   userId: string | number;

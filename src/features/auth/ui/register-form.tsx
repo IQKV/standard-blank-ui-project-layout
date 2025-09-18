@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUserOnboardingProcess } from "@/processes/user-onboarding";
-import { registerSchema, type RegisterInput } from "@/entities/auth";
+import { registerSchema, type RegisterInput } from "../model/validation";
 
 interface RegisterFormProps {
   onSuccess?: () => void;

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginProcess } from "@/processes/auth-session";
-import { loginSchema, type LoginInput } from "@/entities/auth";
+import { loginSchema, type LoginInput } from "../model/validation";
 
 interface LoginFormProps {
   onSuccess?: () => void;

@@ -18,7 +18,7 @@ import {
   type ForgotPasswordInput,
   type ResetPasswordWithTokenInput,
   type RegisterInput
-} from "@/entities/auth";
+} from "./validation";
 
 // Feature-level auth queries with business logic
 export const useAuthMe = () => {
