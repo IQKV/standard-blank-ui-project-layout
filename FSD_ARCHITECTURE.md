@@ -59,24 +59,30 @@ src/
 - **Contains**: App component, router configuration, global providers
 - **Dependencies**: Can import from all other layers
 
-### 🟠 Pages Layer  
+### 🟠 Processes Layer
+- **Purpose**: Cross-entity business workflows and application-wide state
+- **Contains**: Complex business processes, session management, multi-entity coordination
+- **Dependencies**: Can import from features, entities, shared
+- **Examples**: Authentication session, user onboarding, checkout process
+
+### 🟡 Pages Layer  
 - **Purpose**: Route-level components that compose features and entities
 - **Contains**: Page components that correspond to routes
-- **Dependencies**: Can import from features, entities, shared
+- **Dependencies**: Can import from processes, features, entities, shared
 
-### 🟡 Features Layer
-- **Purpose**: Business features and user scenarios
-- **Contains**: Feature-specific logic, hooks, queries, components
+### 🟢 Features Layer
+- **Purpose**: Business features with validation and business logic
+- **Contains**: Feature-specific logic, validation, business rules, feature UI
 - **Dependencies**: Can import from entities, shared
-- **Examples**: Authentication, user management, product catalog
+- **Examples**: User management forms, authentication flows, data tables
 
-### 🟢 Entities Layer
-- **Purpose**: Business entities and their core logic
-- **Contains**: Entity models, API methods, types
+### 🔵 Entities Layer
+- **Purpose**: Pure business entities with data access and basic UI
+- **Contains**: Entity models, pure API calls, basic UI components for data display
 - **Dependencies**: Can import from shared only
-- **Examples**: User, Product, Order
+- **Examples**: User entity (data + UserCard), Product entity, Order entity
 
-### 🔵 Shared Layer
+### ⚪ Shared Layer
 - **Purpose**: Reusable code without business logic
 - **Contains**: UI kit, utilities, API clients, types, constants
 - **Dependencies**: Cannot import from other layers (except external libraries)

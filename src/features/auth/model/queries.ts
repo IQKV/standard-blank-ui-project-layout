@@ -8,7 +8,17 @@ import {
   useAuthPasswordReset
 } from "@/entities/auth";
 import { useUserMe, userKeys } from "@/entities/user";
-import type { LoginInput, ForgotPasswordInput, ResetPasswordWithTokenInput, RegisterInput } from "@/entities/auth";
+import {
+  loginSchema,
+  forgotPasswordSchema,
+  resetPasswordWithTokenSchema,
+  tokenVerificationSchema,
+  registerSchema,
+  type LoginInput,
+  type ForgotPasswordInput,
+  type ResetPasswordWithTokenInput,
+  type RegisterInput
+} from "@/entities/auth";
 
 // Feature-level auth queries with business logic
 export const useAuthMe = () => {
@@ -22,7 +32,10 @@ export const useLogin = () => {
   return {
     ...loginMutation,
     mutateAsync: async (loginData: LoginInput) => {
-      const result = await loginMutation.mutateAsync(loginData);
+      // Feature-level validation
+      const validatedData = loginSchema.parse(loginData);
+      const result = await loginMutation.mutateAsync(validatedData);
+
       // Business logic: invalidate user session after successful login
       queryClient.invalidateQueries({ queryKey: userKeys.me() });
       return result;
@@ -51,7 +64,10 @@ export const useRegister = () => {
   return {
     ...registerMutation,
     mutateAsync: async (registerData: RegisterInput) => {
-      const result = await registerMutation.mutateAsync(registerData);
+      // Feature-level validation
+      const validatedData = registerSchema.parse(registerData);
+      const result = await registerMutation.mutateAsync(validatedData);
+
       // Business logic: could add analytics, notifications, etc.
       return result;
     },
@@ -64,7 +80,10 @@ export const useForgotPassword = () => {
   return {
     ...forgotPasswordMutation,
     mutateAsync: async (emailData: ForgotPasswordInput) => {
-      const result = await forgotPasswordMutation.mutateAsync(emailData);
+      // Feature-level validation
+      const validatedData = forgotPasswordSchema.parse(emailData);
+      const result = await forgotPasswordMutation.mutateAsync(validatedData);
+
       // Business logic: could add user feedback, analytics, etc.
       return result;
     },
@@ -72,7 +91,16 @@ export const useForgotPassword = () => {
 };
 
 export const useVerifyPasswordResetToken = () => {
-  return useAuthPasswordResetTokenVerify();
+  const verifyMutation = useAuthPasswordResetTokenVerify();
+
+  return {
+    ...verifyMutation,
+    mutateAsync: async (token: string) => {
+      // Feature-level validation
+      const validatedData = tokenVerificationSchema.parse({ token });
+      return await verifyMutation.mutateAsync(validatedData.token);
+    },
+  };
 };
 
 export const useResetPassword = () => {
@@ -82,7 +110,10 @@ export const useResetPassword = () => {
   return {
     ...resetPasswordMutation,
     mutateAsync: async (data: ResetPasswordWithTokenInput) => {
-      const result = await resetPasswordMutation.mutateAsync(data);
+      // Feature-level validation
+      const validatedInput = resetPasswordWithTokenSchema.parse(data);
+      const result = await resetPasswordMutation.mutateAsync(validatedInput);
+
       // Business logic: invalidate auth state after password reset
       queryClient.invalidateQueries({ queryKey: userKeys.me() });
       return result;

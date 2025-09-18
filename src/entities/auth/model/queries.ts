@@ -1,19 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { authApi } from "../api/auth-api";
-import { 
-  loginSchema, 
-  forgotPasswordSchema, 
-  resetPasswordWithTokenSchema, 
-  tokenVerificationSchema, 
-  registerSchema 
-} from "./validation";
-import type { 
-  LoginInput, 
-  ForgotPasswordInput, 
-  ResetPasswordWithTokenInput, 
-  TokenVerificationInput, 
-  RegisterInput 
-} from "./validation";
+import type { LoginData, ResetPasswordRequest } from "./types";
+import type { UserRegistrationRequest } from "@/entities/user";
 
 // Entity-level query keys
 export const authKeys = {
@@ -22,13 +10,10 @@ export const authKeys = {
   refresh: () => [...authKeys.all, 'refresh'] as const,
 };
 
-// Entity-level auth mutations (basic auth operations)
+// Entity-level auth mutations (pure data access, no validation)
 export const useAuthLogin = () => {
   return useMutation({
-    mutationFn: (loginData: LoginInput) => {
-      const validatedData = loginSchema.parse(loginData);
-      return authApi.login(validatedData);
-    },
+    mutationFn: (loginData: LoginData) => authApi.login(loginData),
   });
 };
 
@@ -40,37 +25,26 @@ export const useAuthLogout = () => {
 
 export const useAuthRegister = () => {
   return useMutation({
-    mutationFn: (registerData: RegisterInput) => {
-      const validatedData = registerSchema.parse(registerData);
-      return authApi.register(validatedData);
-    },
+    mutationFn: (registerData: UserRegistrationRequest) => authApi.register(registerData),
   });
 };
 
 export const useAuthForgotPassword = () => {
   return useMutation({
-    mutationFn: (emailData: ForgotPasswordInput) => {
-      const validatedData = forgotPasswordSchema.parse(emailData);
-      return authApi.forgotPassword(validatedData);
-    },
+    mutationFn: (emailData: { email: string }) => authApi.forgotPassword(emailData),
   });
 };
 
 export const useAuthPasswordResetTokenVerify = () => {
   return useMutation({
-    mutationFn: (tokenData: TokenVerificationInput) => {
-      const validatedData = tokenVerificationSchema.parse(tokenData);
-      return authApi.verifyPasswordResetToken(validatedData.token);
-    },
+    mutationFn: (token: string) => authApi.verifyPasswordResetToken(token),
   });
 };
 
 export const useAuthPasswordReset = () => {
   return useMutation({
-    mutationFn: ({ token, resetData }: ResetPasswordWithTokenInput) => {
-      const validatedInput = resetPasswordWithTokenSchema.parse({ token, resetData });
-      return authApi.resetPassword(validatedInput.token, validatedInput.resetData);
-    },
+    mutationFn: ({ token, resetData }: { token: string; resetData: ResetPasswordRequest }) => 
+      authApi.resetPassword(token, resetData),
   });
 };
 
