@@ -1,25 +1,8 @@
-import { api } from "@/api/client";
-import { GenericDataResponse, IdParam, User } from "@/types";
+import { api } from "@/shared/api";
+import { GenericDataResponse, IdParam } from "@/shared/types";
+import { User, UserMeRequest, UpdateUserRequest } from "../model/types";
 
-export interface UserMeRequest {
-  first_name: string;
-  last_name: string;
-  email: string;
-  timezone: string;
-  password: string;
-  password_confirmation: string;
-  password_current: string;
-  locale: string;
-}
-
-export interface UpdateUserRequest {
-  first_name: string;
-  last_name: string;
-  role: string;
-  status: string;
-}
-
-export const userClient = {
+export const userApi = {
   confirmEmailAddress: async (userId: IdParam, token: string) => {
     const response = await api.post<GenericDataResponse<User>>(
       `users/${userId}/confirm-email/${token}`

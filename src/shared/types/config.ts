@@ -1,0 +1,1 @@
+export type ConfigKeys = "VITE_API_URL_SERVER";

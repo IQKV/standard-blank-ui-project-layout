@@ -1,4 +1,4 @@
-import { ConfigKeys } from "@/types";
+import { ConfigKeys } from "@/shared/types";
 
 export const clientBuildEnv: { [K in ConfigKeys]: string } = {
   VITE_API_URL_SERVER: import.meta.env.VITE_API_URL_SERVER,

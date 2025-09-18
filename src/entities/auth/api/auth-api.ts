@@ -1,14 +1,9 @@
-import {
-  GenericDataResponse,
-  LoginData,
-  LoginResponse,
-  ResetPasswordRequest,
-  User,
-  UserRegistrationRequest,
-} from "@/types";
-import { api } from "@/api/client";
+import { api } from "@/shared/api";
+import { GenericDataResponse } from "@/shared/types";
+import { User, UserRegistrationRequest } from "@/entities/user";
+import { LoginData, LoginResponse, ResetPasswordRequest } from "../model/types";
 
-export const authClient = {
+export const authApi = {
   refreshAccessTokenFn: async () => {
     const response = await api.get<LoginResponse>("auth/refresh");
     return response.data;

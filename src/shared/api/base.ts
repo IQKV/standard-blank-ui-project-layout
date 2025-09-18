@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getConfig } from "@/utilites/config";
+import { getConfig } from "@/shared/lib/config";
 
 const BASE_URL = getConfig("VITE_API_URL_SERVER");
 const LOGIN_PATH = "/auth/login";

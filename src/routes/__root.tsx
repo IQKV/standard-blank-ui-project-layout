@@ -1,29 +1,6 @@
-import React from "react";
-
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
-
-const TanStackRouterDevtools =
-  process.env.NODE_ENV === "production"
-    ? () => null // Render nothing in production
-    : React.lazy(() =>
-        // Lazy load in development
-        import("@tanstack/router-devtools").then((res) => ({
-          default: res.TanStackRouterDevtools,
-          // For Embedded Mode
-          // default: res.TanStackRouterDevtoolsPanel
-        }))
-      );
+import { createRootRoute } from "@tanstack/react-router";
+import { AppLayout } from "@/shared/ui";
 
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <div>
-        <Link to="/">Home</Link>&nbsp;
-        <Link to="/about">About</Link>
-      </div>
-      <hr />
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
+  component: AppLayout,
 });
