@@ -531,4 +531,4 @@ function LoginComponent() {
 }
 ```
 
-For detailed information about Zustand integration, see [ZUSTAND_INTEGRATION.md](./ZUSTAND_INTEGRATION.md).
+For detailed information about Zustand integration, see [zusand-integration.md](./zusand-integration.md).
