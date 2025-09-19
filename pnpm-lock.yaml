@@ -102,8 +102,8 @@ importers:
         specifier: ^2.6.0
         version: 2.6.0(@tanstack/react-router@1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
       query-string:
-        specifier: ^9.3.0
-        version: 9.3.0
+        specifier: ^9.3.1
+        version: 9.3.1
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -5678,8 +5678,8 @@ packages:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
 
-  query-string@9.3.0:
-    resolution: {integrity: sha512-IQHOQ9aauHAApwAaUYifpEyLHv6fpVGVkMOnwPzcDScLjbLj8tLsILn6unSW79NafOw1llh8oK7Gd0VwmXBFmA==}
+  query-string@9.3.1:
+    resolution: {integrity: sha512-5fBfMOcDi5SA9qj5jZhWAcTtDfKF5WFdd2uD9nVNlbxVv1baq65aALy6qofpNEGELHvisjjasxQp7BlM9gvMzw==}
     engines: {node: '>=18'}
 
   queue-microtask@1.2.3:
@@ -12716,7 +12716,7 @@ snapshots:
 
   punycode@2.3.1: {}
 
-  query-string@9.3.0:
+  query-string@9.3.1:
     dependencies:
       decode-uri-component: 0.4.1
       filter-obj: 5.1.0
