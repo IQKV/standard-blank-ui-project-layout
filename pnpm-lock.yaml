@@ -48,8 +48,8 @@ importers:
         specifier: ^1.131.36
         version: 1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@tanstack/zod-adapter':
-        specifier: ^1.131.44
-        version: 1.131.44(@tanstack/react-router@1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(zod@3.25.76)
+        specifier: ^1.131.48
+        version: 1.131.48(@tanstack/react-router@1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(zod@3.25.76)
       '@types/sanitize-html':
         specifier: ^2.16.0
         version: 2.16.0
@@ -2105,8 +2105,8 @@ packages:
     resolution: {integrity: sha512-VEEOxc4mvyu67O+Bl0APtYjwcNRcL9it9B4HKbNgcBTIOEalhk+ufBl4kiqc8WP1sx1+NAaiS+3CcJBhrqaSRg==}
     engines: {node: '>=12'}
 
-  '@tanstack/zod-adapter@1.131.44':
-    resolution: {integrity: sha512-2o2IaK5i9WfzEu+Okw9yMNwpqt3paEtIBtmd8DQLQfBtSWRdDSZJFoGMsE5DWa7I9M825dkR0u4n8chCSY6BaQ==}
+  '@tanstack/zod-adapter@1.131.48':
+    resolution: {integrity: sha512-WLiU9r01XDCiffmru/fegIjy5yQ7oldFyVkkva748S+wV0naWUWpT4RzTIpzco3fXy1WkRC/G5ABlB5eDDWmhw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@tanstack/react-router': '>=1.43.2'
@@ -8681,7 +8681,7 @@ snapshots:
 
   '@tanstack/virtual-file-routes@1.131.2': {}
 
-  '@tanstack/zod-adapter@1.131.44(@tanstack/react-router@1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(zod@3.25.76)':
+  '@tanstack/zod-adapter@1.131.48(@tanstack/react-router@1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(zod@3.25.76)':
     dependencies:
       '@tanstack/react-router': 1.131.36(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       zod: 3.25.76
