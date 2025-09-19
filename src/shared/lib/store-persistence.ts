@@ -16,13 +16,16 @@ interface PersistedData<T> {
 }
 
 // Simple persistence middleware for Zustand stores
+const isBrowser =
+  typeof window !== "undefined" && typeof document !== "undefined";
+
 export const persist = <T>(
   config: StateCreator<T>,
   options: PersistOptions<T>
 ) => {
   const {
     name,
-    storage = localStorage,
+    storage = isBrowser ? localStorage : undefined,
     partialize = (state) => state,
     onRehydrateStorage,
     version = 0,
@@ -34,6 +37,7 @@ export const persist = <T>(
     const persistedState = config(
       (...args) => {
         set(...args);
+        if (!storage) return; // SSR/tests without storage
         // Save to storage after state update
         const state = get();
         const stateToStore = partialize(state);
@@ -54,7 +58,7 @@ export const persist = <T>(
     );
 
     // Hydrate from storage on initialization
-    if (!skipHydration) {
+    if (!skipHydration && storage) {
       try {
         const storedValue = storage.getItem(name);
         if (storedValue) {
@@ -98,7 +102,7 @@ export const persist = <T>(
 // Utility to clear persisted state
 export const clearPersistedState = (
   name: string,
-  storage: Storage = localStorage
+  storage: Storage = isBrowser ? localStorage : memoryStorage
 ) => {
   try {
     storage.removeItem(name);
@@ -110,7 +114,7 @@ export const clearPersistedState = (
 // Utility to check if state exists in storage
 export const hasPersistedState = (
   name: string,
-  storage: Storage = localStorage
+  storage: Storage = isBrowser ? localStorage : memoryStorage
 ): boolean => {
   try {
     return storage.getItem(name) !== null;
@@ -127,7 +131,7 @@ export const sessionPersist = <T>(
 ) => {
   return persist(config, {
     ...options,
-    storage: sessionStorage,
+    storage: isBrowser ? sessionStorage : memoryStorage,
   });
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, Outlet } from "@tanstack/react-router";
 import { useAuthIntegration, useAuthEffects } from "@/processes/auth-session";
 import { useTheme, useNotifications, useGlobalLoading } from "@/shared";
-import { useAppSettingsStore } from "@/shared/model/app-settings-store";
+import { useAppSettingsStore } from "@/shared";
 
 const TanStackRouterDevtools = import.meta.env.PROD
   ? () => null // Render nothing in production

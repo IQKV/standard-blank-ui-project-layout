@@ -1,14 +1,4 @@
 import { QueryClient } from "@tanstack/react-query";
+import { AppConfig } from "@/app";
 
-export const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60, // 1 minute
-      refetchOnWindowFocus: false,
-      networkMode: "always",
-    },
-    mutations: {
-      networkMode: "always",
-    },
-  },
-});
+export const queryClient = new QueryClient(AppConfig.reactQueryConfig);

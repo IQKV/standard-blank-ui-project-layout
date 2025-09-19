@@ -8,3 +8,6 @@ export * from "./locales";
 export * from "./store";
 export * from "./store-persistence";
 export * from "./store-devtools";
+export * from "./query-helpers";
+export * from "./store-utils";
+export * from "./relationship-utils";

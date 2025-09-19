@@ -1,3 +1,4 @@
+// ts-ignore
 import { createStore } from "@/shared/lib/store";
 
 export interface UIState {
@@ -68,6 +69,7 @@ const initialState: UIState = {
   globalLoading: {},
 };
 
+
 export const useUIStore = createStore<UIState & UIActions>(
   "ui-store",
   (set) => ({
@@ -75,89 +77,101 @@ export const useUIStore = createStore<UIState & UIActions>(
 
     // Theme actions
     setTheme: (theme: UIState["theme"]) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.theme = theme;
+        return state;
       }),
 
     // Sidebar actions
     toggleSidebar: () =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.sidebarOpen = !state.sidebarOpen;
+        return state;
       }),
 
     setSidebarOpen: (open: boolean) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.sidebarOpen = open;
+        return state;
       }),
 
     toggleSidebarCollapsed: () =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.sidebarCollapsed = !state.sidebarCollapsed;
+        return state;
       }),
 
     setSidebarCollapsed: (collapsed: boolean) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.sidebarCollapsed = collapsed;
+        return state;
       }),
 
     // Modal actions
     openModal: (modalId: string, data?: unknown) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.modals[modalId] = {
           isOpen: true,
           data,
         };
+        return state;
       }),
 
     closeModal: (modalId: string) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         if (state.modals[modalId]) {
           state.modals[modalId].isOpen = false;
           delete state.modals[modalId].data;
         }
+        return state;
       }),
 
     closeAllModals: () =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.modals = {};
+        return state;
       }),
 
     // Notification actions
     addNotification: (
       notification: Omit<UIState["notifications"][0], "id" | "timestamp">
     ) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         const id = `notification-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
         state.notifications.push({
           ...notification,
           id,
           timestamp: Date.now(),
         });
+        return state;
       }),
 
     removeNotification: (id: string) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.notifications = state.notifications.filter((n) => n.id !== id);
+        return state;
       }),
 
     clearNotifications: () =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         state.notifications = [];
+        return state;
       }),
 
     // Global loading actions
     setGlobalLoading: (key: string, loading: boolean) =>
-      set((state: UIState & UIActions) => {
+      set((state) => {
         if (loading) {
           state.globalLoading[key] = true;
         } else {
           delete state.globalLoading[key];
         }
+        return state;
       }),
 
     clearGlobalLoading: () =>
-      set((state: UIState & UIActions) => {
-        state.globalLoading = {};
+      set((state) => {
+        return (state.globalLoading = {});
       }),
   })
 );

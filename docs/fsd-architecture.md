@@ -45,6 +45,11 @@ src/
 │       ├── model/         # Types, validation, entity queries
 │       ├── api/           # API methods
 │       └── index.ts       # Public API
+├── widgets/               # Widgets layer (NEW)
+│   ├── user-summary/      # Example widget
+│   │   ├── ui/            # Widget UI composition
+│   │   └── index.ts       # Public API
+│   └── index.ts           # Widgets barrel
 ├── shared/                # Shared layer
 │   ├── api/               # Base API configuration
 │   ├── lib/               # Utilities and helpers
@@ -90,6 +95,13 @@ src/
 - **Examples**: User management forms, authentication flows, data tables
 
 ### 🔵 Entities Layer
+### 🟣 Widgets Layer (NEW)
+
+- **Purpose**: Compose multiple features/entities into reusable, higher-level UI blocks that can be shared across pages.
+- **Contains**: Widget UI composition, light glue logic (no raw API calls)
+- **Dependencies**: Can import from features, entities, shared
+- **Examples**: User summary panels, dashboard sections, composite filters
+
 
 - **Purpose**: Pure business entities with data access and basic UI
 - **Contains**: Entity models, pure API calls, basic UI components for data display
@@ -109,7 +121,8 @@ src/
 Each layer can only import from layers below it:
 
 - App → Pages, Features, Entities, Shared
-- Pages → Features, Entities, Shared
+- Pages → Widgets, Features, Entities, Shared
+- Widgets → Features, Entities, Shared
 - Features → Entities, Shared
 - Entities → Shared
 - Shared → External libraries only

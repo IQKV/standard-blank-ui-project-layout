@@ -139,41 +139,46 @@ export const useFormStore = createStore<FormState & FormActions>(
 
     // Login form actions
     updateLoginForm: (data: Partial<LoginInput>) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.loginForm.data = { ...state.loginForm.data, ...data };
         state.loginForm.isDirty = true;
+        return state;
       }),
 
     clearLoginForm: () =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.loginForm = {
           data: {},
           isDirty: false,
           lastSaved: null,
         };
+        return state;
       }),
 
     // Registration form actions
     updateRegisterForm: (data: Partial<RegisterInput>) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.registerForm.data = { ...state.registerForm.data, ...data };
         state.registerForm.isDirty = true;
+        return state;
       }),
 
     setRegisterStep: (step: number) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.registerForm.currentStep = step;
+        return state;
       }),
 
     markStepCompleted: (step: number) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         if (!state.registerForm.completedSteps.includes(step)) {
           state.registerForm.completedSteps.push(step);
         }
+        return state;
       }),
 
     clearRegisterForm: () =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.registerForm = {
           data: { locale: "en" },
           currentStep: 1,
@@ -181,43 +186,48 @@ export const useFormStore = createStore<FormState & FormActions>(
           isDirty: false,
           lastSaved: null,
         };
+        return state;
       }),
 
     // Password reset form actions
     updateForgotPasswordForm: (data: Partial<ForgotPasswordInput>) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.forgotPasswordForm.data = {
           ...state.forgotPasswordForm.data,
           ...data,
         };
         state.forgotPasswordForm.isDirty = true;
+        return state;
       }),
 
     clearForgotPasswordForm: () =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.forgotPasswordForm = {
           data: {},
           isDirty: false,
           lastSaved: null,
         };
+        return state;
       }),
 
     updateResetPasswordForm: (data: Partial<ResetPasswordWithTokenInput>) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.resetPasswordForm.data = {
           ...state.resetPasswordForm.data,
           ...data,
         };
         state.resetPasswordForm.isDirty = true;
+        return state;
       }),
 
     clearResetPasswordForm: () =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.resetPasswordForm = {
           data: {},
           isDirty: false,
           lastSaved: null,
         };
+        return state;
       }),
 
     // Form validation and error handling
@@ -225,74 +235,84 @@ export const useFormStore = createStore<FormState & FormActions>(
       formId: string,
       errors: { [fieldName: string]: string[] }
     ) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.formErrors[formId] = errors;
+        return state;
       }),
 
     clearFormErrors: (formId: string) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         delete state.formErrors[formId];
+        return state;
       }),
 
     setFieldError: (formId: string, fieldName: string, errors: string[]) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         if (!state.formErrors[formId]) {
           state.formErrors[formId] = {};
         }
         state.formErrors[formId][fieldName] = errors;
+        return state;
       }),
 
     clearFieldError: (formId: string, fieldName: string) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         if (state.formErrors[formId]) {
           delete state.formErrors[formId][fieldName];
           if (Object.keys(state.formErrors[formId]).length === 0) {
             delete state.formErrors[formId];
           }
         }
+        return state;
       }),
 
     // Form touched state
     setFieldTouched: (formId: string, fieldName: string, touched = true) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         if (!state.formTouched[formId]) {
           state.formTouched[formId] = {};
         }
         state.formTouched[formId][fieldName] = touched;
+        return state;
       }),
 
     setFormTouched: (
       formId: string,
       touched: { [fieldName: string]: boolean }
     ) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.formTouched[formId] = touched;
+        return state;
       }),
 
     clearFormTouched: (formId: string) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         delete state.formTouched[formId];
+        return state;
       }),
 
     // Auto-save configuration
     setAutoSaveEnabled: (enabled: boolean) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.autoSaveEnabled = enabled;
+        return state;
       }),
 
     setAutoSaveInterval: (interval: number) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         state.autoSaveInterval = interval;
+        return state;
       }),
 
     // Bulk operations
     clearAllForms: () =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         Object.assign(state, initialState);
+        return state;
       }),
 
     saveFormDraft: (formId: string) =>
-      set((state: FormState & FormActions) => {
+      set((state) => {
         const now = Date.now();
         switch (formId) {
           case "login":
@@ -312,6 +332,7 @@ export const useFormStore = createStore<FormState & FormActions>(
             state.resetPasswordForm.isDirty = false;
             break;
         }
+        return state;
       }),
 
     loadFormDraft: (formId: string) => {

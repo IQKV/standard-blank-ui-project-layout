@@ -1,7 +1,7 @@
 import axios from "axios";
-import { getConfig } from "@/shared/lib";
+import { AppConfig } from "@/app";
 
-const BASE_URL = getConfig("VITE_API_URL_SERVER");
+const BASE_URL = AppConfig.apiConfig.baseUrl;
 const LOGIN_PATH = "/auth/login";
 const PREVIOUS_URL_KEY = "previous_url";
 

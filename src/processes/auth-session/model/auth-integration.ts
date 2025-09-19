@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import {
-  useAuthStore,
-  useAuthSession,
-  useAuthTokens,
-} from "@/entities/auth/model/auth-store";
+import { useAuthStore, useAuthSession, useAuthTokens } from "@/entities/auth";
 import { useLogin, useLogout, useAuthMe } from "@/features/auth";
 import { userKeys } from "@/entities/user";
 import { useNotifications } from "@/shared";

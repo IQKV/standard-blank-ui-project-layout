@@ -307,6 +307,15 @@ const userUpdateSchema = z
   );
 ```
 
+## 🧠 **State Management (Zustand)**
+
+- Use `createStore(name, initializer)` from `src/shared/lib/store.ts`.
+  - `immer` and `subscribeWithSelector` are always enabled; DevTools is enabled only in development.
+  - Safe for SSR/tests: DevTools disabled in prod/SSR; persistence is skipped if no storage.
+- For persistence, wrap with `persist(config, { name, partialize, version, ... })` from `src/shared/lib/store-persistence.ts`.
+  - Storage auto-detection: uses `localStorage`/`sessionStorage` in browser, falls back to in-memory elsewhere.
+- Prefer narrow selectors for components. You can expose helpers like `pickFromStore(useStore, picker)` for focused slices.
+
 ## 🧪 **Testing Patterns**
 
 ### **Unit Testing Features**
@@ -424,6 +433,183 @@ Recommended extensions for optimal development experience:
 // React DevTools extension recommended
 // TanStack Router DevTools available in development
 ```
+
+## 📡 **Data Fetching Patterns by Layer**
+
+### Entities (CRUD, pure data access)
+
+```typescript
+// src/entities/user/model/queries.ts
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { userApi } from "../api/user-api";
+import {
+  createKeys,
+  mutationOnMutate,
+  mutationOnError,
+  mutationOnSettled,
+} from "@/shared/lib";
+
+export const userKeys = createKeys("user");
+
+export const useUsers = () =>
+  useQuery({ queryKey: userKeys.lists(), queryFn: userApi.getAll });
+
+export const useUser = (id: string) =>
+  useQuery({
+    queryKey: userKeys.detail(id),
+    queryFn: () => userApi.getById(id),
+    enabled: !!id,
+  });
+
+export const useCreateUser = () => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: userApi.create,
+    onMutate: mutationOnMutate(qc, userKeys.lists(), (prev) => [
+      {
+        /* optimistic item */
+      } as any,
+      ...(prev ?? []),
+    ]),
+    onError: mutationOnError(qc, userKeys.lists()),
+    onSettled: mutationOnSettled(qc, [userKeys.lists()]),
+  });
+};
+```
+
+Guidelines:
+
+- **Keep entities dumb**: pure CRUD, no cross-entity coordination.
+- **Keys**: use `createKeys("entity")` for consistency.
+- **Retries**: rely on global `standardRetry` from `AppConfig.reactQueryConfig`.
+
+### Features (business logic, validation)
+
+```typescript
+// src/features/user-management/model/queries.ts
+import { z } from "zod";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useCreateUser } from "@/entities/user";
+
+const createSchema = z.object({
+  email: z.string().email(),
+  name: z.string().min(1),
+});
+
+export const useCreateUserValidated = () => {
+  const base = useCreateUser();
+  const qc = useQueryClient();
+  return {
+    ...base,
+    mutateAsync: async (input: unknown) => {
+      const data = createSchema.parse(input);
+      const res = await base.mutateAsync(data);
+      // additional feature-level side effects
+      return res;
+    },
+  };
+};
+```
+
+Guidelines:
+
+- **Validate** inputs with Zod before delegating to entity mutations.
+- **Coordinate** cross-entity invalidations only here.
+
+### Processes (cross-feature orchestration)
+
+```typescript
+// src/processes/user-onboarding/model/queries.ts
+import { useCreateUserValidated } from "@/features/user-management";
+import { userKeys } from "@/entities/user";
+import { useQueryClient } from "@tanstack/react-query";
+
+export const useOnboarding = () => {
+  const qc = useQueryClient();
+  const createUser = useCreateUserValidated();
+  return {
+    start: async (payload: unknown) => {
+      const user = await createUser.mutateAsync(payload);
+      await qc.invalidateQueries({ queryKey: userKeys.lists() });
+      return user;
+    },
+  };
+};
+```
+
+Guidelines:
+
+- **No raw API** here; compose lower layers.
+- **Explicit invalidations** across entities.
+
+## 🧭 **State Management Decision Tree**
+
+- Use **TanStack Query** when:
+  - **Server data** (CRUD, cacheable, async, shareable across views)
+  - Needs invalidation, retries, background updates, pagination
+  - Derives from HTTP/gRPC and can be refetched
+
+- Use **Zustand** when:
+  - **Client-only UI state** (toggles, modals, ephemeral forms)
+  - Cross-component client state not suited for URL/query cache
+  - Requires persistence (local/session) or imperative updates
+
+- Mixed cases:
+  - Query for server data + store only minimal UI state in Zustand
+  - Avoid duplicating server data in Zustand; keep source of truth in Query
+
+Rule of thumb: if it comes from the server, use Query; if it’s purely UI/process coordination, use Zustand.
+
+## 🧩 **Component Composition Guidelines**
+
+- **Container vs Presentational**:
+  - Containers hold data fetching/state wiring; Presentational components receive props only.
+  - Prefer co-located hooks inside containers; keep presentational components framework-agnostic.
+
+- **Selectors to minimize re-renders**:
+  - For Zustand stores, expose narrow selectors, e.g., `useNotifications()` rather than full store.
+  - For Query, select small data slices in components if needed.
+
+- **Composition over inheritance**:
+  - Build complex UIs by composing small components (layout, item, list, controls).
+  - Lift state only when multiple children need it.
+
+- **Error and loading surfaces**:
+  - Centralize skeleton/spinner patterns; avoid ad-hoc loaders per component.
+  - Use error boundaries where appropriate for catastrophic failures.
+
+- **Public API imports**:
+  - Import from package barrels (`@/entities/user`, `@/features/auth`) not deep internal paths.
+
+## 🔗 **Relationship Management Pattern**
+
+Use a shared relation index to track parent-child mappings without duplicating full entities.
+
+```typescript
+// Example: users ↔ roles relationships
+import { createRelationKeys, setRelation, unsetRelation, getChildren } from "@/shared/lib";
+import { useQueryClient, useQuery } from "@tanstack/react-query";
+
+const relKeys = createRelationKeys("user-role");
+
+export const useUserRolesIds = (userId: string) =>
+  useQuery({ queryKey: relKeys.forParent(userId), queryFn: async () => getChildren(undefined, userId) });
+
+export const useLinkUserToRole = () => {
+  const qc = useQueryClient();
+  return (userId: string, roleId: string) => setRelation(qc, relKeys.index(), userId, roleId);
+};
+
+export const useUnlinkUserFromRole = () => {
+  const qc = useQueryClient();
+  return (userId: string, roleId: string) => unsetRelation(qc, relKeys.index(), userId, roleId);
+};
+```
+
+Guidelines:
+- Store only IDs in relation maps; fetch full entities via their own queries.
+- Invalidate derived views after linking/unlinking using `invalidateRelationViews`.
+- Prefer `createRelationKeys(prefix)` to standardize keys for relations.
 
 ## 📋 **Code Review Checklist**
 
