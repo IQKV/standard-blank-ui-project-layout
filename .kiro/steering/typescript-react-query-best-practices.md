@@ -1,6 +1,6 @@
 ---
 inclusion: fileMatch
-fileMatchPattern: ['*.js', '*.jsx', '*.ts', '*.tsx']
+fileMatchPattern: ["*.js", "*.jsx", "*.ts", "*.tsx"]
 ---
 
 # react-query Best Practices

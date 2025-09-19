@@ -1,15 +1,16 @@
-import { useQuery, useMutation} from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { userApi } from "../api/user-api";
 import type { IdParam } from "@/shared/types";
 
 // Entity-level query keys
 export const userKeys = {
-  all: ['user'] as const,
-  lists: () => [...userKeys.all, 'list'] as const,
+  all: ["user"] as const,
+  lists: () => [...userKeys.all, "list"] as const,
   list: (filters: string) => [...userKeys.lists(), { filters }] as const,
-  details: () => [...userKeys.all, 'detail'] as const,
-  detail: (id: string | number | IdParam) => [...userKeys.details(), id] as const,
-  me: () => [...userKeys.all, 'me'] as const,
+  details: () => [...userKeys.all, "detail"] as const,
+  detail: (id: string | number | IdParam) =>
+    [...userKeys.details(), id] as const,
+  me: () => [...userKeys.all, "me"] as const,
 };
 
 // Entity-level queries (basic CRUD operations)
@@ -71,15 +72,18 @@ export const useUserEmailConfirmationWithCode = () => {
 
 export const useUserUpdate = () => {
   return useMutation({
-    // eslint-disable-next-line
-    mutationFn: ({ userId, updateParams }: { userId: IdParam; updateParams: any }) =>
-      userApi.updateUser(userId, updateParams),
+    mutationFn: ({
+      userId,
+      updateParams,
+    }: {
+      userId: IdParam;
+      updateParams: any;
+    }) => userApi.updateUser(userId, updateParams),
   });
 };
 
 export const useUserMeUpdate = () => {
   return useMutation({
-    // eslint-disable-next-line
     mutationFn: (updateParams: any) => userApi.updateMe(updateParams),
   });
 };

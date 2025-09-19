@@ -1,4 +1,3 @@
-
 import { useQueryClient } from "@tanstack/react-query";
 import {
   useUsers,
@@ -10,7 +9,7 @@ import {
   useUserEmailConfirmationWithCode,
   useUserUpdate,
   useUserMeUpdate,
-  userKeys
+  userKeys,
 } from "@/entities/user";
 import {
   validateUserMeUpdate,
@@ -35,8 +34,14 @@ export const useUpdateUser = () => {
   const updateUserMutation = useUserUpdate();
 
   return {
-    ...updateUserMutation, // eslint-disable-next-line
-    mutateAsync: async ({ userId, updateParams }: { userId: any; updateParams: UserUpdateInput }) => {
+    ...updateUserMutation,
+    mutateAsync: async ({
+      userId,
+      updateParams,
+    }: {
+      userId: any;
+      updateParams: UserUpdateInput;
+    }) => {
       // Feature-level validation
       const validatedUserId = validateUserQuery({ userId }).userId;
       const validatedParams = validateUserUpdate(updateParams);
@@ -135,7 +140,9 @@ export const useCancelEmailChange = () => {
     mutateAsync: async (userId: string | number) => {
       // Feature-level validation
       const validatedInput = validateUserQuery({ userId });
-      const result = await cancelEmailChangeMutation.mutateAsync(validatedInput.userId);
+      const result = await cancelEmailChangeMutation.mutateAsync(
+        validatedInput.userId
+      );
 
       // Business logic: invalidate related queries
       queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
@@ -154,7 +161,9 @@ export const useResendConfirmation = () => {
     ...resendConfirmationMutation,
     mutateAsync: async (userId: string | number) => {
       const validatedInput = validateUserQuery({ userId });
-      const result = await resendConfirmationMutation.mutateAsync(validatedInput.userId);
+      const result = await resendConfirmationMutation.mutateAsync(
+        validatedInput.userId
+      );
       // Additional business logic: could add rate limiting, notifications, etc.
       return result;
     },
@@ -170,7 +179,10 @@ export const useConfirmEmailWithCode = () => {
     ...confirmEmailWithCodeMutation,
     mutateAsync: async ({ userId, code }: EmailConfirmationWithCodeInput) => {
       // Feature-level validation
-      const validatedInput = validateEmailConfirmationWithCode({ userId, code });
+      const validatedInput = validateEmailConfirmationWithCode({
+        userId,
+        code,
+      });
       const result = await confirmEmailWithCodeMutation.mutateAsync({
         userId: validatedInput.userId,
         code: validatedInput.code,

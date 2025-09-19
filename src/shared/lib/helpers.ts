@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 export function isNumber(value: any): value is number {
   return typeof value === "number";
 }

@@ -45,7 +45,9 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
         />
         {errors.first_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.first_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.first_name.message}
+          </p>
         )}
       </div>
 
@@ -61,7 +63,9 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
         />
         {errors.last_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.last_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.last_name.message}
+          </p>
         )}
       </div>
 
@@ -96,12 +100,16 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
         )}
         <p className="mt-1 text-xs text-gray-500">
-          Password must be at least 8 characters with uppercase, lowercase, number, and special character.
+          Password must be at least 8 characters with uppercase, lowercase,
+          number, and special character.
         </p>
       </div>
 
       <div>
-        <label htmlFor="password_confirmation" className="block text-sm font-medium">
+        <label
+          htmlFor="password_confirmation"
+          className="block text-sm font-medium"
+        >
           Confirm Password *
         </label>
         <input
@@ -112,7 +120,9 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
         />
         {errors.password_confirmation && (
-          <p className="mt-1 text-sm text-red-600">{errors.password_confirmation.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.password_confirmation.message}
+          </p>
         )}
       </div>
 
@@ -142,7 +152,9 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
 
       {register.error && (
         <p className="mt-2 text-sm text-red-600">
-          {register.error instanceof Error ? register.error.message : "Registration failed"}
+          {register.error instanceof Error
+            ? register.error.message
+            : "Registration failed"}
         </p>
       )}
     </form>

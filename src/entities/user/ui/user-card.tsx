@@ -19,11 +19,13 @@ export function UserCard({ user, className = "" }: UserCardProps) {
             </span>
           )}
           {user.status && (
-            <span className={`inline-block px-2 py-1 text-xs rounded ml-2 ${
-              user.status === 'ACTIVE' 
-                ? 'bg-green-100 text-green-800' 
-                : 'bg-red-100 text-red-800'
-            }`}>
+            <span
+              className={`inline-block px-2 py-1 text-xs rounded ml-2 ${
+                user.status === "ACTIVE"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-red-100 text-red-800"
+              }`}
+            >
               {user.status}
             </span>
           )}

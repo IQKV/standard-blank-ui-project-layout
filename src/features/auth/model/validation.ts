@@ -13,14 +13,20 @@ export const passwordSchema = z
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
   .regex(/[a-z]/, "Password must contain at least one lowercase letter")
   .regex(/[0-9]/, "Password must contain at least one number")
-  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
+  .regex(
+    /[^A-Za-z0-9]/,
+    "Password must contain at least one special character"
+  );
 
 export const nameSchema = z
   .string()
   .min(1, "Name is required")
   .min(2, "Name must be at least 2 characters")
   .max(50, "Name must not exceed 50 characters")
-  .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes");
+  .regex(
+    /^[a-zA-Z\s'-]+$/,
+    "Name can only contain letters, spaces, hyphens, and apostrophes"
+  );
 
 export const localeSchema = z.enum(availableLocales as [string, ...string[]], {
   errorMap: () => ({ message: "Please select a valid locale" }),
@@ -41,7 +47,9 @@ export const forgotPasswordSchema = z.object({
 export const resetPasswordSchema = z
   .object({
     password: passwordSchema,
-    password_confirmation: z.string().min(1, "Password confirmation is required"),
+    password_confirmation: z
+      .string()
+      .min(1, "Password confirmation is required"),
   })
   .refine((data) => data.password === data.password_confirmation, {
     message: "Passwords do not match",
@@ -66,7 +74,9 @@ export const registerSchema = z
     last_name: nameSchema,
     email: emailSchema,
     password: passwordSchema,
-    password_confirmation: z.string().min(1, "Password confirmation is required"),
+    password_confirmation: z
+      .string()
+      .min(1, "Password confirmation is required"),
     locale: localeSchema,
   })
   .refine((data) => data.password === data.password_confirmation, {
@@ -78,6 +88,8 @@ export const registerSchema = z
 export type LoginInput = z.infer<typeof loginSchema>;
 export type ForgotPasswordInput = z.infer<typeof forgotPasswordSchema>;
 export type ResetPasswordInput = z.infer<typeof resetPasswordSchema>;
-export type ResetPasswordWithTokenInput = z.infer<typeof resetPasswordWithTokenSchema>;
+export type ResetPasswordWithTokenInput = z.infer<
+  typeof resetPasswordWithTokenSchema
+>;
 export type TokenVerificationInput = z.infer<typeof tokenVerificationSchema>;
 export type RegisterInput = z.infer<typeof registerSchema>;

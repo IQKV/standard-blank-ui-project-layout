@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateMe } from "../model/queries";
-import { userMeUpdateSchema, type UserMeUpdateInput } from "../model/validation";
+import {
+  userMeUpdateSchema,
+  type UserMeUpdateInput,
+} from "../model/validation";
 
 interface UserProfileFormProps {
   onSuccess?: () => void;
@@ -44,7 +47,9 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
         {errors.first_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.first_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.first_name.message}
+          </p>
         )}
       </div>
 
@@ -59,7 +64,9 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
         {errors.last_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.last_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.last_name.message}
+          </p>
         )}
       </div>
 
@@ -129,7 +136,10 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
       {password && (
         <>
           <div>
-            <label htmlFor="password_confirmation" className="block text-sm font-medium">
+            <label
+              htmlFor="password_confirmation"
+              className="block text-sm font-medium"
+            >
               Confirm New Password
             </label>
             <input
@@ -139,12 +149,17 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
             {errors.password_confirmation && (
-              <p className="mt-1 text-sm text-red-600">{errors.password_confirmation.message}</p>
+              <p className="mt-1 text-sm text-red-600">
+                {errors.password_confirmation.message}
+              </p>
             )}
           </div>
 
           <div>
-            <label htmlFor="password_current" className="block text-sm font-medium">
+            <label
+              htmlFor="password_current"
+              className="block text-sm font-medium"
+            >
               Current Password
             </label>
             <input
@@ -154,7 +169,9 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
             {errors.password_current && (
-              <p className="mt-1 text-sm text-red-600">{errors.password_current.message}</p>
+              <p className="mt-1 text-sm text-red-600">
+                {errors.password_current.message}
+              </p>
             )}
           </div>
         </>
@@ -170,7 +187,9 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
 
       {updateMe.error && (
         <p className="mt-2 text-sm text-red-600">
-          {updateMe.error instanceof Error ? updateMe.error.message : "An error occurred"}
+          {updateMe.error instanceof Error
+            ? updateMe.error.message
+            : "An error occurred"}
         </p>
       )}
     </form>

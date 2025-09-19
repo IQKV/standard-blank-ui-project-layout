@@ -5,7 +5,7 @@ import {
   useAuthRegister,
   useAuthForgotPassword,
   useAuthPasswordResetTokenVerify,
-  useAuthPasswordReset
+  useAuthPasswordReset,
 } from "@/entities/auth";
 import { useUserMe, userKeys } from "@/entities/user";
 import {
@@ -17,7 +17,7 @@ import {
   type LoginInput,
   type ForgotPasswordInput,
   type ResetPasswordWithTokenInput,
-  type RegisterInput
+  type RegisterInput,
 } from "./validation";
 
 // Feature-level auth queries with business logic

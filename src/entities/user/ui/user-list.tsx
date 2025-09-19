@@ -8,7 +8,11 @@ interface UserListProps {
 }
 
 // Entity-level UI component - pure data display, no business logic
-export function UserList({ users, className = "", onUserClick }: UserListProps) {
+export function UserList({
+  users,
+  className = "",
+  onUserClick,
+}: UserListProps) {
   if (users.length === 0) {
     return (
       <div className={`text-center py-8 text-gray-500 ${className}`}>

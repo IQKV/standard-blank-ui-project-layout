@@ -29,6 +29,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Form validation integration with React Hook Form
   - Entity-level and feature-level validation patterns
 
+- **Zustand State Management Integration**
+  - Hybrid state management: Tanstack Query for server state, Zustand for client state
+  - FSD-compliant store organization across layers
+  - Automatic persistence for important state (auth session, user preferences)
+  - Integration hooks connecting Zustand stores with Tanstack Query
+  - Comprehensive UI state management (theme, modals, notifications, loading)
+  - Form state management with auto-save and validation
+  - Development tools and debugging utilities
+
 - **Routing Architecture**
   - Consolidated routing in pages layer
   - File-based routing with Tanstack Router
@@ -89,10 +98,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Documentation
 
 - **Architecture Guides**
-  - [FSD_ARCHITECTURE.md](FSD_ARCHITECTURE.md) - Complete architecture overview
-  - [PUBLIC_API_ENFORCEMENT.md](PUBLIC_API_ENFORCEMENT.md) - API patterns and rules
-  - [VALIDATION_GUIDE.md](VALIDATION_GUIDE.md) - Zod validation patterns
-  - [FINAL_FSD_SUMMARY.md](FINAL_FSD_SUMMARY.md) - Implementation summary
+  - [fsd-architecture.md](FSD_ARCHITECTURE.md) - Complete architecture overview
+  - [public-api-enforcement.md](PUBLIC_API_ENFORCEMENT.md) - API patterns and rules
+  - [validation-guide.md](VALIDATION_GUIDE.md) - Zod validation patterns
+  - [final-fsd-summary.md](FINAL_FSD_SUMMARY.md) - Implementation summary
 
 - **Updated README.md**
   - Added comprehensive FSD architecture section

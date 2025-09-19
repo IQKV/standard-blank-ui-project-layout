@@ -5,9 +5,9 @@ import type { UserRegistrationRequest } from "@/entities/user";
 
 // Entity-level query keys
 export const authKeys = {
-  all: ['auth'] as const,
-  session: () => [...authKeys.all, 'session'] as const,
-  refresh: () => [...authKeys.all, 'refresh'] as const,
+  all: ["auth"] as const,
+  session: () => [...authKeys.all, "session"] as const,
+  refresh: () => [...authKeys.all, "refresh"] as const,
 };
 
 // Entity-level auth mutations (pure data access, no validation)
@@ -25,13 +25,15 @@ export const useAuthLogout = () => {
 
 export const useAuthRegister = () => {
   return useMutation({
-    mutationFn: (registerData: UserRegistrationRequest) => authApi.register(registerData),
+    mutationFn: (registerData: UserRegistrationRequest) =>
+      authApi.register(registerData),
   });
 };
 
 export const useAuthForgotPassword = () => {
   return useMutation({
-    mutationFn: (emailData: { email: string }) => authApi.forgotPassword(emailData),
+    mutationFn: (emailData: { email: string }) =>
+      authApi.forgotPassword(emailData),
   });
 };
 
@@ -43,8 +45,13 @@ export const useAuthPasswordResetTokenVerify = () => {
 
 export const useAuthPasswordReset = () => {
   return useMutation({
-    mutationFn: ({ token, resetData }: { token: string; resetData: ResetPasswordRequest }) => 
-      authApi.resetPassword(token, resetData),
+    mutationFn: ({
+      token,
+      resetData,
+    }: {
+      token: string;
+      resetData: ResetPasswordRequest;
+    }) => authApi.resetPassword(token, resetData),
   });
 };
 

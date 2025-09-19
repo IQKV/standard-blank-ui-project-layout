@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginProcess } from "@/processes/auth-session";
+import { useLoginForm, useFormValidation } from "../model/form-store";
 import { loginSchema, type LoginInput } from "../model/validation";
 
 interface LoginFormProps {
@@ -10,20 +11,37 @@ interface LoginFormProps {
 
 export function LoginForm({ onSuccess, onError }: LoginFormProps) {
   const login = useLoginProcess();
+  const loginForm = useLoginForm();
+  const { setFormErrors, clearFormErrors } = useFormValidation();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    setValue,
   } = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
+    defaultValues: loginForm.data,
   });
 
   const onSubmit = async (data: LoginInput) => {
     try {
+      // Update form store with current data
+      loginForm.update(data);
+      clearFormErrors("login");
+
       await login.mutateAsync(data);
+
+      // Clear form on successful login
+      loginForm.clear();
       onSuccess?.();
     } catch (error) {
+      // Store form errors in Zustand store
+      if (error instanceof Error) {
+        setFormErrors("login", {
+          general: [error.message],
+        });
+      }
       onError?.(error as Error);
     }
   };

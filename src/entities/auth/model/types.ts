@@ -5,10 +5,21 @@ export interface LoginData {
   password: string;
 }
 
+/**
+ * Response structure for login and token refresh endpoints
+ */
 export interface LoginResponse {
-  token?: string;
+  /** JWT access token for API authentication */
+  access_token: string;
+  /** JWT refresh token for obtaining new access tokens */
+  refresh_token: string;
+  /** Token type, typically "Bearer" */
   token_type: string;
-  expires_in: number;
+  /** Token expiration timestamp (Unix timestamp in milliseconds) */
+  expires_at: number;
+  /** Unique session identifier */
+  session_id: string;
+  /** Authenticated user data */
   user: User;
 }
 

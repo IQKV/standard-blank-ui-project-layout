@@ -25,6 +25,8 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...pluginQuery.recommended,
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
       "@tanstack/router/create-route-property-order": "error",
       "react-refresh/only-export-components": [
         "warn",

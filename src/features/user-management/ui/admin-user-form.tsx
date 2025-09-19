@@ -10,7 +10,12 @@ interface AdminUserFormProps {
   onError?: (error: Error) => void;
 }
 
-export function AdminUserForm({ userId, initialData, onSuccess, onError }: AdminUserFormProps) {
+export function AdminUserForm({
+  userId,
+  initialData,
+  onSuccess,
+  onError,
+}: AdminUserFormProps) {
   const updateUser = useUpdateUser();
 
   const {
@@ -44,7 +49,9 @@ export function AdminUserForm({ userId, initialData, onSuccess, onError }: Admin
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
         {errors.first_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.first_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.first_name.message}
+          </p>
         )}
       </div>
 
@@ -59,7 +66,9 @@ export function AdminUserForm({ userId, initialData, onSuccess, onError }: Admin
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
         />
         {errors.last_name && (
-          <p className="mt-1 text-sm text-red-600">{errors.last_name.message}</p>
+          <p className="mt-1 text-sm text-red-600">
+            {errors.last_name.message}
+          </p>
         )}
       </div>
 
@@ -109,7 +118,9 @@ export function AdminUserForm({ userId, initialData, onSuccess, onError }: Admin
 
       {updateUser.error && (
         <p className="mt-2 text-sm text-red-600">
-          {updateUser.error instanceof Error ? updateUser.error.message : "An error occurred"}
+          {updateUser.error instanceof Error
+            ? updateUser.error.message
+            : "An error occurred"}
         </p>
       )}
     </form>
