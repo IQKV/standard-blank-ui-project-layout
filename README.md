@@ -182,7 +182,6 @@ import { LoginForm } from "@/features/auth/ui/login-form";
 - 🔒 [**Public API Enforcement**](docs/public-api-enforcement.md) - API patterns and rules
 - ✅ [**Validation Guide**](docs/validation-guide.md) - Zod validation patterns
 - 🛠️ [**Development Guide**](docs/development-guide.md) - Step-by-step development patterns
-- 📋 [**Final FSD Summary**](docs/final-fsd-summary.md) - Implementation summary
 
 ### Environment Variables
 

@@ -15,23 +15,27 @@ export function UserList({
 }: UserListProps) {
   if (users.length === 0) {
     return (
-      <div className={`text-center py-8 text-gray-500 ${className}`}>
-        No users found
-      </div>
+      <section>
+        <p>No users found</p>
+      </section>
     );
   }
 
   return (
-    <div className={`space-y-4 ${className}`}>
-      {users.map((user) => (
-        <div
-          key={user.id}
-          onClick={() => onUserClick?.(user)}
-          className={onUserClick ? "cursor-pointer hover:bg-gray-50" : ""}
-        >
-          <UserCard user={user} />
-        </div>
-      ))}
-    </div>
+    <section>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            {onUserClick ? (
+              <button onClick={() => onUserClick(user)} type="button">
+                <UserCard user={user} />
+              </button>
+            ) : (
+              <UserCard user={user} />
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

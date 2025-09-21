@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 import type { StateCreator, StoreApi, UseBoundStore } from "zustand";
 
 // Base store creator with common middleware
-// Loosen middleware typing to accept composed wrappers (persist, subscribe, etc.)
+// Use any to avoid complex middleware typing issues
 export type StoreInitializer<T> = StateCreator<T, any, any, T>;
 
 // Safe name for DevTools and registry in SSR/tests
@@ -16,12 +16,12 @@ export const createStore = <T>(
   initializer: StoreInitializer<T>
 ): UseBoundStore<StoreApi<T>> => {
   const label = getStoreLabel(name);
-  const withImmer: any = immer(initializer as any);
-  const withSubscribe: any = subscribeWithSelector(withImmer);
-  const enhanced: any = import.meta.env?.DEV
+  const withImmer = immer(initializer as any);
+  const withSubscribe = subscribeWithSelector(withImmer);
+  const enhanced = import.meta.env?.DEV
     ? devtools(withSubscribe, { name: label })
     : withSubscribe;
-  return create<T>()(enhanced);
+  return create<T>()(enhanced as any);
 };
 
 // Store composition helper for combining multiple stores

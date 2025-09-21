@@ -24,18 +24,15 @@ export function NotificationBadge() {
   const hasUrgent = unreadNotifications.length > 0;
 
   return (
-    <div className="relative">
-      <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800">
-        <span className="text-lg">🔔</span>
+    <div>
+      <button aria-label={`${notificationCount} notifications`}>
+        <span>🔔</span>
       </button>
 
       {notificationCount > 0 && (
         <span
-          className={`
-            absolute -top-1 -right-1 min-w-5 h-5 rounded-full text-xs font-medium
-            flex items-center justify-center text-white
-            ${hasUrgent ? "bg-red-500" : "bg-blue-500"}
-          `}
+          data-urgent={hasUrgent}
+          aria-label={`${notificationCount} notifications${hasUrgent ? ', some urgent' : ''}`}
         >
           {notificationCount > 99 ? "99+" : notificationCount}
         </span>

@@ -108,30 +108,30 @@ export const useAppSettingsStore = createStore<
 >(
   "app-settings-store",
   persist(
-    (set, get) => ({
+    (set: any, get: any) => ({
       ...initialState,
 
       // Locale management
       setLocale: (locale: string) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.locale = locale;
           state.lastSaved = Date.now();
         }),
 
       setTimezone: (timezone: string) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.timezone = timezone;
           state.lastSaved = Date.now();
         }),
 
       setDateFormat: (format: string) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.dateFormat = format;
           state.lastSaved = Date.now();
         }),
 
       setTimeFormat: (format: "12h" | "24h") =>
-        set((state: any): any => {
+        set((state: any) => {
           state.timeFormat = format;
           state.lastSaved = Date.now();
         }),
@@ -140,50 +140,50 @@ export const useAppSettingsStore = createStore<
       updatePreferences: (
         preferences: Partial<AppSettingsState["preferences"]>
       ) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.preferences = { ...state.preferences, ...preferences };
           state.lastSaved = Date.now();
         }),
 
       resetPreferences: () =>
-        set((state: any): any => {
+        set((state: any) => {
           state.preferences = { ...defaultPreferences };
           state.lastSaved = Date.now();
         }),
 
       // Feature flags
       setFeatureFlag: (flag: string, enabled: boolean) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.featureFlags[flag] = enabled;
           state.lastSaved = Date.now();
         }),
 
       toggleFeatureFlag: (flag: string) =>
-        set((state: any): any => {
+        set((state: any) => {
           state.featureFlags[flag] = !state.featureFlags[flag];
           state.lastSaved = Date.now();
         }),
 
       // Persistence
       loadSettings: (settings: Partial<AppSettingsState>) =>
-        set((state: any): any => {
+        set((state: any) => {
           Object.assign(state, settings);
           state.isLoaded = true;
         }),
 
       markAsLoaded: () =>
-        set((state: any): any => {
+        set((state: any) => {
           state.isLoaded = true;
         }),
 
       updateLastSaved: () =>
-        set((state: any): any => {
+        set((state: any) => {
           state.lastSaved = Date.now();
         }),
 
       // Bulk operations
       resetAllSettings: () =>
-        set((state: any): any => {
+        set((state: any) => {
           Object.assign(state, {
             ...initialState,
             isLoaded: true,
@@ -204,7 +204,7 @@ export const useAppSettingsStore = createStore<
       },
 
       importSettings: (settings: Partial<AppSettingsState>) =>
-        set((state: any): any => {
+        set((state: any) => {
           if (settings.locale) state.locale = settings.locale;
           if (settings.timezone) state.timezone = settings.timezone;
           if (settings.dateFormat) state.dateFormat = settings.dateFormat;

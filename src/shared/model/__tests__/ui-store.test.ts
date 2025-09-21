@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from "vitest";
-import { useUIStore } from "@/shared";
+import { useUIStore } from "../ui-store";
 
 describe("UI Store", () => {
   describe("Theme Management", () => {

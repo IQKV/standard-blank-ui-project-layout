@@ -30,11 +30,11 @@ export function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
       title={`Current theme: ${theme}. Click to cycle through themes.`}
+      aria-label={`Switch theme from ${theme}`}
     >
-      <span className="text-lg">{getThemeIcon()}</span>
-      <span className="ml-2 text-sm capitalize">{theme}</span>
+      <span>{getThemeIcon()}</span>
+      <span>{theme}</span>
     </button>
   );
 }

@@ -1,0 +1,505 @@
+/* Basic semantic styling - minimal and accessible */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation */
+nav[role="navigation"] {
+  border-bottom: 1px solid #ccc;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav li {
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main content */
+main {
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Forms */
+fieldset {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+legend {
+  font-weight: bold;
+  padding: 0 0.5rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+input[required] {
+  border-left: 3px solid #0066cc;
+}
+
+/* Buttons */
+button {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background: #0052a3;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+button:focus {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* Error messages */
+p[role="alert"] {
+  color: #d63384;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Notifications */
+section[role="alert"] {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  max-width: 400px;
+  z-index: 1000;
+}
+
+section[role="alert"] article {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section[role="alert"] article[data-notification-type="success"] {
+  border-color: #28a745;
+  background-color: #d4edda;
+}
+
+section[role="alert"] article[data-notification-type="error"] {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+section[role="alert"] article[data-notification-type="warning"] {
+  border-color: #ffc107;
+  background-color: #fff3cd;
+}
+
+section[role="alert"] article[data-notification-type="info"] {
+  border-color: #17a2b8;
+  background-color: #d1ecf1;
+}
+
+section[role="alert"] header {
+  margin: 0;
+}
+
+section[role="alert"] h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+section[role="alert"] p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+section[role="alert"] button {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  color: #666;
+  float: right;
+  margin-top: -0.5rem;
+}
+
+/* Loading states */
+div[role="status"] {
+  padding: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Notification badge */
+.notification-badge {
+  position: relative;
+  display: inline-block;
+}
+
+.notification-badge span[data-urgent="true"] {
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.notification-badge span[data-urgent="false"] {
+  background: #0066cc;
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* User cards */
+article {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+article header h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+article header p {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+}
+
+article div span {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+article div span[data-role] {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+article div span[data-status="active"] {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+article div span[data-status="inactive"] {
+  background: #ffebee;
+  color: #c62828;
+}
+
+article footer {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+}
+
+article footer p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+/* User list */
+section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+section li {
+  margin: 0;
+}
+
+section button {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+section button:hover article {
+  background-color: #f5f5f5;
+}
+
+/* CRUD Operations Styling */
+
+/* Danger buttons */
+button[data-danger="true"] {
+  background: #dc3545;
+  color: white;
+}
+
+button[data-danger="true"]:hover {
+  background: #c82333;
+}
+
+button[data-danger="true"]:disabled {
+  background: #ccc;
+}
+
+/* Dialog styling */
+div[role="dialog"] {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+div[role="dialog"] header h2,
+div[role="dialog"] header h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+div[role="dialog"] footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+div[role="dialog"] footer button {
+  margin-right: 0.5rem;
+}
+
+/* Bulk actions */
+.bulk-actions {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.bulk-actions header h3 {
+  margin: 0 0 0.5rem 0;
+  color: #495057;
+}
+
+/* Filters section */
+.filters {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.filters div {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filters input,
+.filters select {
+  margin-top: 0;
+  width: auto;
+  min-width: 200px;
+}
+
+/* User selection */
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.5rem;
+}
+
+/* Status and role badges */
+span[data-role],
+span[data-status] {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+span[data-role="admin"] {
+  background: #dc3545;
+  color: white;
+}
+
+span[data-role="guest"] {
+  background: #6c757d;
+  color: white;
+}
+
+span[data-status="active"] {
+  background: #28a745;
+  color: white;
+}
+
+span[data-status="inactive"] {
+  background: #ffc107;
+  color: #212529;
+}
+
+/* User list item styling */
+.user-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.user-list-item:hover {
+  background-color: #f8f9fa;
+}
+
+.user-list-item article {
+  flex: 1;
+  margin: 0;
+}
+
+.user-list-item .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.user-list-item .actions button {
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filters div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filters input,
+  .filters select {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .user-list-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .user-list-item .actions {
+    justify-content: center;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  main {
+    padding: 0.5rem;
+  }
+  
+  section[role="alert"] {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  nav, section[role="alert"], button {
+    display: none;
+  }
+  
+  main {
+    max-width: none;
+    padding: 0;
+  }
+}

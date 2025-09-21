@@ -1,5 +1,5 @@
 export { getConfig } from "./config";
-export { queryClient } from "./query-client";
+export { queryClient, initializeQueryClient } from "./query-client";
 export * from "./dates";
 export * from "./helpers";
 export * from "./string";
@@ -11,3 +11,4 @@ export * from "./store-devtools";
 export * from "./query-helpers";
 export * from "./store-utils";
 export * from "./relationship-utils";
+export * from "./config-types";

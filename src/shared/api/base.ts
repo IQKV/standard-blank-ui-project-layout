@@ -1,7 +1,18 @@
 import axios from "axios";
-import { AppConfig } from "@/app";
+import { getAppConfig } from "@/shared/lib/config-types";
 
-const BASE_URL = AppConfig.apiConfig.baseUrl;
+// Create axios instance with lazy config loading
+const getBaseUrl = () => {
+  try {
+    const config = getAppConfig();
+    return config.apiConfig.baseUrl || process.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+  } catch (error) {
+    // Fallback for development/testing
+    return process.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+  }
+};
+
+const BASE_URL = getBaseUrl();
 const LOGIN_PATH = "/auth/login";
 const PREVIOUS_URL_KEY = "previous_url";
 
