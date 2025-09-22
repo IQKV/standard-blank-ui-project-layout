@@ -43,9 +43,10 @@
     "release": "release-it --ci",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
-    "test": "vitest",
-    "test:coverage": "vitest --coverage",
-    "test:ui": "vitest --ui",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest run --ui",
+    "test:wath": "vitest",
     "type-check": "tsc --noEmit"
   },
   "config": {
