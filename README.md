@@ -126,46 +126,10 @@ Check out our [Deployment Guide](docs/deployment.md) for step-by-step instructio
 
 See [Template Features](docs/template-features.md) for an overview of all included technologies, tools, and capabilities.
 
-## 🏗️ **Feature-Sliced Design Architecture**
+### 🏗️ **Feature-Sliced Design Architecture**
 
 This project follows **Feature-Sliced Design (FSD)** methodology for scalable frontend architecture.
 
-### 📁 **Project Structure**
-
-```
-src/
-├── app/                    # Application layer
-│   ├── app.tsx            # App component with providers
-│   ├── router.ts          # Router configuration
-│   └── index.ts           # Public API
-├── processes/              # Cross-entity business processes
-│   ├── auth-session/      # Authentication session management
-│   └── user-onboarding/   # User registration workflow
-├── pages/                  # Pages layer (owns routing)
-│   ├── __root.tsx         # Root route with layout
-│   ├── index.tsx          # Home route
-│   ├── about.tsx          # About route
-│   ├── home/              # Home page components
-│   └── about/             # About page components
-├── features/              # Business features
-│   ├── auth/              # Authentication feature
-│   │   ├── model/         # Validation & business logic
-│   │   ├── ui/            # Feature UI components
-│   │   └── index.ts       # Public API
-│   └── user-management/   # User management feature
-├── entities/              # Business entities (pure data)
-│   ├── user/              # User entity
-│   │   ├── model/         # Types & pure queries
-│   │   ├── api/           # API methods
-│   │   ├── ui/            # Data display components
-│   │   └── index.ts       # Public API
-│   └── auth/              # Auth entity
-└── shared/                # Reusable utilities
-    ├── api/               # Base API configuration
-    ├── lib/               # Utilities & helpers
-    ├── types/             # Common types
-    └── ui/                # Reusable UI components
-```
 
 ### 🎯 **Layer Responsibilities**
 
@@ -177,19 +141,6 @@ src/
 | **Features**  | Business logic, validation, feature UI             | Entities, Shared                      |
 | **Entities**  | Pure data access, basic UI components              | Shared only                           |
 | **Shared**    | Reusable utilities, no business logic              | External libraries only               |
-
-### 🔒 **Public API Pattern**
-
-Every slice exposes its functionality through barrel files (`index.ts`):
-
-```typescript
-// ✅ Correct: Use public APIs
-import { useLogin, LoginForm } from "@/features/auth";
-import { User, UserCard } from "@/entities/user";
-
-// ❌ Wrong: Bypass public API
-import { LoginForm } from "@/features/auth/ui/login-form";
-```
 
 ### 📚 **Architecture Documentation**
 
