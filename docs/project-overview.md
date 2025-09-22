@@ -20,7 +20,7 @@ This is a modern React application template built with **Feature-Sliced Design (
 
 ### **Developer Experience**
 
-- Type-safe development with comprehensive validation
+- Type-safe development with validation
 - Clear documentation and architectural guidelines
 - Consistent patterns and best practices
 
@@ -47,7 +47,7 @@ This is a modern React application template built with **Feature-Sliced Design (
 
 ### **Validation & Forms**
 
-- **Zod validation**: Runtime type validation with comprehensive schemas
+- **Zod validation**: Runtime type validation with schemas
 - **React Hook Form**: Performant forms with validation integration
 - **Type safety**: End-to-end type safety from validation to API calls
 
@@ -193,7 +193,7 @@ App Layer ────┐
 
 ### **Code Quality**
 
-- ✅ Comprehensive TypeScript configuration
+- ✅ TypeScript configuration
 - ✅ Strict ESLint rules with React best practices
 - ✅ Consistent code formatting with Prettier
 - ✅ Pre-commit hooks for quality gates

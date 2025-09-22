@@ -699,4 +699,4 @@ export const useUpdateUser = () => {
 };
 ```
 
-This development guide provides comprehensive patterns and examples for building features following the FSD architecture. Always refer to the existing codebase for concrete examples and maintain consistency with established patterns.
+This development guide provides patterns and examples for building features following the FSD architecture. Always refer to the existing codebase for concrete examples and maintain consistency with established patterns.

@@ -53,7 +53,7 @@ React + TypeScript + Vite + TanStack Router Template
 
 ### ✅ **Validation & Forms**
 
-- ✅ **Zod Validation** - Runtime type validation with comprehensive schemas
+- ✅ **Zod Validation** - Runtime type validation with schemas
 - 📝 **React Hook Form** - Performant forms with validation integration
 - 🔐 **Type-safe Forms** - End-to-end type safety from validation to submission
 
