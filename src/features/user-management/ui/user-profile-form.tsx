@@ -38,7 +38,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
         <legend>Update Profile</legend>
-        
+
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -47,9 +47,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
             id="first_name"
             required
           />
-          {errors.first_name && (
-            <p role="alert">{errors.first_name.message}</p>
-          )}
+          {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
@@ -60,22 +58,13 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
             id="last_name"
             required
           />
-          {errors.last_name && (
-            <p role="alert">{errors.last_name.message}</p>
-          )}
+          {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            {...register("email")}
-            type="email"
-            id="email"
-            required
-          />
-          {errors.email && (
-            <p role="alert">{errors.email.message}</p>
-          )}
+          <input {...register("email")} type="email" id="email" required />
+          {errors.email && <p role="alert">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -86,9 +75,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
             id="timezone"
             placeholder="e.g., America/New_York"
           />
-          {errors.timezone && (
-            <p role="alert">{errors.timezone.message}</p>
-          )}
+          {errors.timezone && <p role="alert">{errors.timezone.message}</p>}
         </div>
 
         <div>
@@ -97,31 +84,25 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
             <option value="">Select language</option>
             <option value="en">English</option>
           </select>
-          {errors.locale && (
-            <p role="alert">{errors.locale.message}</p>
-          )}
+          {errors.locale && <p role="alert">{errors.locale.message}</p>}
         </div>
       </fieldset>
 
       <fieldset>
         <legend>Change Password (Optional)</legend>
-        
+
         <div>
           <label htmlFor="password">New Password</label>
-          <input
-            {...register("password")}
-            type="password"
-            id="password"
-          />
-          {errors.password && (
-            <p role="alert">{errors.password.message}</p>
-          )}
+          <input {...register("password")} type="password" id="password" />
+          {errors.password && <p role="alert">{errors.password.message}</p>}
         </div>
 
         {password && (
           <>
             <div>
-              <label htmlFor="password_confirmation">Confirm New Password</label>
+              <label htmlFor="password_confirmation">
+                Confirm New Password
+              </label>
               <input
                 {...register("password_confirmation")}
                 type="password"
@@ -132,7 +113,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
                 <p role="alert">{errors.password_confirmation.message}</p>
               )}
             </div>
-            
+
             <div>
               <label htmlFor="password_current">Current Password</label>
               <input

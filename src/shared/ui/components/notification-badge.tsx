@@ -32,7 +32,7 @@ export function NotificationBadge() {
       {notificationCount > 0 && (
         <span
           data-urgent={hasUrgent}
-          aria-label={`${notificationCount} notifications${hasUrgent ? ', some urgent' : ''}`}
+          aria-label={`${notificationCount} notifications${hasUrgent ? ", some urgent" : ""}`}
         >
           {notificationCount > 99 ? "99+" : notificationCount}
         </span>

@@ -27,7 +27,7 @@ export interface UserMeRequest {
   password: string;
   password_confirmation: string;
   password_current: string;
-  locale: string;
+  locale: SupportedLocales;
 }
 
 export interface UpdateUserRequest {
@@ -43,7 +43,7 @@ export interface UserRegistrationRequest {
   email: string;
   password: string;
   password_confirmation: string;
-  locale: SupportedLocales | string;
+  locale: SupportedLocales;
 }
 
 // CRUD-specific types
@@ -55,7 +55,7 @@ export interface CreateUserRequest {
   timezone?: string;
   status?: "ACTIVE" | "INACTIVE";
   role?: "ADMIN" | "GUEST";
-  locale?: string;
+  locale?: SupportedLocales;
 }
 
 export interface UpdateUserData {
@@ -65,7 +65,7 @@ export interface UpdateUserData {
   timezone?: string;
   status?: "ACTIVE" | "INACTIVE";
   role?: "ADMIN" | "GUEST";
-  locale?: string;
+  locale?: SupportedLocales;
 }
 
 export interface UserFilters {

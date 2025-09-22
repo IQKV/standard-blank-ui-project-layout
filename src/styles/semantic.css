@@ -6,7 +6,10 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.5;
   margin: 0;
   padding: 0;
@@ -65,7 +68,9 @@ label {
   font-weight: bold;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   display: block;
   width: 100%;
   padding: 0.5rem;
@@ -75,7 +80,9 @@ input, select, textarea {
   font-size: 1rem;
 }
 
-input:focus, select:focus, textarea:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
@@ -132,7 +139,7 @@ section[role="alert"] article {
   border-radius: 4px;
   padding: 1rem;
   margin-bottom: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 section[role="alert"] article[data-notification-type="success"] {
@@ -457,18 +464,18 @@ span[data-status="inactive"] {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .filters input,
   .filters select {
     min-width: auto;
     width: 100%;
   }
-  
+
   .user-list-item {
     flex-direction: column;
     align-items: stretch;
   }
-  
+
   .user-list-item .actions {
     justify-content: center;
   }
@@ -480,11 +487,11 @@ span[data-status="inactive"] {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   main {
     padding: 0.5rem;
   }
-  
+
   section[role="alert"] {
     left: 1rem;
     right: 1rem;
@@ -494,10 +501,12 @@ span[data-status="inactive"] {
 
 /* Print styles */
 @media print {
-  nav, section[role="alert"], button {
+  nav,
+  section[role="alert"],
+  button {
     display: none;
   }
-  
+
   main {
     max-width: none;
     padding: 0;

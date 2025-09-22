@@ -11,8 +11,8 @@ const updateUserSchema = z.object({
   timezone: z.string().optional(),
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   role: z.enum(["ADMIN", "GUEST"]).optional(),
-  locale: z.string().optional(),
-});
+  locale: z.enum(["en"]).optional(),
+}) satisfies z.ZodType<UpdateUserData>;
 
 interface UserEditFormProps {
   userId: IdParam;
@@ -22,12 +22,12 @@ interface UserEditFormProps {
   onCancel?: () => void;
 }
 
-export function UserEditForm({ 
-  userId, 
-  initialData, 
-  onSuccess, 
-  onError, 
-  onCancel 
+export function UserEditForm({
+  userId,
+  initialData,
+  onSuccess,
+  onError,
+  onCancel,
 }: UserEditFormProps) {
   const updateUser = useUpdateUserWithValidation();
 
@@ -52,7 +52,9 @@ export function UserEditForm({
     try {
       // Only send fields that have values
       const updateData = Object.fromEntries(
-        Object.entries(data).filter(([_, value]) => value !== "" && value !== undefined)
+        Object.entries(data).filter(
+          ([_, value]) => value !== "" && value !== undefined
+        )
       ) as UpdateUserData;
 
       const result = await updateUser.mutateAsync({ userId, data: updateData });
@@ -69,38 +71,20 @@ export function UserEditForm({
 
         <div>
           <label htmlFor="first_name">First Name</label>
-          <input
-            {...register("first_name")}
-            type="text"
-            id="first_name"
-          />
-          {errors.first_name && (
-            <p role="alert">{errors.first_name.message}</p>
-          )}
+          <input {...register("first_name")} type="text" id="first_name" />
+          {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="last_name">Last Name</label>
-          <input
-            {...register("last_name")}
-            type="text"
-            id="last_name"
-          />
-          {errors.last_name && (
-            <p role="alert">{errors.last_name.message}</p>
-          )}
+          <input {...register("last_name")} type="text" id="last_name" />
+          {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            {...register("email")}
-            type="email"
-            id="email"
-          />
-          {errors.email && (
-            <p role="alert">{errors.email.message}</p>
-          )}
+          <input {...register("email")} type="email" id="email" />
+          {errors.email && <p role="alert">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -111,9 +95,7 @@ export function UserEditForm({
             id="timezone"
             placeholder="e.g., America/New_York"
           />
-          {errors.timezone && (
-            <p role="alert">{errors.timezone.message}</p>
-          )}
+          {errors.timezone && <p role="alert">{errors.timezone.message}</p>}
         </div>
 
         <div>
@@ -123,9 +105,7 @@ export function UserEditForm({
             <option value="GUEST">Guest</option>
             <option value="ADMIN">Admin</option>
           </select>
-          {errors.role && (
-            <p role="alert">{errors.role.message}</p>
-          )}
+          {errors.role && <p role="alert">{errors.role.message}</p>}
         </div>
 
         <div>
@@ -135,9 +115,7 @@ export function UserEditForm({
             <option value="ACTIVE">Active</option>
             <option value="INACTIVE">Inactive</option>
           </select>
-          {errors.status && (
-            <p role="alert">{errors.status.message}</p>
-          )}
+          {errors.status && <p role="alert">{errors.status.message}</p>}
         </div>
 
         <div>

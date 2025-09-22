@@ -5,26 +5,33 @@ import { User, UserMeRequest, UpdateUserRequest } from "../model/types";
 // Standard CRUD operations for User entity
 export const userApi = {
   // CREATE - Create new user
-  create: async (userData: Omit<User, 'id' | 'full_name'>) => {
-    const response = await api.post<GenericDataResponse<User>>("users", userData);
+  create: async (userData: Omit<User, "id" | "full_name">) => {
+    const response = await api.post<GenericDataResponse<User>>(
+      "users",
+      userData
+    );
     return response.data;
   },
 
   // READ - Get all users with optional filtering
-  getAll: async (params?: { 
-    page?: number; 
-    limit?: number; 
-    search?: string; 
+  getAll: async (params?: {
+    page?: number;
+    limit?: number;
+    search?: string;
     status?: string;
     role?: string;
   }) => {
-    const response = await api.get<GenericDataResponse<User[]>>("users", { params });
+    const response = await api.get<GenericDataResponse<User[]>>("users", {
+      params,
+    });
     return response.data;
   },
 
   // READ - Get user by ID
   getById: async (userId: IdParam) => {
-    const response = await api.get<GenericDataResponse<User>>(`users/${userId}`);
+    const response = await api.get<GenericDataResponse<User>>(
+      `users/${userId}`
+    );
     return response.data;
   },
 
@@ -39,21 +46,23 @@ export const userApi = {
 
   // DELETE - Delete user by ID
   delete: async (userId: IdParam) => {
-    const response = await api.delete<GenericDataResponse<void>>(`users/${userId}`);
+    const response = await api.delete<GenericDataResponse<void>>(
+      `users/${userId}`
+    );
     return response.data;
   },
 
   // BULK OPERATIONS
   bulkDelete: async (userIds: IdParam[]) => {
     const response = await api.delete<GenericDataResponse<void>>("users/bulk", {
-      data: { ids: userIds }
+      data: { ids: userIds },
     });
     return response.data;
   },
 
   bulkUpdate: async (updates: Array<{ id: IdParam; data: Partial<User> }>) => {
     const response = await api.put<GenericDataResponse<User[]>>("users/bulk", {
-      updates
+      updates,
     });
     return response.data;
   },
@@ -71,7 +80,9 @@ export const userApi = {
   },
 
   findByID: async (userId: IdParam) => {
-    const response = await api.get<GenericDataResponse<User>>(`users/${userId}`);
+    const response = await api.get<GenericDataResponse<User>>(
+      `users/${userId}`
+    );
     return response.data;
   },
 

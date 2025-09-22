@@ -13,20 +13,16 @@ export function UserCard({ user, className = "" }: UserCardProps) {
         <h3>{user.full_name}</h3>
         <p>{user.email}</p>
       </header>
-      
+
       <div>
         {user.role && (
-          <span data-role={user.role.toLowerCase()}>
-            {user.role}
-          </span>
+          <span data-role={user.role.toLowerCase()}>{user.role}</span>
         )}
         {user.status && (
-          <span data-status={user.status.toLowerCase()}>
-            {user.status}
-          </span>
+          <span data-status={user.status.toLowerCase()}>{user.status}</span>
         )}
       </div>
-      
+
       {user.last_login_at && (
         <footer>
           <p>Last login: {new Date(user.last_login_at).toLocaleDateString()}</p>

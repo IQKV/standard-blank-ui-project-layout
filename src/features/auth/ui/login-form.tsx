@@ -50,7 +50,7 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
         <legend>Sign In</legend>
-        
+
         <div>
           <label htmlFor="email">Email Address</label>
           <input
@@ -60,9 +60,7 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
             autoComplete="email"
             required
           />
-          {errors.email && (
-            <p role="alert">{errors.email.message}</p>
-          )}
+          {errors.email && <p role="alert">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -74,9 +72,7 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
             autoComplete="current-password"
             required
           />
-          {errors.password && (
-            <p role="alert">{errors.password.message}</p>
-          )}
+          {errors.password && <p role="alert">{errors.password.message}</p>}
         </div>
 
         <button type="submit" disabled={isSubmitting}>
@@ -85,7 +81,9 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
 
         {login.error && (
           <p role="alert">
-            {login.error instanceof Error ? login.error.message : "Login failed"}
+            {login.error instanceof Error
+              ? login.error.message
+              : "Login failed"}
           </p>
         )}
       </fieldset>

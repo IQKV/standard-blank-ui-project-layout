@@ -14,10 +14,11 @@ export default defineConfig({
       plugins: [["@lingui/swc-plugin", {}]],
     }),
     lingui(),
-    !isTest && tanstackRouter({
-      routesDirectory: "./src/pages",
-      generatedRouteTree: "./src/routeTree.gen.ts",
-      routeFileIgnorePattern: "index.ts",
-    }),
+    !isTest &&
+      tanstackRouter({
+        routesDirectory: "./src/pages",
+        generatedRouteTree: "./src/routeTree.gen.ts",
+        routeFileIgnorePattern: ".*\\.(test|spec)\\.(ts|tsx)$",
+      }),
   ],
 });

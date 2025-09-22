@@ -587,26 +587,37 @@ Use a shared relation index to track parent-child mappings without duplicating f
 
 ```typescript
 // Example: users ↔ roles relationships
-import { createRelationKeys, setRelation, unsetRelation, getChildren } from "@/shared/lib";
+import {
+  createRelationKeys,
+  setRelation,
+  unsetRelation,
+  getChildren,
+} from "@/shared/lib";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 
 const relKeys = createRelationKeys("user-role");
 
 export const useUserRolesIds = (userId: string) =>
-  useQuery({ queryKey: relKeys.forParent(userId), queryFn: async () => getChildren(undefined, userId) });
+  useQuery({
+    queryKey: relKeys.forParent(userId),
+    queryFn: async () => getChildren(undefined, userId),
+  });
 
 export const useLinkUserToRole = () => {
   const qc = useQueryClient();
-  return (userId: string, roleId: string) => setRelation(qc, relKeys.index(), userId, roleId);
+  return (userId: string, roleId: string) =>
+    setRelation(qc, relKeys.index(), userId, roleId);
 };
 
 export const useUnlinkUserFromRole = () => {
   const qc = useQueryClient();
-  return (userId: string, roleId: string) => unsetRelation(qc, relKeys.index(), userId, roleId);
+  return (userId: string, roleId: string) =>
+    unsetRelation(qc, relKeys.index(), userId, roleId);
 };
 ```
 
 Guidelines:
+
 - Store only IDs in relation maps; fetch full entities via their own queries.
 - Invalidate derived views after linking/unlinking using `invalidateRelationViews`.
 - Prefer `createRelationKeys(prefix)` to standardize keys for relations.

@@ -12,8 +12,8 @@ const createUserSchema = z.object({
   timezone: z.string().optional(),
   status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
   role: z.enum(["ADMIN", "GUEST"]).optional(),
-  locale: z.string().optional(),
-});
+  locale: z.enum(["en"]).optional(),
+}) satisfies z.ZodType<CreateUserRequest>;
 
 interface UserCreateFormProps {
   onSuccess?: (user: any) => void;
@@ -21,7 +21,11 @@ interface UserCreateFormProps {
   onCancel?: () => void;
 }
 
-export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormProps) {
+export function UserCreateForm({
+  onSuccess,
+  onError,
+  onCancel,
+}: UserCreateFormProps) {
   const createUser = useCreateUserWithValidation();
 
   const {
@@ -61,9 +65,7 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             id="first_name"
             required
           />
-          {errors.first_name && (
-            <p role="alert">{errors.first_name.message}</p>
-          )}
+          {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
@@ -74,22 +76,13 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             id="last_name"
             required
           />
-          {errors.last_name && (
-            <p role="alert">{errors.last_name.message}</p>
-          )}
+          {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="email">Email</label>
-          <input
-            {...register("email")}
-            type="email"
-            id="email"
-            required
-          />
-          {errors.email && (
-            <p role="alert">{errors.email.message}</p>
-          )}
+          <input {...register("email")} type="email" id="email" required />
+          {errors.email && <p role="alert">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -100,9 +93,7 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             id="password"
             required
           />
-          {errors.password && (
-            <p role="alert">{errors.password.message}</p>
-          )}
+          {errors.password && <p role="alert">{errors.password.message}</p>}
         </div>
 
         <div>
@@ -113,9 +104,7 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             id="timezone"
             placeholder="e.g., America/New_York"
           />
-          {errors.timezone && (
-            <p role="alert">{errors.timezone.message}</p>
-          )}
+          {errors.timezone && <p role="alert">{errors.timezone.message}</p>}
         </div>
 
         <div>
@@ -124,9 +113,7 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             <option value="GUEST">Guest</option>
             <option value="ADMIN">Admin</option>
           </select>
-          {errors.role && (
-            <p role="alert">{errors.role.message}</p>
-          )}
+          {errors.role && <p role="alert">{errors.role.message}</p>}
         </div>
 
         <div>
@@ -135,9 +122,7 @@ export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormP
             <option value="ACTIVE">Active</option>
             <option value="INACTIVE">Inactive</option>
           </select>
-          {errors.status && (
-            <p role="alert">{errors.status.message}</p>
-          )}
+          {errors.status && <p role="alert">{errors.status.message}</p>}
         </div>
 
         <div>

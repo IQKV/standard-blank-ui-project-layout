@@ -13,7 +13,9 @@ export const UserSummary = () => {
   return (
     <div>
       <h3>User Summary</h3>
-      <div>Name: {user?.first_name} {user?.last_name}</div>
+      <div>
+        Name: {user?.first_name} {user?.last_name}
+      </div>
       <div>Email: {user?.email}</div>
       <button
         onClick={() =>
@@ -25,4 +27,3 @@ export const UserSummary = () => {
     </div>
   );
 };
-

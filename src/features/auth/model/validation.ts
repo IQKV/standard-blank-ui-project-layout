@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { availableLocales } from "@/shared/lib";
+import { availableLocales, type SupportedLocales } from "@/shared/lib";
 
 // Base validation schemas for auth features
 export const emailSchema = z
@@ -28,9 +28,12 @@ export const nameSchema = z
     "Name can only contain letters, spaces, hyphens, and apostrophes"
   );
 
-export const localeSchema = z.enum(availableLocales as [string, ...string[]], {
-  errorMap: () => ({ message: "Please select a valid locale" }),
-});
+export const localeSchema = z.enum(
+  availableLocales as [SupportedLocales, ...SupportedLocales[]],
+  {
+    errorMap: () => ({ message: "Please select a valid locale" }),
+  }
+);
 
 // Login validation schema
 export const loginSchema = z.object({

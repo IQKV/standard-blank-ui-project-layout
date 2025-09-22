@@ -35,7 +35,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
         <legend>Create Account</legend>
-        
+
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -45,9 +45,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
             autoComplete="given-name"
             required
           />
-          {errors.first_name && (
-            <p role="alert">{errors.first_name.message}</p>
-          )}
+          {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
@@ -59,9 +57,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
             autoComplete="family-name"
             required
           />
-          {errors.last_name && (
-            <p role="alert">{errors.last_name.message}</p>
-          )}
+          {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
         <div>
@@ -73,9 +69,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
             autoComplete="email"
             required
           />
-          {errors.email && (
-            <p role="alert">{errors.email.message}</p>
-          )}
+          {errors.email && <p role="alert">{errors.email.message}</p>}
         </div>
 
         <div>
@@ -87,9 +81,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
             autoComplete="new-password"
             required
           />
-          {errors.password && (
-            <p role="alert">{errors.password.message}</p>
-          )}
+          {errors.password && <p role="alert">{errors.password.message}</p>}
           <p>
             Password must be at least 8 characters with uppercase, lowercase,
             number, and special character.
@@ -115,9 +107,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           <select {...registerField("locale")} id="locale" required>
             <option value="en">English</option>
           </select>
-          {errors.locale && (
-            <p role="alert">{errors.locale.message}</p>
-          )}
+          {errors.locale && <p role="alert">{errors.locale.message}</p>}
         </div>
 
         <button type="submit" disabled={isSubmitting}>

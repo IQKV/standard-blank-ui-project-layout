@@ -40,7 +40,7 @@ export function AdminUserForm({
     <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
         <legend>Update User</legend>
-        
+
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
@@ -49,9 +49,7 @@ export function AdminUserForm({
             id="first_name"
             required
           />
-          {errors.first_name && (
-            <p role="alert">{errors.first_name.message}</p>
-          )}
+          {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
@@ -62,9 +60,7 @@ export function AdminUserForm({
             id="last_name"
             required
           />
-          {errors.last_name && (
-            <p role="alert">{errors.last_name.message}</p>
-          )}
+          {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
         <div>
@@ -74,9 +70,7 @@ export function AdminUserForm({
             <option value="ADMIN">Admin</option>
             <option value="GUEST">Guest</option>
           </select>
-          {errors.role && (
-            <p role="alert">{errors.role.message}</p>
-          )}
+          {errors.role && <p role="alert">{errors.role.message}</p>}
         </div>
 
         <div>
@@ -86,9 +80,7 @@ export function AdminUserForm({
             <option value="ACTIVE">Active</option>
             <option value="INACTIVE">Inactive</option>
           </select>
-          {errors.status && (
-            <p role="alert">{errors.status.message}</p>
-          )}
+          {errors.status && <p role="alert">{errors.status.message}</p>}
         </div>
 
         <button type="submit" disabled={isSubmitting}>

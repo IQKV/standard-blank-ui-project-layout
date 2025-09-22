@@ -130,7 +130,10 @@ export function AppLayout() {
       {notifications.length > 0 && (
         <section role="alert" aria-label="Notifications">
           {notifications.map((notification) => (
-            <article key={notification.id} data-notification-type={notification.type}>
+            <article
+              key={notification.id}
+              data-notification-type={notification.type}
+            >
               <header>
                 <h4>{notification.title}</h4>
                 {notification.message && <p>{notification.message}</p>}

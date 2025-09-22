@@ -3,7 +3,7 @@ import { t } from "@lingui/core/macro";
 
 export type SupportedLocales = "en";
 
-export const availableLocales = ["en"];
+export const availableLocales: SupportedLocales[] = ["en"];
 
 export const localeToFlagEmojiMap: Record<SupportedLocales, string> = {
   en: "🇬🇧",

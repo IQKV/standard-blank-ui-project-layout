@@ -27,7 +27,7 @@ export const setAppConfig = (config: AppConfigInterface) => {
 export const getAppConfig = (): AppConfigInterface => {
   if (!appConfig) {
     throw new Error(
-      'App config not initialized. Call setAppConfig() from app layer before using shared utilities.'
+      "App config not initialized. Call setAppConfig() from app layer before using shared utilities."
     );
   }
   return appConfig;

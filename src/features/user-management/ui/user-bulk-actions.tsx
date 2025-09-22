@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { useBulkDeleteUsersWithValidation, useBulkUpdateUsersWithValidation } from "../model/crud-operations";
+import {
+  useBulkDeleteUsersWithValidation,
+  useBulkUpdateUsersWithValidation,
+} from "../model/crud-operations";
 import type { IdParam, UpdateUserData } from "@/entities/user";
 
 interface UserBulkActionsProps {
@@ -9,15 +12,15 @@ interface UserBulkActionsProps {
   onClearSelection?: () => void;
 }
 
-export function UserBulkActions({ 
-  selectedUserIds, 
-  onSuccess, 
-  onError, 
-  onClearSelection 
+export function UserBulkActions({
+  selectedUserIds,
+  onSuccess,
+  onError,
+  onClearSelection,
 }: UserBulkActionsProps) {
   const [showBulkUpdate, setShowBulkUpdate] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  
+
   const bulkDelete = useBulkDeleteUsersWithValidation();
   const bulkUpdate = useBulkUpdateUsersWithValidation();
 
@@ -34,7 +37,7 @@ export function UserBulkActions({
 
   const handleBulkUpdate = async (updateData: UpdateUserData) => {
     try {
-      const updates = selectedUserIds.map(id => ({ id, data: updateData }));
+      const updates = selectedUserIds.map((id) => ({ id, data: updateData }));
       await bulkUpdate.mutateAsync(updates);
       setShowBulkUpdate(false);
       onClearSelection?.();
@@ -55,31 +58,25 @@ export function UserBulkActions({
       </header>
 
       <div>
-        <button 
-          type="button" 
-          onClick={() => setShowBulkUpdate(true)}
-        >
+        <button type="button" onClick={() => setShowBulkUpdate(true)}>
           Bulk Update
         </button>
-        
-        <button 
-          type="button" 
+
+        <button
+          type="button"
           onClick={() => setShowDeleteConfirm(true)}
           data-danger="true"
         >
           Bulk Delete
         </button>
-        
-        <button 
-          type="button" 
-          onClick={onClearSelection}
-        >
+
+        <button type="button" onClick={onClearSelection}>
           Clear Selection
         </button>
       </div>
 
       {showBulkUpdate && (
-        <BulkUpdateForm 
+        <BulkUpdateForm
           onSubmit={handleBulkUpdate}
           onCancel={() => setShowBulkUpdate(false)}
           isLoading={bulkUpdate.isPending}
@@ -92,26 +89,23 @@ export function UserBulkActions({
           <header>
             <h4 id="bulk-delete-title">Confirm Bulk Delete</h4>
           </header>
-          
+
           <p>
-            Are you sure you want to delete {selectedUserIds.length} user(s)? 
+            Are you sure you want to delete {selectedUserIds.length} user(s)?
             This action cannot be undone.
           </p>
-          
+
           <div>
-            <button 
-              type="button" 
+            <button
+              type="button"
               onClick={handleBulkDelete}
               disabled={bulkDelete.isPending}
               data-danger="true"
             >
               {bulkDelete.isPending ? "Deleting..." : "Delete All"}
             </button>
-            
-            <button 
-              type="button" 
-              onClick={() => setShowDeleteConfirm(false)}
-            >
+
+            <button type="button" onClick={() => setShowDeleteConfirm(false)}>
               Cancel
             </button>
           </div>
@@ -136,15 +130,22 @@ interface BulkUpdateFormProps {
   error: Error | null;
 }
 
-function BulkUpdateForm({ onSubmit, onCancel, isLoading, error }: BulkUpdateFormProps) {
+function BulkUpdateForm({
+  onSubmit,
+  onCancel,
+  isLoading,
+  error,
+}: BulkUpdateFormProps) {
   const [updateData, setUpdateData] = useState<UpdateUserData>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Only send fields that have values
     const filteredData = Object.fromEntries(
-      Object.entries(updateData).filter(([_, value]) => value !== "" && value !== undefined)
+      Object.entries(updateData).filter(
+        ([_, value]) => value !== "" && value !== undefined
+      )
     ) as UpdateUserData;
 
     if (Object.keys(filteredData).length === 0) {
@@ -161,13 +162,15 @@ function BulkUpdateForm({ onSubmit, onCancel, isLoading, error }: BulkUpdateForm
 
         <div>
           <label htmlFor="bulk-status">Status</label>
-          <select 
+          <select
             id="bulk-status"
             value={updateData.status || ""}
-            onChange={(e) => setUpdateData(prev => ({ 
-              ...prev, 
-              status: e.target.value as "ACTIVE" | "INACTIVE" | undefined 
-            }))}
+            onChange={(e) =>
+              setUpdateData((prev) => ({
+                ...prev,
+                status: e.target.value as "ACTIVE" | "INACTIVE" | undefined,
+              }))
+            }
           >
             <option value="">No change</option>
             <option value="ACTIVE">Active</option>
@@ -177,13 +180,15 @@ function BulkUpdateForm({ onSubmit, onCancel, isLoading, error }: BulkUpdateForm
 
         <div>
           <label htmlFor="bulk-role">Role</label>
-          <select 
+          <select
             id="bulk-role"
             value={updateData.role || ""}
-            onChange={(e) => setUpdateData(prev => ({ 
-              ...prev, 
-              role: e.target.value as "ADMIN" | "GUEST" | undefined 
-            }))}
+            onChange={(e) =>
+              setUpdateData((prev) => ({
+                ...prev,
+                role: e.target.value as "ADMIN" | "GUEST" | undefined,
+              }))
+            }
           >
             <option value="">No change</option>
             <option value="GUEST">Guest</option>
@@ -195,7 +200,7 @@ function BulkUpdateForm({ onSubmit, onCancel, isLoading, error }: BulkUpdateForm
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Updating..." : "Update All"}
           </button>
-          
+
           <button type="button" onClick={onCancel}>
             Cancel
           </button>

@@ -5,10 +5,14 @@ import { getAppConfig } from "@/shared/lib/config-types";
 const getBaseUrl = () => {
   try {
     const config = getAppConfig();
-    return config.apiConfig.baseUrl || process.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+    return (
+      config.apiConfig.baseUrl ||
+      process.env.VITE_API_BASE_URL ||
+      "http://localhost:3000/api"
+    );
   } catch (error) {
     // Fallback for development/testing
-    return process.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+    return process.env.VITE_API_BASE_URL || "http://localhost:3000/api";
   }
 };
 

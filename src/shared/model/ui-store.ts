@@ -69,7 +69,6 @@ const initialState: UIState = {
   globalLoading: {},
 };
 
-
 export const useUIStore = createStore<UIState & UIActions>(
   "ui-store",
   (set: any) => ({
@@ -139,7 +138,9 @@ export const useUIStore = createStore<UIState & UIActions>(
 
     removeNotification: (id: string) =>
       set((state: any) => {
-        state.notifications = state.notifications.filter((n: any) => n.id !== id);
+        state.notifications = state.notifications.filter(
+          (n: any) => n.id !== id
+        );
       }),
 
     clearNotifications: () =>

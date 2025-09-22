@@ -95,13 +95,13 @@ src/
 - **Examples**: User management forms, authentication flows, data tables
 
 ### 🔵 Entities Layer
+
 ### 🟣 Widgets Layer (NEW)
 
 - **Purpose**: Compose multiple features/entities into reusable, higher-level UI blocks that can be shared across pages.
 - **Contains**: Widget UI composition, light glue logic (no raw API calls)
 - **Dependencies**: Can import from features, entities, shared
 - **Examples**: User summary panels, dashboard sections, composite filters
-
 
 - **Purpose**: Pure business entities with data access and basic UI
 - **Contains**: Entity models, pure API calls, basic UI components for data display

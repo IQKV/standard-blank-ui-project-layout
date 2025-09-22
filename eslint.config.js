@@ -7,7 +7,7 @@ import pluginQuery from "@tanstack/eslint-plugin-query";
 import pluginRouter from "@tanstack/eslint-plugin-router";
 
 export default tseslint.config(
-  { ignores: ["dist", "src/mocks"] },
+  { ignores: ["dist", "src/mocks", "src/shared/locales/*.js"] },
   {
     extends: [tseslint.configs.recommended],
     files: ["**/*.{ts,tsx}"],

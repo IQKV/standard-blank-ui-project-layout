@@ -1,12 +1,19 @@
-> ## 🤔 What is this template all about?
+> ## 🚀 Ready to build something amazing?
 >
-> - This template can be used as a base layer for a ReactJS UI projects.
-> - Make the project easy to maintain with **7 issue templates**.
-> - Quick-start documentation with an extraordinary README structure.
-> - Manage issues with **20 issue labels**.
-> - Make _community healthier_ with all the guides like code of conduct, contributing, support, security...
-> - Learn more with the [official GitHub guide on creating repositories from a template](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template).
-> - To start using it, click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)** to create your new repository.
+> This is a production-ready React 19 starter template that gets you up and running in minutes, not hours.
+>
+> **What makes this template special:**
+>
+> - ⚡ **React 19** - Latest features and performance improvements
+> - 🏗️ **Feature-Sliced Design** - Scalable architecture that grows with your team
+> - 🔄 **TanStack Router & Query** - Type-safe routing and powerful data fetching
+> - 🎯 **TypeScript** - Full type safety from API to UI
+> - ⚡ **Vite** - Lightning-fast development experience
+> - 🧪 **Complete testing setup** - Unit, integration, and E2E testing ready
+> - 📦 **Modern tooling** - ESLint, Prettier, Husky, and more configured
+> - 🔒 **Production ready** - Security best practices and performance optimizations
+>
+> Click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)** to get started!
 
 ---
 
@@ -81,10 +88,11 @@ React + TypeScript + Vite + TanStack Router Template
 ### 🔺 Local development
 
 ```shell script
-# Clone the repository
-git clone https://github.com/dimdnk/standard-blank-ui-project-layout.git my-app
+# Use this template
+Click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)** to create your new repository
 
-# Navigate to project directory
+# Or clone manually
+git clone https://github.com/dimdnk/standard-blank-ui-project-layout.git my-app
 cd my-app
 
 # Install dependencies
@@ -109,6 +117,14 @@ pnpm dev
 | `pnpm lint`           | Lint code                                  |
 | `pnpm type-check`     | Check types                                |
 | `pnpm release`        | Automate versioning and package publishing |
+
+### 🚀 Ready to Deploy?
+
+Check out our [Deployment Guide](docs/deployment.md) for step-by-step instructions on deploying to Vercel, Netlify, AWS, and more.
+
+### 📋 Complete Feature List
+
+See [Template Features](docs/template-features.md) for an overview of all included technologies, tools, and capabilities.
 
 ## 🏗️ **Feature-Sliced Design Architecture**
 
@@ -185,10 +201,14 @@ import { LoginForm } from "@/features/auth/ui/login-form";
 
 ### Environment Variables
 
-| Variable   | Description                | Default       |
-| ---------- | -------------------------- | ------------- |
-| `TZ`       | Defines timezone           | `UTC`         |
-| `NODE_ENV` | Defines nodejs environment | `development` |
+Copy `.env.example` to `.env` and configure:
+
+| Variable        | Description         | Default       | Required |
+| --------------- | ------------------- | ------------- | -------- |
+| `VITE_API_URL`  | Backend API URL     | -             | Yes      |
+| `VITE_APP_NAME` | Application name    | `React App`   | No       |
+| `TZ`            | Timezone            | `UTC`         | No       |
+| `NODE_ENV`      | Node.js environment | `development` | No       |
 
 ### Cursor Rules
 
@@ -233,6 +253,34 @@ Please follow [Code of Conduct](.github/CODE_OF_CONDUCT.md) page.
 ## 📑 License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## 🚀 Using This Template
+
+### Quick Start
+
+1. Click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)**
+2. Clone your new repository
+3. Run `pnpm install && pnpm dev`
+4. Start building your app! 🎉
+
+### What Happens When You Use This Template
+
+- Automatic repository setup with your project name
+- Updated package.json with your repository details
+- Clean removal of template-specific files
+- Ready-to-use development environment
+
+### Customization Checklist
+
+After creating your project from this template:
+
+- [ ] Update the app title in `src/pages/home/ui/home-page.tsx`
+- [ ] Configure your API endpoints in `src/shared/api/`
+- [ ] Add your brand colors and styling
+- [ ] Update the favicon and app icons in `public/`
+- [ ] Configure environment variables in `.env`
+- [ ] Set up your deployment pipeline
+- [ ] Update this README with your project details
 
 ---
 

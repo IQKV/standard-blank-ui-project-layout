@@ -1,6 +1,24 @@
 {
   "name": "@know-how/standard-blank-ui-project-layout",
   "version": "0.0.0",
+  "description": "Modern React 19 starter template with TypeScript, Vite, TanStack Router & Query, and Feature-Sliced Design architecture",
+  "keywords": [
+    "react",
+    "react-19",
+    "typescript",
+    "vite",
+    "tanstack",
+    "starter-template",
+    "fsd"
+  ],
+  "homepage": "https://github.com/your-username/standard-blank-ui-project-layout#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/standard-blank-ui-project-layout/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/standard-blank-ui-project-layout.git"
+  },
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -170,5 +188,5 @@
     "vite-tsconfig-paths": "^5.1.4",
     "vitest": "v3.2.4"
   },
-  "packageManager": "pnpm@10.16.1"
+  "packageManager": "pnpm@10.17.1"
 }

@@ -19,7 +19,7 @@ export const userKeys = {
 // CREATE - Create new user
 export const useCreateUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (userData: CreateUserRequest) => userApi.create(userData),
     onSuccess: () => {
@@ -49,7 +49,7 @@ export const useUser = (userId: string | number) => {
 // UPDATE - Update user
 export const useUpdateUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: ({ userId, data }: { userId: IdParam; data: UpdateUserData }) =>
       userApi.update(userId, data),
@@ -65,7 +65,7 @@ export const useUpdateUser = () => {
 // DELETE - Delete user
 export const useDeleteUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (userId: IdParam) => userApi.delete(userId),
     onSuccess: (_, userId) => {
@@ -80,12 +80,12 @@ export const useDeleteUser = () => {
 // BULK OPERATIONS
 export const useBulkDeleteUsers = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (userIds: IdParam[]) => userApi.bulkDelete(userIds),
     onSuccess: (_, userIds) => {
       // Remove all deleted users from cache
-      userIds.forEach(userId => {
+      userIds.forEach((userId) => {
         queryClient.removeQueries({ queryKey: userKeys.detail(userId) });
       });
       // Invalidate user lists
@@ -96,13 +96,13 @@ export const useBulkDeleteUsers = () => {
 
 export const useBulkUpdateUsers = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (updates: Array<{ id: IdParam; data: UpdateUserData }>) =>
       userApi.bulkUpdate(updates),
     onSuccess: (updatedUsers) => {
       // Update each user in cache
-      updatedUsers?.data?.forEach(user => {
+      updatedUsers?.data?.forEach((user) => {
         if (user.id) {
           queryClient.setQueryData(userKeys.detail(user.id), user);
         }
