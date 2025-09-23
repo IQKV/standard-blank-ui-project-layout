@@ -1,1 +1,3 @@
-/*eslint-disable*/module.exports={messages:JSON.parse("{\"J/hVSQ\":[[\"0\"]]}")};
+/*eslint-disable*/ module.exports = {
+  messages: JSON.parse('{"J/hVSQ":[["0"]]}'),
+};

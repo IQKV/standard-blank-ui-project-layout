@@ -130,7 +130,6 @@ See [Template Features](template-docs/template-features.md) for an overview of a
 
 This project follows **Feature-Sliced Design (FSD)** methodology for scalable frontend architecture.
 
-
 ### 🎯 **Layer Responsibilities**
 
 | Layer         | Purpose                                            | Can Import From                       |
