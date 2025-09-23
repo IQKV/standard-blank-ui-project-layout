@@ -100,9 +100,10 @@ export const invalidateRelationViews = async (
   keys: Array<QueryKey | { queryKey: QueryKey }>
 ) => {
   for (const key of keys) {
-    if (Array.isArray(key)) await qc.invalidateQueries({ queryKey: key });
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    else {
+    if (Array.isArray(key)) {
+      await qc.invalidateQueries({ queryKey: key });
+    } else {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       await qc.invalidateQueries(key);
     }
