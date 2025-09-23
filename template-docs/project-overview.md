@@ -250,6 +250,7 @@ App Layer ────┐
 
 3. **Explore Architecture**
    - Read [fsd-architecture.md](./fsd-architecture.md) for detailed architecture guide
+
 - Check [public-api-enforcement.md](./public-api-enforcement.md) for API patterns
 - Review [validation-guide.md](./validation-guide.md) for validation patterns
 
