@@ -84,8 +84,8 @@ src/
 
 ## 🆘 Need Help?
 
-- Check the [documentation](docs/index.md)
+- Check the [documentation](index.md)
 - Open an [issue](../../issues)
-- Read the [contributing guide](.github/CONTRIBUTING.md)
+- Read the [contributing guide](../.github/CONTRIBUTING.md)
 
 Happy coding! 🚀
