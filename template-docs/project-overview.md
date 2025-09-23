@@ -249,9 +249,9 @@ App Layer ────┐
    ```
 
 3. **Explore Architecture**
-   - Read [FSD_ARCHITECTURE.md](FSD_ARCHITECTURE.md) for detailed architecture guide
-   - Check [PUBLIC_API_ENFORCEMENT.md](PUBLIC_API_ENFORCEMENT.md) for API patterns
-   - Review [VALIDATION_GUIDE.md](VALIDATION_GUIDE.md) for validation patterns
+   - Read [fsd-architecture.md](./fsd-architecture.md) for detailed architecture guide
+- Check [public-api-enforcement.md](./public-api-enforcement.md) for API patterns
+- Review [validation-guide.md](./validation-guide.md) for validation patterns
 
 4. **Add New Features**
    - Create feature slice in `src/features/`

@@ -98,10 +98,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Documentation
 
 - **Architecture Guides**
-  - [fsd-architecture.md](FSD_ARCHITECTURE.md) - Complete architecture overview
-  - [public-api-enforcement.md](PUBLIC_API_ENFORCEMENT.md) - API patterns and rules
-  - [validation-guide.md](VALIDATION_GUIDE.md) - Zod validation patterns
-  - [final-fsd-summary.md](FINAL_FSD_SUMMARY.md) - Implementation summary
+  - [fsd-architecture.md](./fsd-architecture.md) - Complete architecture overview
+- [public-api-enforcement.md](./public-api-enforcement.md) - API patterns and rules
+- [validation-guide.md](./validation-guide.md) - Zod validation patterns
+- [final-fsd-summary.md](../.kiro/summary/final-fsd-summary.md) - Implementation summary
 
 - **Updated README.md**
   - Added comprehensive FSD architecture section

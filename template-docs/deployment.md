@@ -199,4 +199,4 @@ NODE_OPTIONS="--max-old-space-size=4096" pnpm build
 - Add `_redirects` file for Netlify
 - Use `vercel.json` for Vercel
 
-Need help? Check the [troubleshooting guide](README.md#troubleshooting) or open an issue.
+Need help? Check the [troubleshooting guide](../README.md#troubleshooting) or open an issue.

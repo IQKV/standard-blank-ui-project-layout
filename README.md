@@ -120,7 +120,7 @@ pnpm dev
 
 ### 🚀 Ready to Deploy?
 
-Check out our [Deployment Guide](tempalte-docs/deployment.md) for step-by-step instructions on deploying to Vercel, Netlify, AWS, and more.
+Check out our [Deployment Guide](template-docs/deployment.md) for step-by-step instructions on deploying to Vercel, Netlify, AWS, and more.
 
 ### 📋 Complete Feature List
 
