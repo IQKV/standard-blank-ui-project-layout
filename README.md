@@ -120,11 +120,11 @@ pnpm dev
 
 ### 🚀 Ready to Deploy?
 
-Check out our [Deployment Guide](docs/deployment.md) for step-by-step instructions on deploying to Vercel, Netlify, AWS, and more.
+Check out our [Deployment Guide](tempalte-docs/deployment.md) for step-by-step instructions on deploying to Vercel, Netlify, AWS, and more.
 
 ### 📋 Complete Feature List
 
-See [Template Features](docs/template-features.md) for an overview of all included technologies, tools, and capabilities.
+See [Template Features](template-docs/template-features.md) for an overview of all included technologies, tools, and capabilities.
 
 ### 🏗️ **Feature-Sliced Design Architecture**
 
@@ -144,11 +144,11 @@ This project follows **Feature-Sliced Design (FSD)** methodology for scalable fr
 
 ### 📚 **Architecture Documentation**
 
-- 📚 [**Documentation Index**](docs/index.md) - Complete documentation guide
-- 📖 [**FSD Architecture Guide**](docs/fsd-architecture.md) - Complete architecture overview
-- 🔒 [**Public API Enforcement**](docs/public-api-enforcement.md) - API patterns and rules
-- ✅ [**Validation Guide**](docs/validation-guide.md) - Zod validation patterns
-- 🛠️ [**Development Guide**](docs/development-guide.md) - Step-by-step development patterns
+- 📚 [**Documentation Index**](template-docs/index.md) - Complete documentation guide
+- 📖 [**FSD Architecture Guide**](template-docs/fsd-architecture.md) - Complete architecture overview
+- 🔒 [**Public API Enforcement**](template-docs/public-api-enforcement.md) - API patterns and rules
+- ✅ [**Validation Guide**](template-docs/validation-guide.md) - Zod validation patterns
+- 🛠️ [**Development Guide**](template-docs/development-guide.md) - Step-by-step development patterns
 
 ### Environment Variables
 
