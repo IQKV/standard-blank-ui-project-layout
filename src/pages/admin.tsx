@@ -4,7 +4,7 @@ export const Route = createFileRoute("/admin")({
   component: AdminPage,
 });
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { AdminUserForm } from "@/features/user-management";
 import { UserList } from "@/entities/user";
@@ -20,15 +20,16 @@ function AdminPage() {
   const { data: usersResponse, isLoading } = useUsers();
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-  // Redirect if not authenticated or not admin
-  if (!isAuthenticated) {
-    navigate({ to: "/auth/login" });
-    return null;
-  }
+  // Redirect if not authenticated or not admin (avoid navigating during render)
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate({ to: "/auth/login" });
+    } else if (user?.role !== "ADMIN") {
+      navigate({ to: "/" });
+    }
+  }, [isAuthenticated, user?.role, navigate]);
 
-  // Simple role check - in real app, this would be more sophisticated
-  if (user?.role !== "ADMIN") {
-    navigate({ to: "/" });
+  if (!isAuthenticated || user?.role !== "ADMIN") {
     return null;
   }
 

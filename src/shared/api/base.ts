@@ -7,12 +7,12 @@ const getBaseUrl = () => {
     const config = getAppConfig();
     return (
       config.apiConfig.baseUrl ||
-      process.env.VITE_API_BASE_URL ||
+      import.meta.env.VITE_API_BASE_URL ||
       "http://localhost:3000/api"
     );
   } catch (error) {
     // Fallback for development/testing
-    return process.env.VITE_API_BASE_URL || "http://localhost:3000/api";
+    return import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
   }
 };
 
@@ -33,6 +33,11 @@ export const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    // If no response, it might be a network error
+    if (!error.response) {
+      return Promise.reject(error);
+    }
+
     const { status } = error.response;
     const currentPath = window?.location.pathname;
     const isAllowedUnauthenticatedPath = ALLOWED_UNAUTHENTICATED_PATHS.some(

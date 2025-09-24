@@ -13,9 +13,14 @@ export const useAuthIntegration = () => {
   const queryClient = useQueryClient();
   const { add: addNotification } = useNotifications();
 
-  const authStore = useAuthStore();
   const { isAuthenticated, user } = useAuthSession();
   const { accessToken, shouldRefreshToken, isTokenExpired } = useAuthTokens();
+
+  // Select only needed auth actions/flags to avoid full-store subscriptions
+  const isInitialized = useAuthStore((s) => s.isInitialized);
+  const setInitialized = useAuthStore((s) => s.setInitialized);
+  const clearSession = useAuthStore((s) => s.clearSession);
+  const updateUser = useAuthStore((s) => s.updateUser);
 
   // Sync user data from server when authenticated
   // Note: serverUser is GenericDataResponse<User>, so we need to access .data property
@@ -33,15 +38,15 @@ export const useAuthIntegration = () => {
   // Sync server user data with client store
   useEffect(() => {
     if (serverUser?.data && user?.id !== serverUser.data.id) {
-      authStore.updateUser(serverUser.data);
+      updateUser(serverUser.data);
     }
-  }, [serverUser, user, authStore]);
+  }, [serverUser, user, updateUser]);
 
   // Handle user data fetch errors
   useEffect(() => {
     if (userError && isAuthenticated) {
       // If user fetch fails and we think we're authenticated, clear session
-      authStore.clearSession();
+      clearSession();
       queryClient.clear();
       addNotification({
         type: "error",
@@ -49,28 +54,28 @@ export const useAuthIntegration = () => {
         message: "Please log in again.",
       });
     }
-  }, [userError, isAuthenticated, authStore, queryClient, addNotification]);
+  }, [userError, isAuthenticated, clearSession, queryClient, addNotification]);
 
   // Initialize auth state on app start
   useEffect(() => {
-    if (!authStore.isInitialized) {
+    if (!isInitialized) {
       // Check if we have valid tokens and user data
       if (accessToken && user && !isTokenExpired) {
         // Validate session with server
         queryClient.invalidateQueries({ queryKey: userKeys.me() });
       } else if (accessToken && isTokenExpired) {
         // Clear expired session
-        authStore.clearSession();
+        clearSession();
       }
 
-      authStore.setInitialized(true);
+      setInitialized(true);
     }
-  }, [authStore, accessToken, user, isTokenExpired, queryClient]);
+  }, [isInitialized, accessToken, user, isTokenExpired, queryClient, clearSession, setInitialized]);
 
   return {
     isAuthenticated,
     user,
-    isInitialized: authStore.isInitialized,
+    isInitialized,
   };
 };
 

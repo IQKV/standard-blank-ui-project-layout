@@ -1,5 +1,5 @@
+import { useEffect, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import {
   UserCreateForm,
@@ -38,15 +38,16 @@ export function UsersPage() {
   const { data: usersResponse, isLoading, error } = useUsers(filters);
   const users = usersResponse?.data || [];
 
-  // Auth check
-  if (!isAuthenticated) {
-    navigate({ to: "/auth/login" });
-    return null;
-  }
+  // Auth check (avoid navigating during render)
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate({ to: "/auth/login" });
+    } else if (user?.role !== "ADMIN") {
+      navigate({ to: "/" });
+    }
+  }, [isAuthenticated, user?.role, navigate]);
 
-  // Role check - only admins can manage users
-  if (user?.role !== "ADMIN") {
-    navigate({ to: "/" });
+  if (!isAuthenticated || user?.role !== "ADMIN") {
     return null;
   }
 

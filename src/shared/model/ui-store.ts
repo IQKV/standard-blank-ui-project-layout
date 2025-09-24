@@ -1,5 +1,6 @@
 // ts-ignore
 import { createStore } from "@/shared/lib/store";
+import { useShallow } from "@/shared/lib/store-utils";
 
 export interface UIState {
   // Theme management
@@ -128,11 +129,25 @@ export const useUIStore = createStore<UIState & UIActions>(
       notification: Omit<UIState["notifications"][0], "id" | "timestamp">
     ) =>
       set((state: any) => {
-        const id = `notification-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+        const now = Date.now();
+        const last = state.notifications[state.notifications.length - 1];
+        // Deduplicate rapid identical notifications to prevent loops
+        if (
+          last &&
+          last.type === notification.type &&
+          last.title === notification.title &&
+          last.message === notification.message &&
+          now - last.timestamp < 1000
+        ) {
+          return;
+        }
+        const id = `notification-${now}-${Math.random()
+          .toString(36)
+          .substring(2, 11)}`;
         state.notifications.push({
           ...notification,
           id,
-          timestamp: Date.now(),
+          timestamp: now,
         });
       }),
 
@@ -168,7 +183,7 @@ export const useUIStore = createStore<UIState & UIActions>(
 // Selectors for optimized subscriptions
 export const useTheme = () => useUIStore((state) => state.theme);
 export const useSidebar = () =>
-  useUIStore((state) => ({
+  useShallow(useUIStore, (state) => ({
     isOpen: state.sidebarOpen,
     isCollapsed: state.sidebarCollapsed,
     toggle: state.toggleSidebar,
@@ -178,7 +193,7 @@ export const useSidebar = () =>
   }));
 
 export const useModal = (modalId: string) =>
-  useUIStore((state) => ({
+  useShallow(useUIStore, (state) => ({
     isOpen: state.modals[modalId]?.isOpen ?? false,
     data: state.modals[modalId]?.data,
     open: (data?: unknown) => state.openModal(modalId, data),
@@ -186,7 +201,7 @@ export const useModal = (modalId: string) =>
   }));
 
 export const useNotifications = () =>
-  useUIStore((state) => ({
+  useShallow(useUIStore, (state) => ({
     notifications: state.notifications,
     add: state.addNotification,
     remove: state.removeNotification,
@@ -194,7 +209,7 @@ export const useNotifications = () =>
   }));
 
 export const useGlobalLoading = (key?: string) =>
-  useUIStore((state) => {
+  useShallow(useUIStore, (state) => {
     if (key) {
       return {
         isLoading: state.globalLoading[key] ?? false,

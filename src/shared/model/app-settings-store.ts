@@ -1,5 +1,6 @@
 import { createStore } from "@/shared/lib/store";
 import { persist } from "@/shared/lib/store-persistence";
+import { useShallow } from "@/shared/lib/store-utils";
 
 export interface AppSettingsState {
   // Localization
@@ -242,7 +243,7 @@ export const useAppSettingsStore = createStore<
 
 // Selectors for optimized subscriptions
 export const useLocaleSettings = () =>
-  useAppSettingsStore((state) => ({
+  useShallow(useAppSettingsStore, (state) => ({
     locale: state.locale,
     timezone: state.timezone,
     dateFormat: state.dateFormat,
@@ -254,7 +255,7 @@ export const useLocaleSettings = () =>
   }));
 
 export const useUserPreferences = () =>
-  useAppSettingsStore((state) => ({
+  useShallow(useAppSettingsStore, (state) => ({
     preferences: state.preferences,
     update: state.updatePreferences,
     reset: state.resetPreferences,

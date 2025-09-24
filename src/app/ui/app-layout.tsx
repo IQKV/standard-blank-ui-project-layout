@@ -3,6 +3,7 @@ import { Link, Outlet } from "@tanstack/react-router";
 import { useAuthIntegration, useAuthEffects } from "@/processes/auth-session";
 import { useTheme, useNotifications, useGlobalLoading } from "@/shared";
 import { useAppSettingsStore } from "@/shared";
+import { usePick } from "@/shared";
 
 const TanStackRouterDevtools = import.meta.env.PROD
   ? () => null // Render nothing in production
@@ -27,8 +28,11 @@ export function AppLayout() {
   const { notifications, remove: removeNotification } = useNotifications();
   const { hasAnyLoading } = useGlobalLoading();
 
-  // App settings
-  const { markAsLoaded, isLoaded } = useAppSettingsStore();
+// App settings (pick only what's needed with shallow equality)
+  const { markAsLoaded, isLoaded } = usePick(useAppSettingsStore, [
+    "markAsLoaded",
+    "isLoaded",
+  ] as const);
 
   // Initialize app settings on mount
   useEffect(() => {

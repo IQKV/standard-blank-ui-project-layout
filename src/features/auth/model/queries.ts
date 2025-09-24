@@ -1,4 +1,4 @@
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   useAuthLogin,
   useAuthLogout,
@@ -6,8 +6,10 @@ import {
   useAuthForgotPassword,
   useAuthPasswordResetTokenVerify,
   useAuthPasswordReset,
+  useAuthSession,
+  useAuthTokens,
 } from "@/entities/auth";
-import { useUserMe, userKeys } from "@/entities/user";
+import { userApi, userKeys } from "@/entities/user";
 import {
   loginSchema,
   forgotPasswordSchema,
@@ -21,8 +23,17 @@ import {
 } from "./validation";
 
 // Feature-level auth queries with business logic
+// Only fetch when the user is (or appears) authenticated to avoid
+// false positives with MSW default handlers.
 export const useAuthMe = () => {
-  return useUserMe();
+  const { isAuthenticated } = useAuthSession();
+  const { accessToken } = useAuthTokens();
+
+  return useQuery({
+    queryKey: userKeys.me(),
+    queryFn: userApi.me,
+    enabled: Boolean(isAuthenticated || accessToken),
+  });
 };
 
 export const useLogin = () => {

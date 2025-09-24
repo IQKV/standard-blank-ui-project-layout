@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
 import { LoginForm } from "@/features/auth";
@@ -13,9 +14,14 @@ export function LoginPage() {
   const { isAuthenticated } = useAuthIntegration();
   const { add: addNotification } = useNotifications();
 
-  // Redirect if already authenticated
+  // Redirect if already authenticated (avoid navigating during render)
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate({ to: "/" });
+    }
+  }, [isAuthenticated, navigate]);
+
   if (isAuthenticated) {
-    navigate({ to: "/" });
     return null;
   }
 
@@ -29,11 +35,15 @@ export function LoginPage() {
   };
 
   const handleLoginError = (error: Error) => {
-    addNotification({
-      type: "error",
-      title: "Sign In Failed",
-      message: error.message || "Please check your credentials and try again.",
-    });
+    // Only notify if there is a message to show
+    const message = error?.message?.trim();
+    if (message) {
+      addNotification({
+        type: "error",
+        title: "Sign In Failed",
+        message,
+      });
+    }
   };
 
   return (
