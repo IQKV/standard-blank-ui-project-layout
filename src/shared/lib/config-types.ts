@@ -5,6 +5,7 @@ export interface ApiConfig {
   baseUrl: string | undefined;
   timeout?: number;
   headers?: Record<string, string>;
+  mockApi?: boolean;
 }
 
 // Use any for ReactQuery config to avoid complex type compatibility issues
