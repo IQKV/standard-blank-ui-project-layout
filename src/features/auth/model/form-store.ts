@@ -370,6 +370,18 @@ export const useRegisterForm = () =>
     touched: state.formTouched["register"] || {},
   }));
 
+// Validation helpers selector
+export const useFormValidation = () =>
+  useFormStore((state) => ({
+    setFormErrors: state.setFormErrors,
+    clearFormErrors: state.clearFormErrors,
+    setFieldError: state.setFieldError,
+    clearFieldError: state.clearFieldError,
+    setFieldTouched: state.setFieldTouched,
+    setFormTouched: state.setFormTouched,
+    clearFormTouched: state.clearFormTouched,
+  }));
+
 export const useForgotPasswordForm = () =>
   useFormStore((state) => ({
     data: state.forgotPasswordForm.data,
@@ -390,15 +402,4 @@ export const useResetPasswordForm = () =>
     clear: state.clearResetPasswordForm,
     errors: state.formErrors["resetPassword"] || {},
     touched: state.formTouched["resetPassword"] || {},
-  }));
-
-export const useFormValidation = () =>
-  useFormStore((state) => ({
-    setFormErrors: state.setFormErrors,
-    clearFormErrors: state.clearFormErrors,
-    setFieldError: state.setFieldError,
-    clearFieldError: state.clearFieldError,
-    setFieldTouched: state.setFieldTouched,
-    setFormTouched: state.setFormTouched,
-    clearFormTouched: state.clearFormTouched,
   }));

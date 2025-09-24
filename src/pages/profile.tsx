@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useNavigate } from "@tanstack/react-router";
 import { UserProfileForm } from "@/features/user-management";
@@ -13,9 +14,14 @@ function ProfilePage() {
   const { isAuthenticated, user } = useAuthIntegration();
   const { add: addNotification } = useNotifications();
 
-  // Redirect if not authenticated
+  // Redirect if not authenticated (avoid navigating during render)
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate({ to: "/auth/login" });
+    }
+  }, [isAuthenticated, navigate]);
+
   if (!isAuthenticated) {
-    navigate({ to: "/auth/login" });
     return null;
   }
 

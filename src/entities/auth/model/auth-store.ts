@@ -1,5 +1,6 @@
 import { createStore } from "@/shared/lib/store";
 import { persist } from "@/shared/lib/store-persistence";
+import { useShallow } from "@/shared/lib/store-utils";
 import type { User } from "@/entities/user";
 
 export interface AuthState {
@@ -207,7 +208,7 @@ export const useAuthStore = createStore<AuthState & AuthActions>(
 
 // Selectors for optimized subscriptions
 export const useAuthSession = () =>
-  useAuthStore((state) => ({
+  useShallow(useAuthStore, (state) => ({
     isAuthenticated: state.isAuthenticated,
     isInitialized: state.isInitialized,
     user: state.user,
@@ -216,7 +217,7 @@ export const useAuthSession = () =>
   }));
 
 export const useAuthTokens = () =>
-  useAuthStore((state) => ({
+  useShallow(useAuthStore, (state) => ({
     accessToken: state.accessToken,
     refreshToken: state.refreshToken,
     tokenExpiry: state.tokenExpiry,
@@ -225,7 +226,7 @@ export const useAuthTokens = () =>
   }));
 
 export const useAuthFlow = () =>
-  useAuthStore((state) => ({
+  useShallow(useAuthStore, (state) => ({
     isLoggingIn: state.isLoggingIn,
     isLoggingOut: state.isLoggingOut,
     isRefreshing: state.isRefreshing,

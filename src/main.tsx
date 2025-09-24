@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import { App } from "@/app";
 import { initializeApp } from "./app";
 import "@/styles/semantic.css";
+import React from "react";
 
 // Initialize the app
 initializeApp().then(() => {
@@ -11,9 +12,3 @@ initializeApp().then(() => {
     </React.StrictMode>
   );
 });
-// Render the app
-const rootElement = document.getElementById("root")!;
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(<App />);
-}
