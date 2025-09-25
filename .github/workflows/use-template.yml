@@ -26,11 +26,13 @@ jobs:
           node .github/template-cleanup.js
           rm -f "./.github/workflows/use-template.yml"
           rm -f "./.github/template-cleanup.js"
+          mv README.md README.boilerplate.md
+          mv README.template.md README.md
 
       - name: "Update commit"
         uses: "stefanzweifel/git-auto-commit-action@v4"
         with:
           commit_message: "feat: create initial directory layout"
-          commit_options: "--amend"
+          commit_options: "--amend -a"
           push_options: "--force"
           skip_fetch: true

@@ -87,8 +87,6 @@ export const useAuthIntegration = () => {
   };
 };
 
-
-
 /**
  * Hook for managing auth-related side effects
  */

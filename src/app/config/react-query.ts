@@ -10,7 +10,10 @@ const isRetryableStatus = (status?: number) => {
   return status >= 500;
 };
 
-export const standardRetry = (failureCount: number, error: unknown): boolean => {
+export const standardRetry = (
+  failureCount: number,
+  error: unknown
+): boolean => {
   const anyErr: any = error as any;
   const status: number | undefined = anyErr?.response?.status ?? anyErr?.status;
   if (!isRetryableStatus(status)) return false;
@@ -32,14 +35,20 @@ const ALLOWED_UNAUTHENTICATED_PATHS = ["auth/login", "auth"];
 export const handleAuthRedirect = (error: unknown): void => {
   if (!isNormalizedApiError(error)) return;
   const { kind } = error;
-  if (kind !== ApiErrorKind.Unauthorized && kind !== ApiErrorKind.Forbidden) return;
+  if (kind !== ApiErrorKind.Unauthorized && kind !== ApiErrorKind.Forbidden)
+    return;
 
   const currentPath = window?.location?.pathname || "";
-  const isAllowed = ALLOWED_UNAUTHENTICATED_PATHS.some((p) => currentPath.includes(p));
+  const isAllowed = ALLOWED_UNAUTHENTICATED_PATHS.some((p) =>
+    currentPath.includes(p)
+  );
   if (isAllowed) return;
 
   try {
-    window?.localStorage?.setItem(PREVIOUS_URL_KEY, window?.location?.href || "");
+    window?.localStorage?.setItem(
+      PREVIOUS_URL_KEY,
+      window?.location?.href || ""
+    );
   } catch {}
   try {
     window?.location?.replace(LOGIN_PATH);
@@ -49,7 +58,10 @@ export const handleAuthRedirect = (error: unknown): void => {
 export const setupReactQueryAuthRedirects = (client: QueryClient): void => {
   // Listen for query errors
   client.getQueryCache().subscribe((event: unknown) => {
-    const e = event as { type?: string; query?: { state?: { error?: unknown } } };
+    const e = event as {
+      type?: string;
+      query?: { state?: { error?: unknown } };
+    };
     if (e?.type === "updated") {
       const err = e?.query?.state?.error;
       if (err) handleAuthRedirect(err);
@@ -58,7 +70,10 @@ export const setupReactQueryAuthRedirects = (client: QueryClient): void => {
 
   // Listen for mutation errors
   client.getMutationCache().subscribe((event: unknown) => {
-    const e = event as { type?: string; mutation?: { state?: { error?: unknown } } };
+    const e = event as {
+      type?: string;
+      mutation?: { state?: { error?: unknown } };
+    };
     if (e?.type === "updated") {
       const err = e?.mutation?.state?.error;
       if (err) handleAuthRedirect(err);

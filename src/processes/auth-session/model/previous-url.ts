@@ -17,7 +17,9 @@ export const clearPreviousUrl = (): void => {
 };
 
 export const usePreviousUrl = () => {
-  const [previousUrl, setPreviousUrl] = useState<string | null>(() => getPreviousUrl());
+  const [previousUrl, setPreviousUrl] = useState<string | null>(() =>
+    getPreviousUrl()
+  );
 
   const refresh = useCallback(() => {
     setPreviousUrl(getPreviousUrl());

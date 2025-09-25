@@ -1,4 +1,8 @@
-import { PREVIOUS_URL_KEY, DEFAULT_FALLBACK_PATH, LOGIN_PATH } from "./constants";
+import {
+  PREVIOUS_URL_KEY,
+  DEFAULT_FALLBACK_PATH,
+  LOGIN_PATH,
+} from "./constants";
 
 /**
  * Restore previous URL after successful login and clear the stored key.

@@ -1,6 +1,10 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { getPreviousUrl, clearPreviousUrl, usePreviousUrl } from "../previous-url";
+import {
+  getPreviousUrl,
+  clearPreviousUrl,
+  usePreviousUrl,
+} from "../previous-url";
 import { PREVIOUS_URL_KEY } from "../constants";
 
 describe("previous-url utils", () => {
