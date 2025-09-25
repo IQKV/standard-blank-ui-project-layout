@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { availableLocales, type SupportedLocales } from "@/shared/lib";
+import { availableLocales, type SupportedLocales } from "@/shared/locales";
 
 // Base validation schemas for auth features
 export const emailSchema = z

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { availableLocales } from "@/shared/lib";
+import { availableLocales, type SupportedLocales } from "@/shared/locales";
 import type { CreateUserRequest, UpdateUserData } from "@/entities/user";
 
 // Base validation schemas for user management
@@ -47,9 +47,12 @@ export const timezoneSchema = z
     }
   }, "Invalid timezone");
 
-export const localeSchema = z.enum(availableLocales as [string, ...string[]], {
-  errorMap: () => ({ message: "Please select a valid locale" }),
-});
+export const localeSchema = z.enum(
+  availableLocales as [SupportedLocales, ...SupportedLocales[]],
+  {
+    errorMap: () => ({ message: "Please select a valid locale" }),
+  }
+);
 
 export const userStatusSchema = z.enum(["ACTIVE", "INACTIVE"], {
   errorMap: () => ({ message: "Status must be either ACTIVE or INACTIVE" }),
