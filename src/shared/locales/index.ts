@@ -37,7 +37,7 @@ export const getClientLocale = () => {
 
 export async function dynamicActivateLocale(locale: string) {
   const activeLocale = availableLocales.includes(locale) ? locale : "en";
-  const module = await import(`./${locale}.po`);
+  const module = await import(`../../../locales/${locale}.po`);
   i18n.load(activeLocale, module.messages);
   i18n.activate(activeLocale);
 }

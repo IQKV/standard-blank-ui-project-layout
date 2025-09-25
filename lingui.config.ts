@@ -6,7 +6,7 @@ const config: LinguiConfig = {
   ],
   catalogs: [
     {
-      path: "<rootDir>/src/shared/locales/{locale}",
+      path: "<rootDir>/locales/{locale}",
       include: ["src"],
     },
   ],
