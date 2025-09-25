@@ -224,7 +224,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 After creating your project from this template:
 
-- [ ] Update the app title in `src/pages/home/ui/home-page.tsx`
+- [ ] Update the app title in `src/pages/index.tsx`
 - [ ] Configure your API endpoints in `src/shared/api/`
 - [ ] Add your brand colors and styling
 - [ ] Update the favicon and app icons in `public/`
