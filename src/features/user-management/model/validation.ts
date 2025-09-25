@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { availableLocales } from "@/shared/lib";
+import type { CreateUserRequest, UpdateUserData } from "@/entities/user";
 
 // Base validation schemas for user management
 export const userIdSchema = z.union([
@@ -137,6 +138,29 @@ export const bulkUserActionSchema = z.object({
     .min(1, "At least one user must be selected"),
   action: z.enum(["activate", "deactivate", "delete"]),
 });
+
+// Create user schema (moved from UI to model for SRP)
+export const createUserSchema = z.object({
+  first_name: nameSchema,
+  last_name: nameSchema,
+  email: emailSchema,
+  password: passwordSchema,
+  timezone: timezoneSchema,
+  status: userStatusSchema.optional(),
+  role: userRoleSchema.optional(),
+  locale: localeSchema.optional(),
+}) satisfies z.ZodType<CreateUserRequest>;
+
+// Partial update schema for edit form (moved from UI to model for SRP)
+export const userUpdateDataSchema = z.object({
+  first_name: nameSchema.optional(),
+  last_name: nameSchema.optional(),
+  email: emailSchema.optional(),
+  timezone: timezoneSchema,
+  status: userStatusSchema.optional(),
+  role: userRoleSchema.optional(),
+  locale: localeSchema.optional(),
+}) satisfies z.ZodType<UpdateUserData>;
 
 // Validation functions for use in mutations
 export const validateUserMeUpdate = (data: unknown): UserMeUpdateInput => {

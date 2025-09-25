@@ -1,19 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useCreateUserWithValidation } from "../model/crud-operations";
+import { createUserSchema } from "../model/validation";
 import type { CreateUserRequest } from "@/entities/user";
-
-const createUserSchema = z.object({
-  first_name: z.string().min(1, "First name is required"),
-  last_name: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
-  timezone: z.string().optional(),
-  status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
-  role: z.enum(["ADMIN", "GUEST"]).optional(),
-  locale: z.enum(["en"]).optional(),
-}) satisfies z.ZodType<CreateUserRequest>;
 
 interface UserCreateFormProps {
   onSuccess?: (user: any) => void;

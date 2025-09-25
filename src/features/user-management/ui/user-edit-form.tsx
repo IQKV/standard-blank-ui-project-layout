@@ -1,18 +1,8 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { userUpdateDataSchema } from "../model/validation";
 import { useUpdateUserWithValidation } from "../model/crud-operations";
 import type { UpdateUserData, User, IdParam } from "@/entities/user";
-
-const updateUserSchema = z.object({
-  first_name: z.string().min(1, "First name is required").optional(),
-  last_name: z.string().min(1, "Last name is required").optional(),
-  email: z.string().email("Invalid email address").optional(),
-  timezone: z.string().optional(),
-  status: z.enum(["ACTIVE", "INACTIVE"]).optional(),
-  role: z.enum(["ADMIN", "GUEST"]).optional(),
-  locale: z.enum(["en"]).optional(),
-}) satisfies z.ZodType<UpdateUserData>;
 
 interface UserEditFormProps {
   userId: IdParam;
@@ -36,7 +26,7 @@ export function UserEditForm({
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<UpdateUserData>({
-    resolver: zodResolver(updateUserSchema),
+    resolver: zodResolver(userUpdateDataSchema),
     defaultValues: {
       first_name: initialData?.first_name || "",
       last_name: initialData?.last_name || "",
