@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useUserOnboardingProcess } from "@/processes/user-onboarding";
+import { useRegister } from "../model/queries";
 import { registerSchema, type RegisterInput } from "../model/validation";
 
 interface RegisterFormProps {
@@ -9,7 +9,7 @@ interface RegisterFormProps {
 }
 
 export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
-  const register = useUserOnboardingProcess();
+  const register = useRegister();
 
   const {
     register: registerField,

@@ -28,7 +28,7 @@ export function AppLayout() {
   const { notifications, remove: removeNotification } = useNotifications();
   const { hasAnyLoading } = useGlobalLoading();
 
-// App settings (pick only what's needed with shallow equality)
+  // App settings (pick only what's needed with shallow equality)
   const { markAsLoaded, isLoaded } = usePick(useAppSettingsStore, [
     "markAsLoaded",
     "isLoaded",

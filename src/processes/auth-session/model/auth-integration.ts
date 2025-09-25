@@ -70,7 +70,15 @@ export const useAuthIntegration = () => {
 
       setInitialized(true);
     }
-  }, [isInitialized, accessToken, user, isTokenExpired, queryClient, clearSession, setInitialized]);
+  }, [
+    isInitialized,
+    accessToken,
+    user,
+    isTokenExpired,
+    queryClient,
+    clearSession,
+    setInitialized,
+  ]);
 
   return {
     isAuthenticated,
@@ -112,6 +120,13 @@ export const useLoginProcess = () => {
             title: "Welcome back!",
             message: `Hello, ${result.user.first_name}`,
           });
+
+          // After successful login, restore the previous URL if present
+          // Keep this navigation in the process layer per FSD
+          try {
+            const { restorePreviousUrlAfterLogin } = await import("./redirect");
+            restorePreviousUrlAfterLogin("/");
+          } catch {}
         }
 
         return result;

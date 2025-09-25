@@ -36,7 +36,10 @@ export const handlers = [
   // AUTH: login
   http.post("*/api/auth/login", async ({ request }) => {
     const url = new URL(request.url);
-    const body = (await request.json()) as { email?: string; password?: string };
+    const body = (await request.json()) as {
+      email?: string;
+      password?: string;
+    };
     console.log(`[Mock API] POST ${url.pathname}`, body);
 
     if (!body?.email || !body?.password) {
@@ -83,10 +86,7 @@ export const handlers = [
     console.log(`[Mock API] GET ${url.pathname}`);
 
     if (!mockAuthState.isAuthenticated) {
-      return HttpResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      );
+      return HttpResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
     // Issue fresh tokens
@@ -102,10 +102,7 @@ export const handlers = [
     console.log(`[Mock API] GET ${url.pathname}`);
 
     if (!mockAuthState.isAuthenticated) {
-      return HttpResponse.json(
-        { message: "Unauthorized" },
-        { status: 401 }
-      );
+      return HttpResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
     return HttpResponse.json({

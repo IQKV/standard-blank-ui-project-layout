@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { useLoginProcess } from "@/processes/auth-session";
+import { useLogin } from "../model/queries";
 import { loginSchema, type LoginInput } from "../model/validation";
 
 interface LoginFormProps {
@@ -8,7 +8,7 @@ interface LoginFormProps {
 }
 
 export function LoginForm({ onSuccess, onError }: LoginFormProps) {
-  const login = useLoginProcess();
+  const login = useLogin();
   const [errors, setErrors] = useState<{
     email?: string;
     password?: string;
