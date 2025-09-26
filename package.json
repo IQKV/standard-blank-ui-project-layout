@@ -37,7 +37,7 @@
     "messages:extract": "lingui extract",
     "node_modules:clear": "rm -rf node_modules",
     "prepare": "husky",
-    "prettier:check": "prettier . --check",
+    "prettier:check": "prettier . --check --ignore-unknown",
     "prettier:write": "prettier . --write",
     "preview": "vite preview",
     "release": "release-it --ci",
