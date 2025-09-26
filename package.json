@@ -49,6 +49,13 @@
     "test:wath": "vitest",
     "type-check": "tsc --noEmit"
   },
+  "lint-staged": {
+    "*": [
+      "pnpm lint",
+      "pnpm prettier:check",
+      "sort-package-json"
+    ]
+  },
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
@@ -161,7 +168,6 @@
     "jiti": "2.5.1",
     "jsdom": "^26.1.0",
     "knip": "5.64.0",
-    "lefthook": "1.13.4",
     "lint-staged": "^16.2.1",
     "lru-cache": "^11.2.2",
     "msw": "^2.11.3",
