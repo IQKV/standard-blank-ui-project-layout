@@ -52,7 +52,9 @@
   "lint-staged": {
     "*": [
       "pnpm lint",
-      "pnpm prettier:check",
+      "pnpm prettier:check"
+    ],
+    "package.json": [
       "sort-package-json"
     ]
   },
