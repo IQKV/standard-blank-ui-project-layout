@@ -1,5 +1,5 @@
 {
-  "name": "@know-how/standard-blank-ui-project-layout",
+  "name": "@iqkv/standard-blank-ui-project-layout",
   "version": "0.0.0",
   "description": "Modern React 19 starter template with TypeScript, Vite, TanStack Router & Query, and Feature-Sliced Design architecture",
   "keywords": [
@@ -11,13 +11,13 @@
     "starter-template",
     "fsd"
   ],
-  "homepage": "https://github.com/your-username/standard-blank-ui-project-layout#readme",
+  "homepage": "https://github.com/IQKV/standard-blank-ui-project-layout#readme",
   "bugs": {
-    "url": "https://github.com/your-username/standard-blank-ui-project-layout/issues"
+    "url": "https://github.com/IQKV/standard-blank-ui-project-layout/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/standard-blank-ui-project-layout.git"
+    "url": "https://github.com/IQKV/standard-blank-ui-project-layout.git"
   },
   "license": "MIT",
   "type": "module",

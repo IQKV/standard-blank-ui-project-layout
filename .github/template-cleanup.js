@@ -38,7 +38,7 @@ function updateReadme() {
 
   // Update repository references in README
   readme = readme.replace(
-    /your-username\/standard-blank-ui-project-layout/g,
+    /IQKV\/standard-blank-ui-project-layout/g,
     repoUrl
   );
   readme = readme.replace(
