@@ -32,7 +32,7 @@
     "knip": "knip",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "lint:stylelint": "stylelint \"**/*.css\" --cache",
+    "lint:stylelint": "stylelint \"**/*.css\" --aei",
     "messages:compile": "lingui compile",
     "messages:extract": "lingui extract",
     "node_modules:clear": "rm -rf node_modules",
