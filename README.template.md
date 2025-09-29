@@ -70,7 +70,7 @@ Write about setting up the working environment for your project.
 ---
 
 <details>
-  <summary><strong>✅ Pre‑publish checklist (remove in final README)</strong></summary>
+  <summary><strong>✅ Pre-publish checklist (remove in final README)</strong></summary>
 
 - [ ] Title updated and logo added
 - [ ] Badges added (CI, tests, coverage, license)
