@@ -16,16 +16,9 @@ jobs:
       - name: "Check out the repo"
         uses: "actions/checkout@v4"
 
-      - name: "Setup Node.js"
-        uses: "actions/setup-node@v4"
-        with:
-          node-version: "22"
-
-      - name: "Run template cleanup script"
+      - name: "Modify/remove files before use"
         run: |
-          node .github/template-cleanup.js
           rm -f "./.github/workflows/use-template.yml"
-          rm -f "./.github/template-cleanup.js"
           mv README.md README.boilerplate.md
           mv README.template.md README.md
 
