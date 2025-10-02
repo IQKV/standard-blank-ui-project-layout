@@ -85,7 +85,7 @@
     "collect.js": "^4.36.1",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
-    "cross-env": "^10.0.0",
+    "cross-env": "^10.1.0",
     "dayjs": "^1.11.18",
     "dotenv": "^17.2.3",
     "graphql-request": "^7.2.0",
