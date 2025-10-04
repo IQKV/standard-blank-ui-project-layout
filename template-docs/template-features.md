@@ -37,7 +37,8 @@ This template provides a complete, production-ready foundation for modern React 
 
 ### Testing & Quality Assurance
 
-- **Vitest** - Fast unit and integration testing
+- **Vitest** - Fast unit and integration testing with 228 comprehensive tests
+- **Co-located Tests** - Tests placed next to source code for better maintainability
 - **Playwright** - Reliable end-to-end testing
 - **Testing Library** - Simple and complete testing utilities
 - **Mock Service Worker (MSW)** - API mocking for development and testing

@@ -318,6 +318,18 @@ const userUpdateSchema = z
 
 ## 🧪 **Testing Patterns**
 
+### **Co-located Test Structure**
+
+Tests are placed directly next to their source files for better maintainability:
+
+```
+src/features/auth/model/
+├── queries.ts
+├── queries.test.ts        # Co-located with queries
+├── validation.ts
+└── validation.test.ts     # Co-located with validation
+```
+
 ### **Unit Testing Features**
 
 ```typescript
@@ -361,7 +373,7 @@ test('useLogin should validate and call API', async () => {
 ### **Component Testing**
 
 ```typescript
-// features/auth/ui/login-form.test.tsx
+// features/auth/ui/login-form.test.tsx (co-located with login-form.tsx)
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { LoginForm } from './login-form';
 

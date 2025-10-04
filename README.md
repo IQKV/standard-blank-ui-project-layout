@@ -59,7 +59,8 @@ React + TypeScript + Vite + TanStack Router Template
 
 ### 🧪 **Testing & Quality**
 
-- 🧪 **Vitest** - Fast unit and integration testing
+- 🧪 **Vitest** - Fast unit and integration testing with 228 tests
+- 🧪 **Co-located Tests** - Tests next to source code for better maintainability
 - 🧪 **Playwright** - Reliable end-to-end testing
 - 🧪 **Mock Service Worker** - Client-agnostic API mocking
 - 🧱 **Storybook** - Component development in isolation
