@@ -202,8 +202,8 @@ importers:
         specifier: ^5.91.0
         version: 5.91.0(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)
       '@tanstack/eslint-plugin-router':
-        specifier: ^1.132.21
-        version: 1.132.21(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)
+        specifier: ^1.132.31
+        version: 1.132.31(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)
       '@tanstack/react-query-devtools':
         specifier: ^5.90.2
         version: 5.90.2(@tanstack/react-query@5.90.2(react@19.2.0))(react@19.2.0)
@@ -2279,8 +2279,8 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
-  '@tanstack/eslint-plugin-router@1.132.21':
-    resolution: {integrity: sha512-7lqASAXtfrsAKT+OGBbkfC9PGeU+sIG4Ay/oSoUGIP0Jf+b5CTqwgGDIO333YwmxZz7XEpiyo5GVHojlB3Neww==}
+  '@tanstack/eslint-plugin-router@1.132.31':
+    resolution: {integrity: sha512-LjNs9rYaaXAefqpKxXRsYYR3QzwbqCgSOlfKWT9siXxTCGe76GEPLIYxxNmsk2Epbe9Uy3S9DU0OzCFflpQnnw==}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
@@ -8976,9 +8976,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@tanstack/eslint-plugin-router@1.132.21(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)':
+  '@tanstack/eslint-plugin-router@1.132.31(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.44.1(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)
+      '@typescript-eslint/utils': 8.46.0(eslint@9.36.0(jiti@2.5.1))(typescript@5.9.3)
       eslint: 9.36.0(jiti@2.5.1)
     transitivePeerDependencies:
       - supports-color
@@ -9355,8 +9355,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.43.0(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.46.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.46.0
+      '@typescript-eslint/tsconfig-utils': 8.43.0(typescript@5.9.3)
+      '@typescript-eslint/types': 8.43.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -9364,8 +9364,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.44.1(typescript@5.9.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.46.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.46.0
+      '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.3)
+      '@typescript-eslint/types': 8.44.1
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
@@ -9374,7 +9374,7 @@ snapshots:
   '@typescript-eslint/project-service@8.45.0(typescript@5.9.3)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.45.0(typescript@5.9.3)
-      '@typescript-eslint/types': 8.46.0
+      '@typescript-eslint/types': 8.45.0
       debug: 4.4.3
       typescript: 5.9.3
     transitivePeerDependencies:
