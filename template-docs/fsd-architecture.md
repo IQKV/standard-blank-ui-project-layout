@@ -1,6 +1,7 @@
 # Feature-Sliced Design Architecture
 
-This project has been refactored to follow Feature-Sliced Design (FSD) principles. FSD is a methodology for organizing frontend applications that promotes maintainability, scalability, and team collaboration.
+This project has been refactored to follow Feature-Sliced Design (FSD) principles. FSD is a methodology for organizing frontend applications that promotes maintainability, scalability, and
+team collaboration.
 
 ## Project Structure
 

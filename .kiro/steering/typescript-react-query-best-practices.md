@@ -30,11 +30,13 @@ This document outlines the best practices for using react-query in React applica
   │ └── ...
   ├── ...
 
-- **Dedicated API Service Layer:** Abstract API interaction logic into separate modules. This allows for easier testing and decoupling of components from specific API implementations. Consider using a dedicated `api` directory within each feature.
+- **Dedicated API Service Layer:** Abstract API interaction logic into separate modules. This allows for easier testing and decoupling of components from specific API implementations.
+  Consider using a dedicated `api` directory within each feature.
 
 ### 1.2 File Naming Conventions
 
-- **Consistent Naming:** Follow a consistent naming convention for react-query hooks. Prefix hooks with `use` and postfix with `Query` or `Mutation` to clearly indicate their purpose (e.g., `usePostsQuery`, `useUpdatePostMutation`).
+- **Consistent Naming:** Follow a consistent naming convention for react-query hooks. Prefix hooks with `use` and postfix with `Query` or `Mutation` to clearly indicate their purpose (e.g.,
+  `usePostsQuery`, `useUpdatePostMutation`).
 
 - **Descriptive Names:** Use descriptive names for files and variables to improve code readability. For example, `useFetchUsersQuery.ts` is more informative than `useUsers.ts`.
 
@@ -55,13 +57,15 @@ This document outlines the best practices for using react-query in React applica
 
 ### 1.4 Component Architecture
 
-- **Presentational and Container Components:** Separate presentational components (UI) from container components (data fetching and state management). This improves testability and reusability.
+- **Presentational and Container Components:** Separate presentational components (UI) from container components (data fetching and state management). This improves testability and
+  reusability.
 
 - **Composition:** Use component composition to build complex UIs from smaller, reusable components. Leverage React Context for shared state when appropriate.
 
 ### 1.5 Code Splitting Strategies
 
-- **Route-Based Splitting:** Split your application into separate bundles based on routes. This reduces the initial load time and improves perceived performance. React.lazy and React.Suspense can assist with this.
+- **Route-Based Splitting:** Split your application into separate bundles based on routes. This reduces the initial load time and improves perceived performance. React.lazy and
+  React.Suspense can assist with this.
 
 - **Component-Based Splitting:** Split large components into smaller chunks that can be loaded on demand. This can improve the performance of individual pages or components.
 
@@ -69,9 +73,11 @@ This document outlines the best practices for using react-query in React applica
 
 ### 2.1 Design Patterns Specific to react-query
 
-- **Custom Hooks for Data Fetching:** As highlighted earlier, encapsulating react-query logic within custom hooks. This promotes reusability and separation of concerns. These hooks will typically return the result of a `useQuery` or `useMutation` call.
+- **Custom Hooks for Data Fetching:** As highlighted earlier, encapsulating react-query logic within custom hooks. This promotes reusability and separation of concerns. These hooks will
+  typically return the result of a `useQuery` or `useMutation` call.
 
-- **Optimistic Updates:** Implement optimistic updates to improve perceived performance. This involves updating the UI before the API request completes, and then reverting the changes if the request fails. react-query provides utilities like `onMutate` to handle this.
+- **Optimistic Updates:** Implement optimistic updates to improve perceived performance. This involves updating the UI before the API request completes, and then reverting the changes if the
+  request fails. react-query provides utilities like `onMutate` to handle this.
 
 - **Pessimistic Updates:** Update the UI only after a successful response from the API. Simpler to implement but provides a less snappy user experience.
 
@@ -79,7 +85,8 @@ This document outlines the best practices for using react-query in React applica
 
 - **Prefetching Data:** Prefetch data for routes or components that the user is likely to visit next. This can significantly improve the user experience. Use `queryClient.prefetchQuery`.
 
-- **Pagination and Infinite Scrolling:** Implement pagination and infinite scrolling to handle large datasets efficiently. react-query provides hooks like `useInfiniteQuery` to simplify this.
+- **Pagination and Infinite Scrolling:** Implement pagination and infinite scrolling to handle large datasets efficiently. react-query provides hooks like `useInfiniteQuery` to simplify
+  this.
 
 - **Dependent Queries:** Fetch data based on the result of a previous query. Use the `enabled` option in `useQuery` to conditionally execute queries.
 
@@ -98,13 +105,16 @@ This document outlines the best practices for using react-query in React applica
 
 - **Over-fetching Data:** Fetch only the data that is required by the component. Use GraphQL or API query parameters to reduce the amount of data transferred.
 
-- **Deeply Nested Queries:** Avoid deeply nesting queries, as this can lead to performance issues and make the code difficult to understand. Consider combining queries or using a different approach.
+- **Deeply Nested Queries:** Avoid deeply nesting queries, as this can lead to performance issues and make the code difficult to understand. Consider combining queries or using a different
+  approach.
 
 ### 2.4 State Management Best Practices
 
-- **Local vs. Global State:** Determine whether data should be stored in local component state or in a global state management solution. Use local state for component-specific data and global state for data that needs to be shared across multiple components.
+- **Local vs. Global State:** Determine whether data should be stored in local component state or in a global state management solution. Use local state for component-specific data and
+  global state for data that needs to be shared across multiple components.
 
-- **react-query as a State Manager:** Leverage react-query's built-in caching and state management capabilities. Avoid using external state management libraries for data that is already managed by react-query.
+- **react-query as a State Manager:** Leverage react-query's built-in caching and state management capabilities. Avoid using external state management libraries for data that is already
+  managed by react-query.
 
 ### 2.5 Error Handling Patterns
 
@@ -120,7 +130,8 @@ This document outlines the best practices for using react-query in React applica
 
 - **Query Invalidation:** Invalidate queries when data changes. This ensures that the UI is always up-to-date.
 
-- **Stale-While-Revalidate:** Use the `staleTime` and `cacheTime` options to configure how long data should be considered fresh. `staleWhileRevalidate` allows the UI to display cached data while fetching fresh data in the background.
+- **Stale-While-Revalidate:** Use the `staleTime` and `cacheTime` options to configure how long data should be considered fresh. `staleWhileRevalidate` allows the UI to display cached data
+  while fetching fresh data in the background.
 
 - **Window Focus Refetching:** Configure refetching on window focus to keep data fresh when the user switches back to the application.
 
@@ -156,7 +167,8 @@ This document outlines the best practices for using react-query in React applica
 
 - **Cross-Site Scripting (XSS):** Sanitize user input to prevent XSS attacks. Use a library like DOMPurify to sanitize HTML.
 
-- **Cross-Site Request Forgery (CSRF):** Implement CSRF protection to prevent attackers from performing actions on behalf of the user. Use a library or framework that provides CSRF protection.
+- **Cross-Site Request Forgery (CSRF):** Implement CSRF protection to prevent attackers from performing actions on behalf of the user. Use a library or framework that provides CSRF
+  protection.
 
 - **Injection Attacks:** Protect against injection attacks by validating user input and using parameterized queries.
 
@@ -168,7 +180,8 @@ This document outlines the best practices for using react-query in React applica
 
 ### 4.3 Authentication and Authorization Patterns
 
-- **JSON Web Tokens (JWT):** Use JWTs for authentication. Store the JWT in a secure cookie or in local storage (with caution). Use `httpOnly` flag on cookies containing JWTs when possible to prevent client-side script access.
+- **JSON Web Tokens (JWT):** Use JWTs for authentication. Store the JWT in a secure cookie or in local storage (with caution). Use `httpOnly` flag on cookies containing JWTs when possible to
+  prevent client-side script access.
 
 - **Role-Based Access Control (RBAC):** Implement RBAC to control access to different parts of the application. Use middleware or custom hooks to check user roles.
 
@@ -202,7 +215,8 @@ This document outlines the best practices for using react-query in React applica
 
 ### 5.3 End-to-End Testing
 
-- **Simulate User Interactions:** Use end-to-end testing frameworks like Cypress or Playwright to simulate user interactions and verify that the application is working correctly from the user's perspective.
+- **Simulate User Interactions:** Use end-to-end testing frameworks like Cypress or Playwright to simulate user interactions and verify that the application is working correctly from the
+  user's perspective.
 
 - **Test Critical Paths:** Focus on testing critical user flows, such as login, registration, and checkout.
 

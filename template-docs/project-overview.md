@@ -2,7 +2,8 @@
 
 ## 📋 **Project Summary**
 
-This is a modern React application template built with **Feature-Sliced Design (FSD)** architecture, providing a scalable foundation for building complex frontend applications with clear separation of concerns and maintainable code structure.
+This is a modern React application template built with **Feature-Sliced Design (FSD)** architecture, providing a scalable foundation for building complex frontend applications with clear
+separation of concerns and maintainable code structure.
 
 ## 🎯 **Key Objectives**
 

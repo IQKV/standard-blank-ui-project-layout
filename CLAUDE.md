@@ -14,7 +14,8 @@
 
 ## Introduction
 
-This document outlines best practices for developing with React 19, TanStack Router, and TanStack Query in this project. Following these guidelines will help ensure code consistency, maintainability, and performance across the project.
+This document outlines best practices for developing with React 19, TanStack Router, and TanStack Query in this project. Following these guidelines will help ensure code consistency,
+maintainability, and performance across the project.
 
 ## React Best Practices
 
@@ -23,6 +24,7 @@ This document outlines best practices for developing with React 19, TanStack Rou
 - **Function Components**: Use function components with hooks instead of class components.
 - **Small, Focused Components**: Create small, reusable components with a single responsibility.
 - **Custom Hooks**: Extract complex logic into custom hooks to promote reusability.
+
 ```tsx
 // Good: Small, focused component
 function UserAvatar({ user }) {
@@ -43,22 +45,26 @@ return () => {
 return isOnline;
 }
 ```
+
 ### State Management
 
 - **Local State**: Use `useState` for component-specific state.
 - **Context API**: Use React Context for sharing state across deeply nested components.
 - **State Initialization**: Use lazy initialization for expensive state computations.
+
 ```tsx
 // Good: Lazy state initialization
 const [users, setUsers] = useState(() => {
 return computeInitialUsers(); // Only called on first render
 });
 ```
+
 ### Performance
 
 - **Memoization**: Use `useMemo` for expensive calculations and `useCallback` for functions passed as props.
 - **React.memo**: Wrap components with `React.memo()` to prevent unnecessary re-renders when props haven't changed.
 - **Virtualization**: Use virtualization for large lists (consider libraries like `react-window`).
+
 ```tsx
 // Good: Memoized expensive calculation
 const sortedItems = useMemo(() => {
@@ -70,6 +76,7 @@ const handleClick = useCallback(() => {
 // Handle click logic
 }, [dependencies]);
 ```
+
 ### React 19 Features
 
 - **Leverage React 19's new features**: Utilize the latest React 19 features like improved Suspense, automatic batching, and the new React compiler.
@@ -81,6 +88,7 @@ const handleClick = useCallback(() => {
 
 - **Feature-Based Routes**: Organize routes by feature rather than route type.
 - **Code Splitting**: Utilize the built-in code-splitting capabilities of TanStack Router.
+
 ```tsx
 // routes/users/index.tsx
 import { createFileRoute } from '@tanstack/react-router';
@@ -92,11 +100,13 @@ component: UsersComponent,
 // Lazily loaded route
 const UsersComponent = React.lazy(() => import('./UsersComponent'));
 ```
+
 ### Route Configuration
 
 - **Type Safety**: Leverage TanStack Router's type safety features.
 - **Consistent Naming**: Use a consistent naming convention for route files.
 - **Search Params**: Define search params properly with validation.
+
 ```tsx
 export const Route = createFileRoute('/users/')({
 validateSearch: (search) => {
@@ -108,10 +118,12 @@ pageSize: Number(search.pageSize) || 10,
 component: UsersComponent,
 });
 ```
+
 ### Navigation
 
 - **Link Component**: Use the `Link` component for navigation instead of anchor tags.
 - **Programmatic Navigation**: Use the `useNavigate` hook for programmatic navigation.
+
 ```tsx
 // Good: Using Link component
 <Link to="/users" search={{ page: 2 }}>
@@ -122,10 +134,12 @@ Next Page
 const navigate = useNavigate();
 navigate({ to: '/users', search: { page: 2 } });
 ```
+
 ### Route Guards
 
 - **Authentication**: Implement route guards for authentication and authorization.
 - **Data Requirements**: Ensure required data is available before rendering components.
+
 ```tsx
 export const Route = createFileRoute('/admin/')({
 beforeLoad: async ({ context }) => {
@@ -138,12 +152,14 @@ return { user };
 component: AdminComponent,
 });
 ```
+
 ## TanStack Query Best Practices
 
 ### Query Organization
 
 - **Feature-Based Queries**: Group queries by feature.
 - **Custom Hooks**: Encapsulate query logic in custom hooks.
+
 ```tsx
 // hooks/users/useUsersQuery.ts
 export function useUsersQuery(page = 1) {
@@ -153,10 +169,12 @@ queryFn: () => fetchUsers(page),
 });
 }
 ```
+
 ### Query Keys
 
 - **Structured Keys**: Use structured query keys to enable automatic refetching.
 - **Consistency**: Maintain consistent query key patterns throughout the application.
+
 ```tsx
 // Good: Structured query keys
 useQuery({
@@ -164,10 +182,12 @@ queryKey: ['users', { id, filters }],
 queryFn: () => fetchUser(id, filters),
 });
 ```
+
 ### Mutations
 
 - **Optimistic Updates**: Use optimistic updates for mutations to improve perceived performance.
 - **Error Handling**: Implement robust error handling for mutations.
+
 ```tsx
 // Good: Mutation with optimistic update
 const queryClient = useQueryClient();
@@ -199,11 +219,13 @@ queryClient.invalidateQueries({ queryKey: ['users', variables.id] });
 },
 });
 ```
+
 ### Caching Strategy
 
 - **Stale Time**: Configure appropriate `staleTime` for queries based on data volatility.
 - **Cache Time**: Configure `gcTime` (previously cacheTime) to control cache lifetime.
 - **Refetch Strategies**: Use appropriate refetch strategies (on window focus, interval, etc.).
+
 ```tsx
 useQuery({
 queryKey: ['users'],
@@ -214,11 +236,13 @@ refetchOnWindowFocus: true,
 refetchOnMount: true,
 });
 ```
+
 ### Performance
 
 - **Prefetching**: Implement data prefetching for anticipated user actions.
 - **Pagination/Infinite Queries**: Use `useInfiniteQuery` for infinite scrolling.
 - **Parallel Queries**: Run independent queries in parallel.
+
 ```tsx
 // Good: Prefetching data
 const prefetchUser = (id) => {
@@ -235,12 +259,14 @@ queryFn: ({ pageParam = 0 }) => fetchProjects(pageParam),
 getNextPageParam: (lastPage) => lastPage.nextCursor,
 });
 ```
+
 ## Project Structure
 
 ### Directory Organization
 
 - **Feature-Based**: Organize code by feature rather than type.
 - **Colocate Related Files**: Keep related files (components, hooks, tests) together.
+
 ```
 
 src/
@@ -262,10 +288,12 @@ src/
 ├── routes/
 └── main.tsx
 ```
+
 ### API Layer
 
 - **Abstraction**: Create a dedicated API layer to separate data fetching logic from UI components.
 - **Consistency**: Use consistent patterns for API requests.
+
 ```tsx
 // api/users.ts
 export async function fetchUsers(page = 1) {
@@ -278,12 +306,14 @@ const response = await axios.post('/api/users', userData);
 return response.data;
 }
 ```
+
 ## Performance Optimization
 
 ### Code Splitting
 
 - **Route-Based**: Utilize TanStack Router's built-in code splitting.
 - **Component-Based**: Lazy-load heavy components.
+
 ```tsx
 // Lazy loading a component
 const HeavyComponent = React.lazy(() => import('./HeavyComponent'));
@@ -296,10 +326,12 @@ return (
 );
 }
 ```
+
 ### Bundle Size
 
 - **Tree Shaking**: Ensure proper imports to enable tree shaking.
 - **Dependencies**: Regularly audit dependencies to identify large or unnecessary packages.
+
 ```tsx
 // Good: Named imports for better tree shaking
 import { useState, useEffect } from 'react';
@@ -310,11 +342,13 @@ import _ from 'lodash';
 // Good: Import only what you need
 import debounce from 'lodash/debounce';
 ```
+
 ### Rendering Optimization
 
 - **Avoid Unnecessary Re-renders**: Use `React.memo`, `useMemo`, and `useCallback` appropriately.
 - **Virtualization**: Implement virtualization for long lists.
 - **Debouncing/Throttling**: Apply debouncing or throttling to expensive operations.
+
 ```tsx
 // Debounce input handler
 const debouncedChangeHandler = useCallback(
@@ -324,6 +358,7 @@ setSearchQuery(value);
 []
 );
 ```
+
 ## Testing
 
 ### Unit Testing
@@ -331,6 +366,7 @@ setSearchQuery(value);
 - **Component Tests**: Test components in isolation.
 - **Hook Tests**: Test custom hooks independently.
 - **Test Structure**: Follow the Arrange-Act-Assert pattern.
+
 ```tsx
 // Testing a component
 test('renders user information correctly', () => {
@@ -344,10 +380,12 @@ render(<UserProfile user={user} />);
 expect(screen.getByText('John Doe')).toBeInTheDocument();
 });
 ```
+
 ### Integration Testing
 
 - **User Flows**: Test common user flows.
 - **Query Mocking**: Use MSW (Mock Service Worker) to mock API requests.
+
 ```tsx
 // Setting up MSW for tests
 const server = setupServer(
@@ -360,6 +398,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 ```
+
 ### E2E Testing
 
 - **Critical Paths**: Identify and test critical user paths with Playwright.
@@ -382,6 +421,7 @@ afterAll(() => server.close());
 
 - **Sanitization**: Sanitize user-generated content before rendering.
 - **XSS Prevention**: Avoid using `dangerouslySetInnerHTML` when possible.
+
 ```tsx
 // Good: Using a sanitization library
 import sanitizeHtml from 'sanitize-html';
@@ -391,6 +431,7 @@ const sanitizedContent = sanitizeHtml(content);
 return <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
 }
 ```
+
 ## Additional Resources
 
 - [React Documentation](https://react.dev/)
@@ -398,4 +439,5 @@ return <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} />;
 - [TanStack Query Documentation](https://tanstack.com/query/latest)
 - [React Performance Optimization](https://react.dev/learn/render-and-commit)
 - [Web Security Best Practices](https://owasp.org/www-project-web-security-testing-guide/)
+
 ```

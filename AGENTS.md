@@ -2,7 +2,8 @@
 
 ## Project Overview
 
-This is a modern React 19 starter template with TypeScript, Vite, TanStack Router & Query, and Feature-Sliced Design (FSD) architecture. The project is designed for building scalable, maintainable Single Page Applications with comprehensive testing, internationalization, and modern development practices.
+This is a modern React 19 starter template with TypeScript, Vite, TanStack Router & Query, and Feature-Sliced Design (FSD) architecture. The project is designed for building scalable,
+maintainable Single Page Applications with comprehensive testing, internationalization, and modern development practices.
 
 ## 🏗️ Architecture & Design Patterns
 
