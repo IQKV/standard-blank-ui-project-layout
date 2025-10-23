@@ -169,7 +169,7 @@
     "jiti": "2.6.1",
     "jsdom": "^27.0.1",
     "knip": "5.66.2",
-    "lint-staged": "^16.2.5",
+    "lint-staged": "^16.2.6",
     "lru-cache": "^11.2.2",
     "msw": "^2.11.6",
     "msw-storybook-addon": "^2.0.6",
