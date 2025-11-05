@@ -27,8 +27,8 @@ importers:
         specifier: ^5.5.1
         version: 5.5.1(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))(react@19.2.0)
       '@lingui/react':
-        specifier: ^5.5.1
-        version: 5.5.1(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))(react@19.2.0)
+        specifier: ^5.5.2
+        version: 5.5.2(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))(react@19.2.0)
       '@microsoft/fetch-event-source':
         specifier: ^2.0.1
         version: 2.0.1
@@ -1289,6 +1289,19 @@ packages:
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.5.1
+      babel-plugin-macros: 2 || 3
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@lingui/babel-plugin-lingui-macro':
+        optional: true
+      babel-plugin-macros:
+        optional: true
+
+  '@lingui/react@5.5.2':
+    resolution: {integrity: sha512-ZX0ubBM66m11lVErQNP3EfWbfVgfW74Lm/iOXeT1kHm+HuwIOrbulDD0v7JsbeH6TUSE+LXYImtGuEwnN9IxGQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@lingui/babel-plugin-lingui-macro': 5.5.2
       babel-plugin-macros: 2 || 3
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     peerDependenciesMeta:
@@ -7860,6 +7873,14 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.28.4
       '@lingui/core': 5.5.1(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))
+      react: 19.2.0
+    optionalDependencies:
+      '@lingui/babel-plugin-lingui-macro': 5.5.2(typescript@5.9.3)
+
+  '@lingui/react@5.5.2(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))(react@19.2.0)':
+    dependencies:
+      '@babel/runtime': 7.28.4
+      '@lingui/core': 5.5.2(@lingui/babel-plugin-lingui-macro@5.5.2(typescript@5.9.3))
       react: 19.2.0
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.5.2(typescript@5.9.3)
