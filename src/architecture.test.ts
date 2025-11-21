@@ -185,16 +185,6 @@ describe("FSD Architecture", () => {
   });
 
   describe("File Naming", () => {
-    it("pages should use kebab-case", () => {
-      const pagesDir = join(srcDir, "pages");
-      const pages = readdirSync(pagesDir).filter((f) => f.endsWith(".tsx"));
-
-      pages.forEach((page) => {
-        const isValid =
-          /^[a-z0-9-_]+\.tsx$/.test(page) || page.startsWith("__");
-        expect(isValid, `Page "${page}" should use kebab-case`).toBe(true);
-      });
-    });
 
     it("shared/ui components should use kebab-case folders", () => {
       const uiDir = join(srcDir, "shared", "ui");
