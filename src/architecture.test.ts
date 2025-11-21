@@ -185,7 +185,6 @@ describe("FSD Architecture", () => {
   });
 
   describe("File Naming", () => {
-
     it("shared/ui components should use kebab-case folders", () => {
       const uiDir = join(srcDir, "shared", "ui");
       const components = readdirSync(uiDir).filter((f) =>
