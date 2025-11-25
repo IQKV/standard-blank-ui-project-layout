@@ -21,8 +21,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.66.1(react@19.2.0))
       '@lingui/core':
-        specifier: ^5.5.2
-        version: 5.5.2(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3))
+        specifier: ^5.6.0
+        version: 5.6.0(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3))
       '@lingui/macro':
         specifier: ^5.5.2
         version: 5.5.2(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3))(react@19.2.0)
@@ -158,7 +158,7 @@ importers:
         version: 5.6.0(typescript@5.9.3)
       '@lingui/swc-plugin':
         specifier: ^5.6.1
-        version: 5.6.1(@lingui/core@5.5.2(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3)))(@swc/core@1.13.5)
+        version: 5.6.1(@lingui/core@5.6.0(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3)))(@swc/core@1.13.5)
       '@lingui/vite-plugin':
         specifier: ^5.6.0
         version: 5.6.0(typescript@5.9.3)(vite@7.2.4(@types/node@24.10.1)(jiti@2.6.1)(tsx@4.20.6)(yaml@2.8.1))
@@ -7846,9 +7846,9 @@ snapshots:
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.6.0(typescript@5.9.3)
 
-  '@lingui/swc-plugin@5.6.1(@lingui/core@5.5.2(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3)))(@swc/core@1.13.5)':
+  '@lingui/swc-plugin@5.6.1(@lingui/core@5.6.0(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3)))(@swc/core@1.13.5)':
     dependencies:
-      '@lingui/core': 5.5.2(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3))
+      '@lingui/core': 5.6.0(@lingui/babel-plugin-lingui-macro@5.6.0(typescript@5.9.3))
     optionalDependencies:
       '@swc/core': 1.13.5
 
