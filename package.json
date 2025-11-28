@@ -71,7 +71,7 @@
     "@hookform/resolvers": "^5.2.2",
     "@lingui/core": "^5.6.0",
     "@lingui/macro": "^5.6.0",
-    "@lingui/react": "^5.5.2",
+    "@lingui/react": "^5.6.0",
     "@microsoft/fetch-event-source": "^2.0.1",
     "@stripe/react-stripe-js": "^4.0.2",
     "@stripe/stripe-js": "^7.9.0",
