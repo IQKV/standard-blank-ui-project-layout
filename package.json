@@ -190,7 +190,7 @@
     "tsarch": "^5.4.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
-    "vite": "^7.2.4",
+    "vite": "^7.2.6",
     "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-copy": "^0.1.6",
     "vite-plugin-image-optimizer": "^2.0.3",
