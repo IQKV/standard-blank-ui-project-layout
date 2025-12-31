@@ -76,7 +76,7 @@
     "@stripe/react-stripe-js": "^4.0.2",
     "@stripe/stripe-js": "^7.9.0",
     "@tabler/icons-react": "^3.36.0",
-    "@tanstack/react-query": "^5.90.12",
+    "@tanstack/react-query": "^5.90.16",
     "@tanstack/react-router": "^1.144.0",
     "@tanstack/zod-adapter": "^1.143.6",
     "@types/sanitize-html": "^2.16.0",
