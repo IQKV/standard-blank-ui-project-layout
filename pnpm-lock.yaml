@@ -24,8 +24,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(react-hook-form@7.71.1(react@19.2.1))
       '@lingui/core':
-        specifier: ^5.6.0
-        version: 5.6.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))
+        specifier: ^5.8.0
+        version: 5.8.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))
       '@lingui/macro':
         specifier: ^5.6.1
         version: 5.6.1(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))(react@19.2.1)
@@ -158,7 +158,7 @@ importers:
         version: 5.7.0(typescript@5.9.3)
       '@lingui/swc-plugin':
         specifier: ^5.6.1
-        version: 5.6.1(@lingui/core@5.6.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3)))(@swc/core@1.13.5)
+        version: 5.6.1(@lingui/core@5.8.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3)))(@swc/core@1.13.5)
       '@lingui/vite-plugin':
         specifier: ^5.6.1
         version: 5.6.1(typescript@5.9.3)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))
@@ -497,6 +497,10 @@ packages:
 
   '@babel/runtime@7.28.4':
     resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.28.6':
+    resolution: {integrity: sha512-05WQkdpL9COIMz4LjTxGpPNCdlpyimKppYNoJ5Di5EUObifl8t4tuLuUBBZEpoLYOmfvIWrsp9fCl0HoPRVTdA==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.2':
@@ -1387,18 +1391,6 @@ packages:
     resolution: {integrity: sha512-O0TWVfR99H+7SUI4pYGNkCUU1t2WcIwgDTTX3VKq6wH3A+P90QyAJLOXj+/s0JVkc1I37EL23Wtca5QkFBLtOg==}
     engines: {node: '>=20.0.0'}
 
-  '@lingui/core@5.6.0':
-    resolution: {integrity: sha512-s+WOjytLPBi1O3VT8wBklteK8PPPrmuox7A2mEPUO0QOqfFK4mzt5Bdok4RK+MCV61ampLByLlOUwS/NQEGWoQ==}
-    engines: {node: '>=20.0.0'}
-    peerDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.6.0
-      babel-plugin-macros: 2 || 3
-    peerDependenciesMeta:
-      '@lingui/babel-plugin-lingui-macro':
-        optional: true
-      babel-plugin-macros:
-        optional: true
-
   '@lingui/core@5.6.1':
     resolution: {integrity: sha512-PJMapI0sC+Dd8BgL7/EHnMk0TuBXGkbC5s9osbUofev40mZW9BGIbeMspkHpdcm+s1RlVlStIAm2YCcovbN3RA==}
     engines: {node: '>=20.0.0'}
@@ -1416,6 +1408,18 @@ packages:
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.7.0
+      babel-plugin-macros: 2 || 3
+    peerDependenciesMeta:
+      '@lingui/babel-plugin-lingui-macro':
+        optional: true
+      babel-plugin-macros:
+        optional: true
+
+  '@lingui/core@5.8.0':
+    resolution: {integrity: sha512-YHl7ej5jgQqCjvFWVQBWZY46SSROycHDx760KE1iOxp4dpzAAwHeKbXxERz3Tgu+o+aIIY2Pg3G9GLeOGiFaWA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@lingui/babel-plugin-lingui-macro': 5.8.0
       babel-plugin-macros: 2 || 3
     peerDependenciesMeta:
       '@lingui/babel-plugin-lingui-macro':
@@ -1443,16 +1447,16 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  '@lingui/message-utils@5.6.0':
-    resolution: {integrity: sha512-g/Jyf5CzwdYd8KxgyFG/UNePvLsp32yndvb9sAhdS9CscgY3T+0IYviOEB36AaxZcftB51zhdGCMdscoEDiChg==}
-    engines: {node: '>=20.0.0'}
-
   '@lingui/message-utils@5.6.1':
     resolution: {integrity: sha512-gtNniuObzVTqEmzp/Ra6VUrgkuEeLMruVK3q2UNANu1UAvPKcrP4vHwpWlRDDz9lXH4pbE6F+4S88wEdGMWToQ==}
     engines: {node: '>=20.0.0'}
 
   '@lingui/message-utils@5.7.0':
     resolution: {integrity: sha512-yJKzPjJCLz8EkjqExxEBrioiKZtgxgLubOwzjSiZ8n1omuoyeRAqdKkmeOP/fPW2QpkQv33qLqfLtBhrIVJkeg==}
+    engines: {node: '>=20.0.0'}
+
+  '@lingui/message-utils@5.8.0':
+    resolution: {integrity: sha512-w6GtFPnd3QDsRHFvsITcflueeB/lLusB7tmwhXt9Vo3RV1ffRmCraAbVS1+iuRYTDC/Yq35UyweHwMG7Q2nAYw==}
     engines: {node: '>=20.0.0'}
 
   '@lingui/react@5.6.1':
@@ -6445,6 +6449,7 @@ packages:
   tar@6.2.1:
     resolution: {integrity: sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==}
     engines: {node: '>=10'}
+    deprecated: Old versions of tar are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exhorbitant rates) by contacting i@izs.me
 
   test-exclude@7.0.1:
     resolution: {integrity: sha512-pFYqmTw68LXVjeWJMST4+borgQP2AyMNbg1BpZh9LbyhUeNkeaPF9gzfPGUAnSMV3qPYdWUwDIjjCLiSDOl7vg==}
@@ -7199,6 +7204,8 @@ snapshots:
       '@babel/helper-plugin-utils': 7.27.1
 
   '@babel/runtime@7.28.4': {}
+
+  '@babel/runtime@7.28.6': {}
 
   '@babel/template@7.27.2':
     dependencies:
@@ -7979,7 +7986,7 @@ snapshots:
   '@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3)':
     dependencies:
       '@babel/core': 7.28.5
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
       '@babel/types': 7.28.5
       '@lingui/conf': 5.6.1(typescript@5.9.3)
       '@lingui/core': 5.6.1(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))
@@ -8005,7 +8012,7 @@ snapshots:
       '@babel/core': 7.28.5
       '@babel/generator': 7.28.5
       '@babel/parser': 7.28.5
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
       '@babel/types': 7.28.5
       '@lingui/babel-plugin-extract-messages': 5.6.1
       '@lingui/babel-plugin-lingui-macro': 5.6.1(typescript@5.9.3)
@@ -8070,7 +8077,7 @@ snapshots:
 
   '@lingui/conf@5.6.1(typescript@5.9.3)':
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
       cosmiconfig: 8.3.6(typescript@5.9.3)
       jest-validate: 29.7.0
       jiti: 2.6.1
@@ -8088,16 +8095,9 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@lingui/core@5.6.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))':
-    dependencies:
-      '@babel/runtime': 7.28.4
-      '@lingui/message-utils': 5.6.0
-    optionalDependencies:
-      '@lingui/babel-plugin-lingui-macro': 5.6.1(typescript@5.9.3)
-
   '@lingui/core@5.6.1(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))':
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
       '@lingui/message-utils': 5.6.1
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.6.1(typescript@5.9.3)
@@ -8108,6 +8108,13 @@ snapshots:
       '@lingui/message-utils': 5.7.0
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.7.0(typescript@5.9.3)
+
+  '@lingui/core@5.8.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))':
+    dependencies:
+      '@babel/runtime': 7.28.6
+      '@lingui/message-utils': 5.8.0
+    optionalDependencies:
+      '@lingui/babel-plugin-lingui-macro': 5.6.1(typescript@5.9.3)
 
   '@lingui/format-po@5.6.1(typescript@5.9.3)':
     dependencies:
@@ -8136,17 +8143,17 @@ snapshots:
     transitivePeerDependencies:
       - react
 
-  '@lingui/message-utils@5.6.0':
-    dependencies:
-      '@messageformat/parser': 5.1.1
-      js-sha256: 0.10.1
-
   '@lingui/message-utils@5.6.1':
     dependencies:
       '@messageformat/parser': 5.1.1
       js-sha256: 0.10.1
 
   '@lingui/message-utils@5.7.0':
+    dependencies:
+      '@messageformat/parser': 5.1.1
+      js-sha256: 0.10.1
+
+  '@lingui/message-utils@5.8.0':
     dependencies:
       '@messageformat/parser': 5.1.1
       js-sha256: 0.10.1
@@ -8159,9 +8166,9 @@ snapshots:
     optionalDependencies:
       '@lingui/babel-plugin-lingui-macro': 5.6.1(typescript@5.9.3)
 
-  '@lingui/swc-plugin@5.6.1(@lingui/core@5.6.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3)))(@swc/core@1.13.5)':
+  '@lingui/swc-plugin@5.6.1(@lingui/core@5.8.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3)))(@swc/core@1.13.5)':
     dependencies:
-      '@lingui/core': 5.6.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))
+      '@lingui/core': 5.8.0(@lingui/babel-plugin-lingui-macro@5.6.1(typescript@5.9.3))
     optionalDependencies:
       '@swc/core': 1.13.5
 
@@ -9016,7 +9023,7 @@ snapshots:
   '@testing-library/dom@10.4.0':
     dependencies:
       '@babel/code-frame': 7.27.1
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       chalk: 4.1.2
@@ -12818,7 +12825,7 @@ snapshots:
 
   polished@4.3.1:
     dependencies:
-      '@babel/runtime': 7.28.4
+      '@babel/runtime': 7.28.6
 
   possible-typed-array-names@1.1.0: {}
 
