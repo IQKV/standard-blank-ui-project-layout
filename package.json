@@ -182,7 +182,7 @@
     "prop-types": "^15.8.1",
     "release-it": "^19.2.4",
     "release-it-pnpm": "^4.6.6",
-    "sort-package-json": "^3.6.0",
+    "sort-package-json": "^3.6.1",
     "storybook": "^8.6.15",
     "storybook-dark-mode": "^4.0.2",
     "stylelint": "^16.26.1",
