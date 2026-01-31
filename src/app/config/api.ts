@@ -6,6 +6,6 @@ export interface ApiConfig {
 }
 
 export const apiConfig: ApiConfig = {
-  baseUrl: getRuntimeConfig("VITE_API_URL_SERVER"),
+  baseUrl: getRuntimeConfig("VITE_API_SERVER_URL"),
   mockApi: getRuntimeConfig("VITE_MOCK_API") === "true",
 };

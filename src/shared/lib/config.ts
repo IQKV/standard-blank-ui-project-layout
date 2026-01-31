@@ -1,7 +1,7 @@
 import { ConfigKeys } from "@/shared/types";
 
 export const clientBuildEnv: { [K in ConfigKeys]: string } = {
-  VITE_API_URL_SERVER: import.meta.env.VITE_API_URL_SERVER,
+  VITE_API_SERVER_URL: import.meta.env.VITE_API_SERVER_URL,
 };
 
 export const getConfig = (
