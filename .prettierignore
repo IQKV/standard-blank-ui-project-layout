@@ -8,6 +8,7 @@ routeTree.gen.ts
 .git
 build/
 dist/
+locales/*.ts
 
 .eslintrc.cjs
 .prettierrc.cjs
