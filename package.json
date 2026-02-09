@@ -80,7 +80,7 @@
     "@tanstack/react-router": "^1.159.4",
     "@tanstack/zod-adapter": "^1.157.16",
     "@types/sanitize-html": "^2.16.0",
-    "axios": "^1.13.4",
+    "axios": "^1.13.5",
     "chroma-js": "^3.2.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.1",
