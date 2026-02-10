@@ -78,7 +78,7 @@
     "@tabler/icons-react": "^3.36.1",
     "@tanstack/react-query": "^5.90.20",
     "@tanstack/react-router": "^1.159.5",
-    "@tanstack/zod-adapter": "^1.159.4",
+    "@tanstack/zod-adapter": "^1.159.5",
     "@types/sanitize-html": "^2.16.0",
     "axios": "^1.13.5",
     "chroma-js": "^3.2.0",
