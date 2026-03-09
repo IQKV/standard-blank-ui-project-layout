@@ -403,8 +403,8 @@ pnpm preview          # Preview production build
 # Code Quality
 pnpm lint             # Run ESLint
 pnpm lint:fix         # Fix ESLint issues
-pnpm prettier:check   # Check Prettier formatting
-pnpm prettier:write   # Format code with Prettier
+pnpm formatter:check   # Check Prettier formatting
+pnpm formatter:write   # Format code with Prettier
 pnpm type-check       # TypeScript type checking
 
 # Testing

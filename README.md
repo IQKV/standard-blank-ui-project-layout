@@ -114,7 +114,7 @@ pnpm dev
 | `pnpm build`          | Build for production                       |
 | `pnpm preview`        | Preview production build                   |
 | `pnpm test`           | Run tests                                  |
-| `pnpm prettier:write` | Run Prettier over the code                 |
+| `pnpm formatter:write`| Run Prettier over the code                 |
 | `pnpm lint`           | Lint code                                  |
 | `pnpm type-check`     | Check types                                |
 | `pnpm release`        | Automate versioning and package publishing |

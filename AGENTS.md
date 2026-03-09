@@ -599,7 +599,7 @@ pnpm lint
 pnpm lint:fix
 
 # Format code
-pnpm prettier:write
+pnpm formatter:write
 
 # Type checking
 pnpm type-check

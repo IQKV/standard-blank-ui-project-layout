@@ -167,7 +167,7 @@ pnpm storybook        # Start Storybook
 # Quality Assurance
 pnpm lint             # Lint code
 pnpm type-check       # Check TypeScript
-pnpm prettier:check   # Check formatting
+pnpm formatter:check   # Check formatting
 
 # Production
 pnpm build            # Build for production
