@@ -108,16 +108,16 @@ pnpm dev
 
 ### 📃 Available Scripts
 
-| Command               | Description                                |
-| --------------------- | ------------------------------------------ |
-| `pnpm dev`            | Start development server                   |
-| `pnpm build`          | Build for production                       |
-| `pnpm preview`        | Preview production build                   |
-| `pnpm test`           | Run tests                                  |
-| `pnpm formatter:write`| Run Prettier over the code                 |
-| `pnpm lint`           | Lint code                                  |
-| `pnpm type-check`     | Check types                                |
-| `pnpm release`        | Automate versioning and package publishing |
+| Command                | Description                                |
+| ---------------------- | ------------------------------------------ |
+| `pnpm dev`             | Start development server                   |
+| `pnpm build`           | Build for production                       |
+| `pnpm preview`         | Preview production build                   |
+| `pnpm test`            | Run tests                                  |
+| `pnpm formatter:write` | Run Prettier over the code                 |
+| `pnpm lint`            | Lint code                                  |
+| `pnpm type-check`      | Check types                                |
+| `pnpm release`         | Automate versioning and package publishing |
 
 ### 🚀 Ready to Deploy?
 
