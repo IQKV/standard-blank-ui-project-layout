@@ -13,7 +13,7 @@
 > - 📦 **Modern tooling** - ESLint, Prettier, Husky, and more configured
 > - 🔒 **Production ready** - Security best practices and performance optimizations
 >
-> Click ** [Use this template](https://github.com/IQKV/standard-blank-ui-project-layout/generate) ** to get started!
+> Click [Use this template](https://github.com/IQKV/standard-blank-ui-project-layout/generate) to get started!
 
 ---
 
