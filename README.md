@@ -161,12 +161,6 @@ Copy `.env.example` to `.env` and configure:
 | `TZ`            | Timezone            | `UTC`         | No       |
 | `NODE_ENV`      | Node.js environment | `development` | No       |
 
-### Cursor Rules
-
-Enforces React Query best practices for structure, patterns, performance, security, and testing.
-
-Rules live in `.cursor/rules` to keep code clean and consistent.
-
 ---
 
 <a name="changelog"></a>
