@@ -17,8 +17,8 @@ function HomePage() {
         <header className="hero-section">
           <h1 className="hero-title">🚀 React 19 Starter Template</h1>
           <p className="hero-description">
-            Modern, type-safe, and production-ready React application with
-            Feature-Sliced Design architecture
+            Modern, type-safe, and production-ready React application with Feature-Sliced Design
+            architecture
           </p>
           {isAuthenticated && user && (
             <div className="welcome-message" role="alert">

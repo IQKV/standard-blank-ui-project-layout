@@ -12,9 +12,7 @@ export const initializeApp = async () => {
   try {
     const config = getAppConfig();
     if (config.apiConfig.mockApi) {
-      console.log(
-        "[App] Mock API is enabled, initializing mock service worker"
-      );
+      console.log("[App] Mock API is enabled, initializing mock service worker");
       await initializeMockWorker();
     }
   } catch (error) {

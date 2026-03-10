@@ -1,10 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateMe } from "../model/queries";
-import {
-  userMeUpdateSchema,
-  type UserMeUpdateInput,
-} from "../model/validation";
+import { userMeUpdateSchema, type UserMeUpdateInput } from "../model/validation";
 
 interface UserProfileFormProps {
   onSuccess?: () => void;
@@ -41,23 +38,13 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
 
         <div>
           <label htmlFor="first_name">First Name</label>
-          <input
-            {...register("first_name")}
-            type="text"
-            id="first_name"
-            required
-          />
+          <input {...register("first_name")} type="text" id="first_name" required />
           {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="last_name">Last Name</label>
-          <input
-            {...register("last_name")}
-            type="text"
-            id="last_name"
-            required
-          />
+          <input {...register("last_name")} type="text" id="last_name" required />
           {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
@@ -100,9 +87,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
         {password && (
           <>
             <div>
-              <label htmlFor="password_confirmation">
-                Confirm New Password
-              </label>
+              <label htmlFor="password_confirmation">Confirm New Password</label>
               <input
                 {...register("password_confirmation")}
                 type="password"
@@ -122,9 +107,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
                 id="password_current"
                 required
               />
-              {errors.password_current && (
-                <p role="alert">{errors.password_current.message}</p>
-              )}
+              {errors.password_current && <p role="alert">{errors.password_current.message}</p>}
             </div>
           </>
         )}
@@ -136,9 +119,7 @@ export function UserProfileForm({ onSuccess, onError }: UserProfileFormProps) {
 
       {updateMe.error && (
         <p role="alert">
-          {updateMe.error instanceof Error
-            ? updateMe.error.message
-            : "An error occurred"}
+          {updateMe.error instanceof Error ? updateMe.error.message : "An error occurred"}
         </p>
       )}
     </form>

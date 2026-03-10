@@ -3,16 +3,9 @@ import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { ReactNode } from "react";
 import { server, http, HttpResponse } from "./setup.js";
-import {
-  useLogin,
-  useRegister,
-  useLogout,
-} from "@/features/auth/model/queries";
+import { useLogin, useRegister, useLogout } from "@/features/auth/model/queries";
 import { useUserMe } from "@/entities/user/model/queries";
-import type {
-  LoginInput,
-  RegisterInput,
-} from "@/features/auth/model/validation";
+import type { LoginInput, RegisterInput } from "@/features/auth/model/validation";
 
 // Test wrapper with QueryClient
 const createWrapper = () => {
@@ -30,11 +23,7 @@ const createWrapper = () => {
   });
 
   return ({ children }: { children: ReactNode }) => {
-    return React.createElement(
-      QueryClientProvider,
-      { client: queryClient },
-      children
-    );
+    return React.createElement(QueryClientProvider, { client: queryClient }, children);
   };
 };
 
@@ -75,9 +64,7 @@ describe("Auth Flow Integration Tests", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(
-        result.current.mutateAsync(invalidLoginData)
-      ).rejects.toThrow();
+      await expect(result.current.mutateAsync(invalidLoginData)).rejects.toThrow();
     });
 
     it("should handle login API errors", async () => {
@@ -93,9 +80,9 @@ describe("Auth Flow Integration Tests", () => {
               message: "Invalid credentials",
               error: "INVALID_CREDENTIALS",
             },
-            { status: 401 }
+            { status: 401 },
           );
-        })
+        }),
       );
 
       const loginData: LoginInput = {
@@ -146,9 +133,7 @@ describe("Auth Flow Integration Tests", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(
-        result.current.mutateAsync(invalidRegisterData)
-      ).rejects.toThrow();
+      await expect(result.current.mutateAsync(invalidRegisterData)).rejects.toThrow();
     });
 
     it("should handle registration API errors", async () => {
@@ -164,9 +149,9 @@ describe("Auth Flow Integration Tests", () => {
               message: "Email already exists",
               error: "EMAIL_EXISTS",
             },
-            { status: 409 }
+            { status: 409 },
           );
-        })
+        }),
       );
 
       const registerData: RegisterInput = {
@@ -211,9 +196,9 @@ describe("Auth Flow Integration Tests", () => {
               message: "Logout failed",
               error: "LOGOUT_ERROR",
             },
-            { status: 500 }
+            { status: 500 },
           );
-        })
+        }),
       );
 
       await expect(result.current.mutateAsync()).rejects.toThrow();
@@ -243,9 +228,9 @@ describe("Auth Flow Integration Tests", () => {
               message: "Unauthorized",
               error: "UNAUTHORIZED",
             },
-            { status: 401 }
+            { status: 401 },
           );
-        })
+        }),
       );
 
       const { result } = renderHook(() => useUserMe(), {
@@ -256,7 +241,7 @@ describe("Auth Flow Integration Tests", () => {
         () => {
           expect(result.current.isError).toBe(true);
         },
-        { timeout: 3000 }
+        { timeout: 3000 },
       );
 
       expect(result.current.error).toBeDefined();
@@ -353,7 +338,7 @@ describe("Auth Flow Integration Tests", () => {
       server.use(
         http.post("/api/auth/login", () => {
           return HttpResponse.error();
-        })
+        }),
       );
 
       const loginData: LoginInput = {
@@ -380,9 +365,9 @@ describe("Auth Flow Integration Tests", () => {
                 password: ["Password must be at least 8 characters"],
               },
             },
-            { status: 422 }
+            { status: 422 },
           );
-        })
+        }),
       );
 
       const registerData: RegisterInput = {

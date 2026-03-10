@@ -9,8 +9,7 @@ export const userKeys = {
   lists: () => [...userKeys.all, "list"] as const,
   list: (filters?: UserFilters) => [...userKeys.lists(), { filters }] as const,
   details: () => [...userKeys.all, "detail"] as const,
-  detail: (id: string | number | IdParam) =>
-    [...userKeys.details(), id] as const,
+  detail: (id: string | number | IdParam) => [...userKeys.details(), id] as const,
   me: () => [...userKeys.all, "me"] as const,
 };
 
@@ -157,13 +156,8 @@ export const useUserEmailConfirmationWithCode = () => {
 
 export const useUserUpdate = () => {
   return useMutation({
-    mutationFn: ({
-      userId,
-      updateParams,
-    }: {
-      userId: IdParam;
-      updateParams: any;
-    }) => userApi.updateUser(userId, updateParams),
+    mutationFn: ({ userId, updateParams }: { userId: IdParam; updateParams: any }) =>
+      userApi.updateUser(userId, updateParams),
   });
 };
 

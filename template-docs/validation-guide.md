@@ -32,9 +32,7 @@ export const userRegistrationSchema = z
     last_name: nameSchema,
     email: emailSchema,
     password: passwordSchema,
-    password_confirmation: z
-      .string()
-      .min(1, "Password confirmation is required"),
+    password_confirmation: z.string().min(1, "Password confirmation is required"),
     locale: localeSchema,
   })
   .refine((data) => data.password === data.password_confirmation, {
@@ -76,10 +74,7 @@ const nameSchema = z
   .string()
   .min(2, "Name must be at least 2 characters")
   .max(50, "Name must not exceed 50 characters")
-  .regex(
-    /^[a-zA-Z\s'-]+$/,
-    "Name can only contain letters, spaces, hyphens, and apostrophes"
-  );
+  .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes");
 
 // Email validation
 const emailSchema = z
@@ -94,10 +89,7 @@ const passwordSchema = z
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
   .regex(/[a-z]/, "Password must contain at least one lowercase letter")
   .regex(/[0-9]/, "Password must contain at least one number")
-  .regex(
-    /[^A-Za-z0-9]/,
-    "Password must contain at least one special character"
-  );
+  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
 ```
 
 #### Complex Schemas
@@ -122,10 +114,9 @@ const userMeUpdateSchema = z
       return true;
     },
     {
-      message:
-        "Current password and password confirmation are required when changing password",
+      message: "Current password and password confirmation are required when changing password",
       path: ["password_current"],
-    }
+    },
   );
 ```
 
@@ -142,9 +133,7 @@ const loginSchema = z.object({
 const resetPasswordSchema = z
   .object({
     password: passwordSchema,
-    password_confirmation: z
-      .string()
-      .min(1, "Password confirmation is required"),
+    password_confirmation: z.string().min(1, "Password confirmation is required"),
   })
   .refine((data) => data.password === data.password_confirmation, {
     message: "Passwords do not match",
@@ -159,10 +148,7 @@ const resetPasswordSchema = z
 ```typescript
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  userMeUpdateSchema,
-  type UserMeUpdateInput,
-} from "../model/validation";
+import { userMeUpdateSchema, type UserMeUpdateInput } from "../model/validation";
 
 const {
   register,
@@ -329,7 +315,7 @@ const schema = z
     {
       message: "Invalid contact format",
       path: ["contact"],
-    }
+    },
   );
 ```
 

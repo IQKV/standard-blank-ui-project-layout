@@ -126,8 +126,7 @@ describe("React Query configuration", () => {
       setupReactQueryAuthRedirects(mockQueryClient);
 
       // Get the subscription callback
-      const querySubscriptionCallback =
-        mockQueryCache.subscribe.mock.calls[0][0];
+      const querySubscriptionCallback = mockQueryCache.subscribe.mock.calls[0][0];
 
       // Simulate a query error event
       const unauthorizedError: NormalizedApiError = {
@@ -149,7 +148,7 @@ describe("React Query configuration", () => {
 
       expect(window.localStorage.setItem).toHaveBeenCalledWith(
         "previous_url",
-        "https://example.com/protected"
+        "https://example.com/protected",
       );
       expect(window.location.replace).toHaveBeenCalledWith("/auth/login");
     });
@@ -158,8 +157,7 @@ describe("React Query configuration", () => {
       setupReactQueryAuthRedirects(mockQueryClient);
 
       // Get the subscription callback
-      const mutationSubscriptionCallback =
-        mockMutationCache.subscribe.mock.calls[0][0];
+      const mutationSubscriptionCallback = mockMutationCache.subscribe.mock.calls[0][0];
 
       // Simulate a mutation error event
       const forbiddenError: NormalizedApiError = {
@@ -181,7 +179,7 @@ describe("React Query configuration", () => {
 
       expect(window.localStorage.setItem).toHaveBeenCalledWith(
         "previous_url",
-        "https://example.com/protected"
+        "https://example.com/protected",
       );
       expect(window.location.replace).toHaveBeenCalledWith("/auth/login");
     });
@@ -191,8 +189,7 @@ describe("React Query configuration", () => {
 
       setupReactQueryAuthRedirects(mockQueryClient);
 
-      const querySubscriptionCallback =
-        mockQueryCache.subscribe.mock.calls[0][0];
+      const querySubscriptionCallback = mockQueryCache.subscribe.mock.calls[0][0];
 
       const unauthorizedError: NormalizedApiError = {
         kind: ApiErrorKind.Unauthorized,
@@ -217,8 +214,7 @@ describe("React Query configuration", () => {
     it("should not redirect on non-auth errors", () => {
       setupReactQueryAuthRedirects(mockQueryClient);
 
-      const querySubscriptionCallback =
-        mockQueryCache.subscribe.mock.calls[0][0];
+      const querySubscriptionCallback = mockQueryCache.subscribe.mock.calls[0][0];
 
       const networkError: NormalizedApiError = {
         kind: ApiErrorKind.Network,
@@ -248,8 +244,7 @@ describe("React Query configuration", () => {
 
       setupReactQueryAuthRedirects(mockQueryClient);
 
-      const querySubscriptionCallback =
-        mockQueryCache.subscribe.mock.calls[0][0];
+      const querySubscriptionCallback = mockQueryCache.subscribe.mock.calls[0][0];
 
       const unauthorizedError: NormalizedApiError = {
         kind: ApiErrorKind.Unauthorized,
@@ -279,8 +274,7 @@ describe("React Query configuration", () => {
 
       setupReactQueryAuthRedirects(mockQueryClient);
 
-      const querySubscriptionCallback =
-        mockQueryCache.subscribe.mock.calls[0][0];
+      const querySubscriptionCallback = mockQueryCache.subscribe.mock.calls[0][0];
 
       const unauthorizedError: NormalizedApiError = {
         kind: ApiErrorKind.Unauthorized,
@@ -305,30 +299,16 @@ describe("React Query configuration", () => {
   describe("reactQueryConfig", () => {
     it("should have correct default configuration", () => {
       expect(reactQueryConfig.defaultOptions?.queries?.staleTime).toBe(60000); // 1 minute
-      expect(
-        reactQueryConfig.defaultOptions?.queries?.refetchOnWindowFocus
-      ).toBe(false);
-      expect(reactQueryConfig.defaultOptions?.queries?.networkMode).toBe(
-        "always"
-      );
-      expect(reactQueryConfig.defaultOptions?.queries?.retry).toBe(
-        standardRetry
-      );
-      expect(reactQueryConfig.defaultOptions?.queries?.retryDelay).toBe(
-        standardRetryDelay
-      );
+      expect(reactQueryConfig.defaultOptions?.queries?.refetchOnWindowFocus).toBe(false);
+      expect(reactQueryConfig.defaultOptions?.queries?.networkMode).toBe("always");
+      expect(reactQueryConfig.defaultOptions?.queries?.retry).toBe(standardRetry);
+      expect(reactQueryConfig.defaultOptions?.queries?.retryDelay).toBe(standardRetryDelay);
     });
 
     it("should have correct mutation configuration", () => {
-      expect(reactQueryConfig.defaultOptions?.mutations?.networkMode).toBe(
-        "always"
-      );
-      expect(reactQueryConfig.defaultOptions?.mutations?.retry).toBe(
-        standardRetry
-      );
-      expect(reactQueryConfig.defaultOptions?.mutations?.retryDelay).toBe(
-        standardRetryDelay
-      );
+      expect(reactQueryConfig.defaultOptions?.mutations?.networkMode).toBe("always");
+      expect(reactQueryConfig.defaultOptions?.mutations?.retry).toBe(standardRetry);
+      expect(reactQueryConfig.defaultOptions?.mutations?.retryDelay).toBe(standardRetryDelay);
     });
   });
 });

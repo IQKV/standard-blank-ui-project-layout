@@ -2,15 +2,13 @@ import { useUIStore, createMemoizedSelector } from "@/shared";
 
 // Create a memoized selector for notification count
 const selectNotificationCount = createMemoizedSelector(
-  (state: ReturnType<typeof useUIStore.getState>) => state.notifications.length
+  (state: ReturnType<typeof useUIStore.getState>) => state.notifications.length,
 );
 
 // Create a memoized selector for unread notifications
 const selectUnreadNotifications = createMemoizedSelector(
   (state: ReturnType<typeof useUIStore.getState>) =>
-    state.notifications.filter(
-      (n) => n.type === "error" || n.type === "warning"
-    )
+    state.notifications.filter((n) => n.type === "error" || n.type === "warning"),
 );
 
 export function NotificationBadge() {

@@ -1,11 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { authApi } from "./auth-api";
 import { api } from "@/shared/api";
-import type {
-  LoginData,
-  LoginResponse,
-  ResetPasswordRequest,
-} from "../model/types";
+import type { LoginData, LoginResponse, ResetPasswordRequest } from "../model/types";
 import type { UserRegistrationRequest } from "@/entities/user";
 
 // Mock the API module
@@ -57,9 +53,7 @@ describe("authApi", () => {
       const error = new Error("Refresh token expired");
       mockApi.get.mockRejectedValue(error);
 
-      await expect(authApi.refreshAccessTokenFn()).rejects.toThrow(
-        "Refresh token expired"
-      );
+      await expect(authApi.refreshAccessTokenFn()).rejects.toThrow("Refresh token expired");
     });
   });
 
@@ -103,9 +97,7 @@ describe("authApi", () => {
       const error = new Error("Validation failed");
       mockApi.post.mockRejectedValue(error);
 
-      await expect(authApi.register(registerData)).rejects.toThrow(
-        "Validation failed"
-      );
+      await expect(authApi.register(registerData)).rejects.toThrow("Validation failed");
     });
   });
 
@@ -133,9 +125,7 @@ describe("authApi", () => {
       const error = new Error("Invalid credentials");
       mockApi.post.mockRejectedValue(error);
 
-      await expect(authApi.login(loginData)).rejects.toThrow(
-        "Invalid credentials"
-      );
+      await expect(authApi.login(loginData)).rejects.toThrow("Invalid credentials");
     });
   });
 
@@ -178,10 +168,7 @@ describe("authApi", () => {
 
       const result = await authApi.forgotPassword(emailData);
 
-      expect(mockApi.post).toHaveBeenCalledWith(
-        "auth/forgot-password",
-        emailData
-      );
+      expect(mockApi.post).toHaveBeenCalledWith("auth/forgot-password", emailData);
       expect(result).toEqual(forgotResponse.data);
     });
 
@@ -190,9 +177,7 @@ describe("authApi", () => {
       const error = new Error("Invalid email format");
       mockApi.post.mockRejectedValue(error);
 
-      await expect(authApi.forgotPassword(emailData)).rejects.toThrow(
-        "Invalid email format"
-      );
+      await expect(authApi.forgotPassword(emailData)).rejects.toThrow("Invalid email format");
     });
   });
 
@@ -220,7 +205,7 @@ describe("authApi", () => {
       mockApi.get.mockRejectedValue(error);
 
       await expect(authApi.verifyPasswordResetToken(token)).rejects.toThrow(
-        "Invalid or expired token"
+        "Invalid or expired token",
       );
     });
   });
@@ -244,10 +229,7 @@ describe("authApi", () => {
 
       const result = await authApi.resetPassword(token, resetData);
 
-      expect(mockApi.post).toHaveBeenCalledWith(
-        `auth/reset-password/${token}`,
-        resetData
-      );
+      expect(mockApi.post).toHaveBeenCalledWith(`auth/reset-password/${token}`, resetData);
       expect(result).toEqual(resetResponse.data);
     });
 
@@ -262,7 +244,7 @@ describe("authApi", () => {
       mockApi.post.mockRejectedValue(error);
 
       await expect(authApi.resetPassword(token, resetData)).rejects.toThrow(
-        "Passwords do not match"
+        "Passwords do not match",
       );
     });
 
@@ -276,9 +258,7 @@ describe("authApi", () => {
       const error = new Error("Token has expired");
       mockApi.post.mockRejectedValue(error);
 
-      await expect(authApi.resetPassword(token, resetData)).rejects.toThrow(
-        "Token has expired"
-      );
+      await expect(authApi.resetPassword(token, resetData)).rejects.toThrow("Token has expired");
     });
   });
 });

@@ -10,10 +10,7 @@ export const authApi = {
   },
 
   register: async (registerData: UserRegistrationRequest) => {
-    const response = await api.post<GenericDataResponse<User>>(
-      "auth/register",
-      registerData
-    );
+    const response = await api.post<GenericDataResponse<User>>("auth/register", registerData);
     return response.data;
   },
 

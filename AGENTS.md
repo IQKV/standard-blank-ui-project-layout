@@ -139,7 +139,7 @@ export const Button: React.FC<ButtonProps> = ({
         `btn-${variant}`,
         `btn-${size}`,
         { "btn-loading": loading },
-        className
+        className,
       )}
       disabled={disabled || loading}
       onClick={onClick}
@@ -161,10 +161,7 @@ import { User, CreateUserRequest } from "../model/types";
 export const userApi = {
   // CRUD operations
   create: async (userData: CreateUserRequest) => {
-    const response = await api.post<GenericDataResponse<User>>(
-      "users",
-      userData
-    );
+    const response = await api.post<GenericDataResponse<User>>("users", userData);
     return response.data;
   },
 
@@ -176,24 +173,17 @@ export const userApi = {
   },
 
   getById: async (userId: IdParam) => {
-    const response = await api.get<GenericDataResponse<User>>(
-      `users/${userId}`
-    );
+    const response = await api.get<GenericDataResponse<User>>(`users/${userId}`);
     return response.data;
   },
 
   update: async (userId: IdParam, updateData: Partial<User>) => {
-    const response = await api.put<GenericDataResponse<User>>(
-      `users/${userId}`,
-      updateData
-    );
+    const response = await api.put<GenericDataResponse<User>>(`users/${userId}`, updateData);
     return response.data;
   },
 
   delete: async (userId: IdParam) => {
-    const response = await api.delete<GenericDataResponse<void>>(
-      `users/${userId}`
-    );
+    const response = await api.delete<GenericDataResponse<void>>(`users/${userId}`);
     return response.data;
   },
 };
@@ -305,47 +295,42 @@ interface UIActions {
   toggleSidebar: () => void;
   openModal: (modalId: string, data?: unknown) => void;
   closeModal: (modalId: string) => void;
-  addNotification: (
-    notification: Omit<UIState["notifications"][0], "id">
-  ) => void;
+  addNotification: (notification: Omit<UIState["notifications"][0], "id">) => void;
 }
 
-export const useUIStore = createStore<UIState & UIActions>(
-  "ui-store",
-  (set) => ({
-    // Initial state
-    theme: "system",
-    sidebarOpen: true,
-    modals: {},
-    notifications: [],
+export const useUIStore = createStore<UIState & UIActions>("ui-store", (set) => ({
+  // Initial state
+  theme: "system",
+  sidebarOpen: true,
+  modals: {},
+  notifications: [],
 
-    // Actions
-    setTheme: (theme) =>
-      set((state) => {
-        state.theme = theme;
-      }),
-    toggleSidebar: () =>
-      set((state) => {
-        state.sidebarOpen = !state.sidebarOpen;
-      }),
-    openModal: (modalId, data) =>
-      set((state) => {
-        state.modals[modalId] = { isOpen: true, data };
-      }),
-    closeModal: (modalId) =>
-      set((state) => {
-        if (state.modals[modalId]) {
-          state.modals[modalId].isOpen = false;
-          delete state.modals[modalId].data;
-        }
-      }),
-    addNotification: (notification) =>
-      set((state) => {
-        const id = `notification-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
-        state.notifications.push({ ...notification, id });
-      }),
-  })
-);
+  // Actions
+  setTheme: (theme) =>
+    set((state) => {
+      state.theme = theme;
+    }),
+  toggleSidebar: () =>
+    set((state) => {
+      state.sidebarOpen = !state.sidebarOpen;
+    }),
+  openModal: (modalId, data) =>
+    set((state) => {
+      state.modals[modalId] = { isOpen: true, data };
+    }),
+  closeModal: (modalId) =>
+    set((state) => {
+      if (state.modals[modalId]) {
+        state.modals[modalId].isOpen = false;
+        delete state.modals[modalId].data;
+      }
+    }),
+  addNotification: (notification) =>
+    set((state) => {
+      const id = `notification-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`;
+      state.notifications.push({ ...notification, id });
+    }),
+}));
 ```
 
 ### API Client Configuration
@@ -359,8 +344,7 @@ import { getAppConfig } from "@/shared/lib/config-types";
 import { normalizeAxiosError } from "./errors";
 
 const api = axios.create({
-  baseURL:
-    getAppConfig().apiConfig.baseUrl || import.meta.env.VITE_API_BASE_URL,
+  baseURL: getAppConfig().apiConfig.baseUrl || import.meta.env.VITE_API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -373,7 +357,7 @@ api.interceptors.response.use(
   (error) => {
     const normalized = normalizeAxiosError(error);
     return Promise.reject(normalized);
-  }
+  },
 );
 
 export { api };
@@ -501,7 +485,7 @@ export const usePrefetchUser = () => {
         staleTime: 5 * 60 * 1000, // 5 minutes
       });
     },
-    [queryClient]
+    [queryClient],
   );
 };
 
@@ -509,10 +493,8 @@ export const usePrefetchUser = () => {
 export const useInfiniteUsers = (filters?: UserFilters) => {
   return useInfiniteQuery({
     queryKey: userKeys.list(filters),
-    queryFn: ({ pageParam = 1 }) =>
-      userApi.getAll({ ...filters, page: pageParam }),
-    getNextPageParam: (lastPage, pages) =>
-      lastPage.hasMore ? pages.length + 1 : undefined,
+    queryFn: ({ pageParam = 1 }) => userApi.getAll({ ...filters, page: pageParam }),
+    getNextPageParam: (lastPage, pages) => (lastPage.hasMore ? pages.length + 1 : undefined),
   });
 };
 ```
@@ -566,8 +548,7 @@ export const setupReactQueryAuthRedirects = (client: QueryClient): void => {
       const error = event?.query?.state?.error;
       if (
         isNormalizedApiError(error) &&
-        (error.kind === ApiErrorKind.Unauthorized ||
-          error.kind === ApiErrorKind.Forbidden)
+        (error.kind === ApiErrorKind.Unauthorized || error.kind === ApiErrorKind.Forbidden)
       ) {
         // Redirect to login
         window?.location?.replace("/auth/login");

@@ -5,16 +5,10 @@ export const createOptionalField = <T extends z.ZodTypeAny>(schema: T) => {
   return schema.optional().or(z.literal(""));
 };
 
-export const createRequiredField = <T extends z.ZodTypeAny>(
-  schema: T,
-  message?: string
-) => {
-  return schema.refine(
-    (val) => val !== undefined && val !== null && val !== "",
-    {
-      message: message || "This field is required",
-    }
-  );
+export const createRequiredField = <T extends z.ZodTypeAny>(schema: T, message?: string) => {
+  return schema.refine((val) => val !== undefined && val !== null && val !== "", {
+    message: message || "This field is required",
+  });
 };
 
 // Common validation patterns
@@ -30,7 +24,7 @@ export const formatZodError = (error: z.ZodError) => {
       acc[path] = curr.message;
       return acc;
     },
-    {} as Record<string, string>
+    {} as Record<string, string>,
   );
 };
 
@@ -40,10 +34,7 @@ export type ValidationResult<T> =
   | { success: false; errors: Record<string, string> };
 
 // Safe validation wrapper
-export const safeValidate = <T>(
-  schema: z.ZodSchema<T>,
-  data: unknown
-): ValidationResult<T> => {
+export const safeValidate = <T>(schema: z.ZodSchema<T>, data: unknown): ValidationResult<T> => {
   try {
     const result = schema.parse(data);
     return { success: true, data: result };
@@ -58,7 +49,7 @@ export const safeValidate = <T>(
 // Async validation wrapper for React Hook Form
 export const createAsyncValidator = <T>(
   schema: z.ZodSchema<T>,
-  asyncValidation?: (data: T) => Promise<boolean | string>
+  asyncValidation?: (data: T) => Promise<boolean | string>,
 ) => {
   return async (data: unknown) => {
     try {

@@ -10,12 +10,7 @@ interface AdminUserFormProps {
   onError?: (error: Error) => void;
 }
 
-export function AdminUserForm({
-  userId,
-  initialData,
-  onSuccess,
-  onError,
-}: AdminUserFormProps) {
+export function AdminUserForm({ userId, initialData, onSuccess, onError }: AdminUserFormProps) {
   const updateUser = useUpdateUser();
 
   const {
@@ -43,23 +38,13 @@ export function AdminUserForm({
 
         <div>
           <label htmlFor="first_name">First Name</label>
-          <input
-            {...register("first_name")}
-            type="text"
-            id="first_name"
-            required
-          />
+          <input {...register("first_name")} type="text" id="first_name" required />
           {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="last_name">Last Name</label>
-          <input
-            {...register("last_name")}
-            type="text"
-            id="last_name"
-            required
-          />
+          <input {...register("last_name")} type="text" id="last_name" required />
           {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
@@ -89,9 +74,7 @@ export function AdminUserForm({
 
         {updateUser.error && (
           <p role="alert">
-            {updateUser.error instanceof Error
-              ? updateUser.error.message
-              : "An error occurred"}
+            {updateUser.error instanceof Error ? updateUser.error.message : "An error occurred"}
           </p>
         )}
       </fieldset>

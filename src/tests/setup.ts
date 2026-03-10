@@ -299,7 +299,7 @@ const handlers = [
         message: "Invalid credentials",
         error: "INVALID_CREDENTIALS",
       },
-      { status: 401 }
+      { status: 401 },
     );
   }),
 
@@ -309,7 +309,7 @@ const handlers = [
         message: "Internal server error",
         error: "INTERNAL_ERROR",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }),
 
@@ -322,7 +322,7 @@ const handlers = [
           password: ["Password must be at least 8 characters"],
         },
       },
-      { status: 422 }
+      { status: 422 },
     );
   }),
 ];

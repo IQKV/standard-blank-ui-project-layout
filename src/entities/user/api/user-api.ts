@@ -6,10 +6,7 @@ import { User, UserMeRequest, UpdateUserRequest } from "../model/types";
 export const userApi = {
   // CREATE - Create new user
   create: async (userData: Omit<User, "id" | "full_name">) => {
-    const response = await api.post<GenericDataResponse<User>>(
-      "users",
-      userData
-    );
+    const response = await api.post<GenericDataResponse<User>>("users", userData);
     return response.data;
   },
 
@@ -29,26 +26,19 @@ export const userApi = {
 
   // READ - Get user by ID
   getById: async (userId: IdParam) => {
-    const response = await api.get<GenericDataResponse<User>>(
-      `users/${userId}`
-    );
+    const response = await api.get<GenericDataResponse<User>>(`users/${userId}`);
     return response.data;
   },
 
   // UPDATE - Update user by ID
   update: async (userId: IdParam, updateData: Partial<User>) => {
-    const response = await api.put<GenericDataResponse<User>>(
-      `users/${userId}`,
-      updateData
-    );
+    const response = await api.put<GenericDataResponse<User>>(`users/${userId}`, updateData);
     return response.data;
   },
 
   // DELETE - Delete user by ID
   delete: async (userId: IdParam) => {
-    const response = await api.delete<GenericDataResponse<void>>(
-      `users/${userId}`
-    );
+    const response = await api.delete<GenericDataResponse<void>>(`users/${userId}`);
     return response.data;
   },
 
@@ -80,54 +70,42 @@ export const userApi = {
   },
 
   findByID: async (userId: IdParam) => {
-    const response = await api.get<GenericDataResponse<User>>(
-      `users/${userId}`
-    );
+    const response = await api.get<GenericDataResponse<User>>(`users/${userId}`);
     return response.data;
   },
 
   updateMe: async (updateParams: Partial<UserMeRequest>) => {
-    const response = await api.put<GenericDataResponse<User>>(
-      `users/me`,
-      updateParams
-    );
+    const response = await api.put<GenericDataResponse<User>>(`users/me`, updateParams);
     return response.data;
   },
 
   updateUser: async (userId: IdParam, updateParams: UpdateUserRequest) => {
-    const response = await api.put<GenericDataResponse<User>>(
-      `users/${userId}`,
-      updateParams
-    );
+    const response = await api.put<GenericDataResponse<User>>(`users/${userId}`, updateParams);
     return response.data;
   },
 
   // EMAIL-SPECIFIC OPERATIONS
   confirmEmailAddress: async (userId: IdParam, token: string) => {
     const response = await api.post<GenericDataResponse<User>>(
-      `users/${userId}/confirm-email/${token}`
+      `users/${userId}/confirm-email/${token}`,
     );
     return response.data;
   },
 
   confirmEmailChange: async (userId: IdParam, token: string) => {
     const response = await api.post<GenericDataResponse<User>>(
-      `users/${userId}/email-change/${token}`
+      `users/${userId}/email-change/${token}`,
     );
     return response.data;
   },
 
   cancelEmailChange: async (userId: IdParam) => {
-    const response = await api.delete<GenericDataResponse<User>>(
-      `users/${userId}/email-change`
-    );
+    const response = await api.delete<GenericDataResponse<User>>(`users/${userId}/email-change`);
     return response.data;
   },
 
   resendConfirmation: async (userId: IdParam) => {
-    const response = await api.post(
-      `users/${userId}/resend-email-confirmation`
-    );
+    const response = await api.post(`users/${userId}/resend-email-confirmation`);
     return response.data;
   },
 

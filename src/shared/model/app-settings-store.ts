@@ -55,9 +55,7 @@ interface AppSettingsActions {
   setTimeFormat: (format: "12h" | "24h") => void;
 
   // Preferences management
-  updatePreferences: (
-    preferences: Partial<AppSettingsState["preferences"]>
-  ) => void;
+  updatePreferences: (preferences: Partial<AppSettingsState["preferences"]>) => void;
   resetPreferences: () => void;
 
   // Feature flags
@@ -104,9 +102,7 @@ const initialState: AppSettingsState = {
   lastSaved: null,
 };
 
-export const useAppSettingsStore = createStore<
-  AppSettingsState & AppSettingsActions
->(
+export const useAppSettingsStore = createStore<AppSettingsState & AppSettingsActions>(
   "app-settings-store",
   persist(
     (set: any, get: any) => ({
@@ -138,9 +134,7 @@ export const useAppSettingsStore = createStore<
         }),
 
       // Preferences management
-      updatePreferences: (
-        preferences: Partial<AppSettingsState["preferences"]>
-      ) =>
+      updatePreferences: (preferences: Partial<AppSettingsState["preferences"]>) =>
         set((state: any) => {
           state.preferences = { ...state.preferences, ...preferences };
           state.lastSaved = Date.now();
@@ -237,8 +231,8 @@ export const useAppSettingsStore = createStore<
         featureFlags: state.featureFlags,
       }),
       version: 1,
-    }
-  )
+    },
+  ),
 );
 
 // Selectors for optimized subscriptions

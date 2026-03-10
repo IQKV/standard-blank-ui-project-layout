@@ -13,7 +13,7 @@ const TanStackRouterDevtools = import.meta.env.PROD
         default: res.TanStackRouterDevtools,
         // For Embedded Mode
         // default: res.TanStackRouterDevtoolsPanel
-      }))
+      })),
     );
 
 export function AppLayout() {
@@ -117,11 +117,7 @@ export function AppLayout() {
 
         {/* User info */}
         <div>
-          {isAuthenticated && user ? (
-            <p>Welcome, {user.first_name}</p>
-          ) : (
-            <p>Not logged in</p>
-          )}
+          {isAuthenticated && user ? <p>Welcome, {user.first_name}</p> : <p>Not logged in</p>}
         </div>
       </nav>
 
@@ -134,10 +130,7 @@ export function AppLayout() {
       {notifications.length > 0 && (
         <section role="alert" aria-label="Notifications">
           {notifications.map((notification) => (
-            <article
-              key={notification.id}
-              data-notification-type={notification.type}
-            >
+            <article key={notification.id} data-notification-type={notification.type}>
               <header>
                 <h4>{notification.title}</h4>
                 {notification.message && <p>{notification.message}</p>}

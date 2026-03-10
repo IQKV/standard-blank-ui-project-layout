@@ -17,11 +17,7 @@ export const UserSummary = () => {
         Name: {user?.first_name} {user?.last_name}
       </div>
       <div>Email: {user?.email}</div>
-      <button
-        onClick={() =>
-          add({ type: "info", title: "User", message: `${user?.first_name}` })
-        }
-      >
+      <button onClick={() => add({ type: "info", title: "User", message: `${user?.first_name}` })}>
         Notify
       </button>
     </div>

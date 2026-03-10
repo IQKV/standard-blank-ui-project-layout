@@ -70,15 +70,7 @@ export const useAuthIntegration = () => {
 
       setInitialized(true);
     }
-  }, [
-    isInitialized,
-    accessToken,
-    user,
-    isTokenExpired,
-    queryClient,
-    clearSession,
-    setInitialized,
-  ]);
+  }, [isInitialized, accessToken, user, isTokenExpired, queryClient, clearSession, setInitialized]);
 
   return {
     isAuthenticated,
@@ -111,7 +103,7 @@ export const useAuthEffects = () => {
         // Validate token periodically (every 5 minutes)
         queryClient.invalidateQueries({ queryKey: userKeys.me() });
       },
-      5 * 60 * 1000
+      5 * 60 * 1000,
     );
 
     return () => clearInterval(interval);

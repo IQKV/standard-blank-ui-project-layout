@@ -230,9 +230,7 @@ describe("userApi", () => {
 
         const result = await userApi.confirmEmailAddress("1", "token123");
 
-        expect(mockApi.post).toHaveBeenCalledWith(
-          "users/1/confirm-email/token123"
-        );
+        expect(mockApi.post).toHaveBeenCalledWith("users/1/confirm-email/token123");
         expect(result).toEqual(mockResponse.data);
       });
     });
@@ -243,9 +241,7 @@ describe("userApi", () => {
 
         const result = await userApi.confirmEmailChange("1", "token123");
 
-        expect(mockApi.post).toHaveBeenCalledWith(
-          "users/1/email-change/token123"
-        );
+        expect(mockApi.post).toHaveBeenCalledWith("users/1/email-change/token123");
         expect(result).toEqual(mockResponse.data);
       });
     });
@@ -274,9 +270,7 @@ describe("userApi", () => {
 
         const result = await userApi.resendConfirmation("1");
 
-        expect(mockApi.post).toHaveBeenCalledWith(
-          "users/1/resend-email-confirmation"
-        );
+        expect(mockApi.post).toHaveBeenCalledWith("users/1/resend-email-confirmation");
         expect(result).toEqual(confirmationResponse.data);
       });
     });
@@ -294,12 +288,9 @@ describe("userApi", () => {
 
         const result = await userApi.confirmEmailAddressWithCode("1", "123456");
 
-        expect(mockApi.post).toHaveBeenCalledWith(
-          "users/1/confirm-email-with-code",
-          {
-            code: "123456",
-          }
-        );
+        expect(mockApi.post).toHaveBeenCalledWith("users/1/confirm-email-with-code", {
+          code: "123456",
+        });
         expect(result).toEqual(codeResponse.data);
       });
     });

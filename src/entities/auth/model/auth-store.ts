@@ -41,11 +41,7 @@ interface AuthActions {
   updateUser: (user: Partial<User>) => void;
 
   // Token management
-  setTokens: (tokens: {
-    accessToken: string;
-    refreshToken: string;
-    tokenExpiry: number;
-  }) => void;
+  setTokens: (tokens: { accessToken: string; refreshToken: string; tokenExpiry: number }) => void;
 
   clearTokens: () => void;
 
@@ -125,11 +121,7 @@ export const useAuthStore = createStore<AuthState & AuthActions>(
         }),
 
       // Token management
-      setTokens: (tokens: {
-        accessToken: string;
-        refreshToken: string;
-        tokenExpiry: number;
-      }) =>
+      setTokens: (tokens: { accessToken: string; refreshToken: string; tokenExpiry: number }) =>
         set((state: any): any => {
           state.accessToken = tokens.accessToken;
           state.refreshToken = tokens.refreshToken;
@@ -202,8 +194,8 @@ export const useAuthStore = createStore<AuthState & AuthActions>(
         lastActivity: state.lastActivity,
       }),
       version: 1,
-    }
-  )
+    },
+  ),
 );
 
 // Selectors for optimized subscriptions

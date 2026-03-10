@@ -7,9 +7,7 @@ const getBaseUrl = () => {
   try {
     const config = getAppConfig();
     return (
-      config.apiConfig.baseUrl ||
-      import.meta.env.VITE_API_BASE_URL ||
-      "http://localhost:3000/api"
+      config.apiConfig.baseUrl || import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api"
     );
   } catch (error) {
     // Fallback for development/testing
@@ -32,7 +30,7 @@ api.interceptors.response.use(
   (error) => {
     const normalized = normalizeAxiosError(error);
     return Promise.reject(normalized);
-  }
+  },
 );
 
 axios.defaults.withCredentials = true;

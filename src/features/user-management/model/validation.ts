@@ -19,20 +19,14 @@ export const passwordSchema = z
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
   .regex(/[a-z]/, "Password must contain at least one lowercase letter")
   .regex(/[0-9]/, "Password must contain at least one number")
-  .regex(
-    /[^A-Za-z0-9]/,
-    "Password must contain at least one special character"
-  );
+  .regex(/[^A-Za-z0-9]/, "Password must contain at least one special character");
 
 export const nameSchema = z
   .string()
   .min(1, "Name is required")
   .min(2, "Name must be at least 2 characters")
   .max(50, "Name must not exceed 50 characters")
-  .regex(
-    /^[a-zA-Z\s'-]+$/,
-    "Name can only contain letters, spaces, hyphens, and apostrophes"
-  );
+  .regex(/^[a-zA-Z\s'-]+$/, "Name can only contain letters, spaces, hyphens, and apostrophes");
 
 export const timezoneSchema = z
   .string()
@@ -47,12 +41,9 @@ export const timezoneSchema = z
     }
   }, "Invalid timezone");
 
-export const localeSchema = z.enum(
-  availableLocales as [SupportedLocales, ...SupportedLocales[]],
-  {
-    errorMap: () => ({ message: "Please select a valid locale" }),
-  }
-);
+export const localeSchema = z.enum(availableLocales as [SupportedLocales, ...SupportedLocales[]], {
+  errorMap: () => ({ message: "Please select a valid locale" }),
+});
 
 export const userStatusSchema = z.enum(["ACTIVE", "INACTIVE"], {
   errorMap: () => ({ message: "Status must be either ACTIVE or INACTIVE" }),
@@ -83,10 +74,9 @@ export const userMeUpdateSchema = z
       return true;
     },
     {
-      message:
-        "Current password and password confirmation are required when changing password",
+      message: "Current password and password confirmation are required when changing password",
       path: ["password_current"],
-    }
+    },
   )
   .refine(
     (data) => {
@@ -99,7 +89,7 @@ export const userMeUpdateSchema = z
     {
       message: "New passwords do not match",
       path: ["password_confirmation"],
-    }
+    },
   );
 
 // Admin user update schema
@@ -136,9 +126,7 @@ export const userListFiltersSchema = z.object({
 });
 
 export const bulkUserActionSchema = z.object({
-  userIds: z
-    .array(z.union([z.string(), z.number()]))
-    .min(1, "At least one user must be selected"),
+  userIds: z.array(z.union([z.string(), z.number()])).min(1, "At least one user must be selected"),
   action: z.enum(["activate", "deactivate", "delete"]),
 });
 
@@ -174,14 +162,12 @@ export const validateUserUpdate = (data: unknown): UserUpdateInput => {
   return userUpdateSchema.parse(data);
 };
 
-export const validateEmailConfirmation = (
-  data: unknown
-): EmailConfirmationInput => {
+export const validateEmailConfirmation = (data: unknown): EmailConfirmationInput => {
   return emailConfirmationSchema.parse(data);
 };
 
 export const validateEmailConfirmationWithCode = (
-  data: unknown
+  data: unknown,
 ): EmailConfirmationWithCodeInput => {
   return emailConfirmationWithCodeSchema.parse(data);
 };
@@ -202,9 +188,7 @@ export const validateBulkUserAction = (data: unknown) => {
 export type UserMeUpdateInput = z.infer<typeof userMeUpdateSchema>;
 export type UserUpdateInput = z.infer<typeof userUpdateSchema>;
 export type EmailConfirmationInput = z.infer<typeof emailConfirmationSchema>;
-export type EmailConfirmationWithCodeInput = z.infer<
-  typeof emailConfirmationWithCodeSchema
->;
+export type EmailConfirmationWithCodeInput = z.infer<typeof emailConfirmationWithCodeSchema>;
 export type UserQueryInput = z.infer<typeof userQuerySchema>;
 export type UserListFiltersInput = z.infer<typeof userListFiltersSchema>;
 export type BulkUserActionInput = z.infer<typeof bulkUserActionSchema>;

@@ -19,10 +19,7 @@ export const registerStore = (name: string, store: any) => {
 };
 
 // Enhanced store creator with debugging capabilities
-export const createDebugStore = <T>(
-  name: string,
-  initializer: (set: any, get: any) => T
-) => {
+export const createDebugStore = <T>(name: string, initializer: (set: any, get: any) => T) => {
   const store = subscribeWithSelector(initializer);
 
   if (import.meta.env.DEV) {
@@ -56,9 +53,7 @@ export const monitorStorePerformance = (storeName: string, store: any) => {
 
       if (end - start > 16) {
         // More than one frame (16ms)
-        console.warn(
-          `⚠️ Slow store subscription in ${storeName}: ${end - start}ms`
-        );
+        console.warn(`⚠️ Slow store subscription in ${storeName}: ${end - start}ms`);
       }
 
       return result;
@@ -70,7 +65,7 @@ export const monitorStorePerformance = (storeName: string, store: any) => {
 export const validateStoreState = <T>(
   storeName: string,
   state: T,
-  schema?: (state: T) => boolean
+  schema?: (state: T) => boolean,
 ) => {
   if (import.meta.env.DEV && schema) {
     try {
@@ -85,16 +80,9 @@ export const validateStoreState = <T>(
 };
 
 // Store action logger
-export const logStoreAction = (
-  storeName: string,
-  actionName: string,
-  payload?: any
-) => {
+export const logStoreAction = (storeName: string, actionName: string, payload?: any) => {
   if (import.meta.env.DEV) {
-    console.log(
-      `🎬 Action: ${storeName}.${actionName}`,
-      payload ? { payload } : ""
-    );
+    console.log(`🎬 Action: ${storeName}.${actionName}`, payload ? { payload } : "");
   }
 };
 
@@ -102,10 +90,7 @@ export const logStoreAction = (
 export const resetAllStores = () => {
   if (import.meta.env.DEV) {
     storeRegistry.forEach((store, name) => {
-      if (
-        typeof store.getState === "function" &&
-        typeof store.setState === "function"
-      ) {
+      if (typeof store.getState === "function" && typeof store.setState === "function") {
         console.log(`🔄 Resetting store: ${name}`);
         // This would need to be implemented per store based on their initial state
       }

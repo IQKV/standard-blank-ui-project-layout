@@ -349,7 +349,7 @@ describe("API error handling", () => {
       });
 
       expect(messageWithId).toBe(
-        "A server error occurred. Please try again later. (request id: req-123)"
+        "A server error occurred. Please try again later. (request id: req-123)",
       );
     });
 
@@ -364,9 +364,7 @@ describe("API error handling", () => {
         includeRequestId: true,
       });
 
-      expect(messageWithId).toBe(
-        "A server error occurred. Please try again later."
-      );
+      expect(messageWithId).toBe("A server error occurred. Please try again later.");
     });
 
     it("should fallback to original message when no mapping exists", () => {

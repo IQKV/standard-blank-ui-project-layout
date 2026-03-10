@@ -43,18 +43,12 @@ export const handlers = [
     console.log(`[Mock API] POST ${url.pathname}`, body);
 
     if (!body?.email || !body?.password) {
-      return HttpResponse.json(
-        { message: "Email and password are required" },
-        { status: 400 }
-      );
+      return HttpResponse.json({ message: "Email and password are required" }, { status: 400 });
     }
 
     // Simple auth rule: fail if password is 'fail'
     if (body.password === "fail") {
-      return HttpResponse.json(
-        { message: "Invalid credentials" },
-        { status: 401 }
-      );
+      return HttpResponse.json({ message: "Invalid credentials" }, { status: 401 });
     }
 
     mockAuthState.isAuthenticated = true;

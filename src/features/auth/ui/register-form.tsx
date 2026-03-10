@@ -83,8 +83,8 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
           />
           {errors.password && <p role="alert">{errors.password.message}</p>}
           <p>
-            Password must be at least 8 characters with uppercase, lowercase,
-            number, and special character.
+            Password must be at least 8 characters with uppercase, lowercase, number, and special
+            character.
           </p>
         </div>
 
@@ -116,9 +116,7 @@ export function RegisterForm({ onSuccess, onError }: RegisterFormProps) {
 
         {register.error && (
           <p role="alert">
-            {register.error instanceof Error
-              ? register.error.message
-              : "Registration failed"}
+            {register.error instanceof Error ? register.error.message : "Registration failed"}
           </p>
         )}
       </fieldset>

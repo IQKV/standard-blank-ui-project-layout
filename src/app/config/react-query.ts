@@ -10,10 +10,7 @@ const isRetryableStatus = (status?: number) => {
   return status >= 500;
 };
 
-export const standardRetry = (
-  failureCount: number,
-  error: unknown
-): boolean => {
+export const standardRetry = (failureCount: number, error: unknown): boolean => {
   const anyErr: any = error as any;
   const status: number | undefined = anyErr?.response?.status ?? anyErr?.status;
   if (!isRetryableStatus(status)) return false;
@@ -35,20 +32,14 @@ const ALLOWED_UNAUTHENTICATED_PATHS = ["auth/login", "auth"];
 export const handleAuthRedirect = (error: unknown): void => {
   if (!isNormalizedApiError(error)) return;
   const { kind } = error;
-  if (kind !== ApiErrorKind.Unauthorized && kind !== ApiErrorKind.Forbidden)
-    return;
+  if (kind !== ApiErrorKind.Unauthorized && kind !== ApiErrorKind.Forbidden) return;
 
   const currentPath = window?.location?.pathname || "";
-  const isAllowed = ALLOWED_UNAUTHENTICATED_PATHS.some((p) =>
-    currentPath.includes(p)
-  );
+  const isAllowed = ALLOWED_UNAUTHENTICATED_PATHS.some((p) => currentPath.includes(p));
   if (isAllowed) return;
 
   try {
-    window?.localStorage?.setItem(
-      PREVIOUS_URL_KEY,
-      window?.location?.href || ""
-    );
+    window?.localStorage?.setItem(PREVIOUS_URL_KEY, window?.location?.href || "");
   } catch {}
   try {
     window?.location?.replace(LOGIN_PATH);

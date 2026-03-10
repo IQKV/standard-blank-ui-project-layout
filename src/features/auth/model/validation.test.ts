@@ -52,21 +52,14 @@ describe("Auth validation schemas", () => {
       try {
         emailSchema.parse("invalid-email");
       } catch (error: any) {
-        expect(error.errors[0].message).toBe(
-          "Please enter a valid email address"
-        );
+        expect(error.errors[0].message).toBe("Please enter a valid email address");
       }
     });
   });
 
   describe("passwordSchema", () => {
     it("should validate strong passwords", () => {
-      const validPasswords = [
-        "Password123!",
-        "MyStr0ng@Pass",
-        "C0mplex#Password",
-        "Secure123$",
-      ];
+      const validPasswords = ["Password123!", "MyStr0ng@Pass", "C0mplex#Password", "Secure123$"];
 
       validPasswords.forEach((password) => {
         expect(() => passwordSchema.parse(password)).not.toThrow();
@@ -97,13 +90,11 @@ describe("Auth validation schemas", () => {
         },
         {
           password: "password123!",
-          expectedMessage:
-            "Password must contain at least one uppercase letter",
+          expectedMessage: "Password must contain at least one uppercase letter",
         },
         {
           password: "PASSWORD123!",
-          expectedMessage:
-            "Password must contain at least one lowercase letter",
+          expectedMessage: "Password must contain at least one lowercase letter",
         },
         {
           password: "Password!",
@@ -111,8 +102,7 @@ describe("Auth validation schemas", () => {
         },
         {
           password: "Password123",
-          expectedMessage:
-            "Password must contain at least one special character",
+          expectedMessage: "Password must contain at least one special character",
         },
       ];
 
@@ -120,9 +110,7 @@ describe("Auth validation schemas", () => {
         try {
           passwordSchema.parse(password);
         } catch (error: any) {
-          expect(
-            error.errors.some((e: any) => e.message === expectedMessage)
-          ).toBe(true);
+          expect(error.errors.some((e: any) => e.message === expectedMessage)).toBe(true);
         }
       });
     });
@@ -130,14 +118,7 @@ describe("Auth validation schemas", () => {
 
   describe("nameSchema", () => {
     it("should validate correct names", () => {
-      const validNames = [
-        "John",
-        "Mary Jane",
-        "O'Connor",
-        "Jean-Pierre",
-        "Smith",
-        "Van Der Berg",
-      ];
+      const validNames = ["John", "Mary Jane", "O'Connor", "Jean-Pierre", "Smith", "Van Der Berg"];
 
       validNames.forEach((name) => {
         expect(() => nameSchema.parse(name)).not.toThrow();
@@ -168,16 +149,14 @@ describe("Auth validation schemas", () => {
       try {
         nameSchema.parse("A");
       } catch (error: any) {
-        expect(error.errors[0].message).toBe(
-          "Name must be at least 2 characters"
-        );
+        expect(error.errors[0].message).toBe("Name must be at least 2 characters");
       }
 
       try {
         nameSchema.parse("John123");
       } catch (error: any) {
         expect(error.errors[0].message).toBe(
-          "Name can only contain letters, spaces, hyphens, and apostrophes"
+          "Name can only contain letters, spaces, hyphens, and apostrophes",
         );
       }
     });
@@ -396,8 +375,7 @@ describe("Auth validation schemas", () => {
       } catch (error: any) {
         const passwordError = error.errors.find(
           (e: any) =>
-            e.path.includes("password_confirmation") &&
-            e.message === "Passwords do not match"
+            e.path.includes("password_confirmation") && e.message === "Passwords do not match",
         );
         expect(passwordError).toBeDefined();
       }

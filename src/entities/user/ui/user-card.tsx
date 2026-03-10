@@ -15,12 +15,8 @@ export function UserCard({ user, className = "" }: UserCardProps) {
       </header>
 
       <div>
-        {user.role && (
-          <span data-role={user.role.toLowerCase()}>{user.role}</span>
-        )}
-        {user.status && (
-          <span data-status={user.status.toLowerCase()}>{user.status}</span>
-        )}
+        {user.role && <span data-role={user.role.toLowerCase()}>{user.role}</span>}
+        {user.status && <span data-status={user.status.toLowerCase()}>{user.status}</span>}
       </div>
 
       {user.last_login_at && (

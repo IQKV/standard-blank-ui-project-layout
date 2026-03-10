@@ -13,8 +13,7 @@ export const generateId = (): number => {
  * Generate a random string of the specified length
  */
 export const generateRandomString = (length: number = 10): string => {
-  const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let result = "";
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
@@ -35,7 +34,7 @@ export const generateRandomString = (length: number = 10): string => {
  * })
  */
 export const generateMockData = <T extends Record<string, string>>(
-  schema: T
+  schema: T,
 ): Record<keyof T, any> => {
   const result: Record<string, any> = {};
 
@@ -69,7 +68,7 @@ export const generateMockData = <T extends Record<string, string>>(
  */
 export const generateMockArray = <T extends Record<string, string>>(
   schema: T,
-  count: number = 10
+  count: number = 10,
 ): Record<keyof T, any>[] => {
   return Array.from({ length: count }, () => generateMockData(schema));
 };

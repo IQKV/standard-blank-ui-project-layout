@@ -28,29 +28,21 @@ export function UserDeleteConfirmation({
   };
 
   return (
-    <div
-      role="dialog"
-      aria-labelledby="delete-title"
-      aria-describedby="delete-description"
-    >
+    <div role="dialog" aria-labelledby="delete-title" aria-describedby="delete-description">
       <header>
         <h2 id="delete-title">Delete User</h2>
       </header>
 
       <main>
         <p id="delete-description">
-          Are you sure you want to delete <strong>{user.full_name}</strong> (
-          {user.email})?
+          Are you sure you want to delete <strong>{user.full_name}</strong> ({user.email})?
         </p>
-        <p>
-          This action cannot be undone. The user will be permanently removed
-          from the system.
-        </p>
+        <p>This action cannot be undone. The user will be permanently removed from the system.</p>
 
         {user.role === "ADMIN" && (
           <p role="alert">
-            <strong>Warning:</strong> You are about to delete an admin user.
-            This may affect system administration capabilities.
+            <strong>Warning:</strong> You are about to delete an admin user. This may affect system
+            administration capabilities.
           </p>
         )}
       </main>
@@ -71,9 +63,7 @@ export function UserDeleteConfirmation({
 
         {deleteUser.error && (
           <p role="alert">
-            {deleteUser.error instanceof Error
-              ? deleteUser.error.message
-              : "Failed to delete user"}
+            {deleteUser.error instanceof Error ? deleteUser.error.message : "Failed to delete user"}
           </p>
         )}
       </footer>

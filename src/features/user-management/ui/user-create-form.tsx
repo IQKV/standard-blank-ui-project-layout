@@ -10,11 +10,7 @@ interface UserCreateFormProps {
   onCancel?: () => void;
 }
 
-export function UserCreateForm({
-  onSuccess,
-  onError,
-  onCancel,
-}: UserCreateFormProps) {
+export function UserCreateForm({ onSuccess, onError, onCancel }: UserCreateFormProps) {
   const createUser = useCreateUserWithValidation();
 
   const {
@@ -48,23 +44,13 @@ export function UserCreateForm({
 
         <div>
           <label htmlFor="first_name">First Name</label>
-          <input
-            {...register("first_name")}
-            type="text"
-            id="first_name"
-            required
-          />
+          <input {...register("first_name")} type="text" id="first_name" required />
           {errors.first_name && <p role="alert">{errors.first_name.message}</p>}
         </div>
 
         <div>
           <label htmlFor="last_name">Last Name</label>
-          <input
-            {...register("last_name")}
-            type="text"
-            id="last_name"
-            required
-          />
+          <input {...register("last_name")} type="text" id="last_name" required />
           {errors.last_name && <p role="alert">{errors.last_name.message}</p>}
         </div>
 
@@ -76,12 +62,7 @@ export function UserCreateForm({
 
         <div>
           <label htmlFor="password">Password</label>
-          <input
-            {...register("password")}
-            type="password"
-            id="password"
-            required
-          />
+          <input {...register("password")} type="password" id="password" required />
           {errors.password && <p role="alert">{errors.password.message}</p>}
         </div>
 
@@ -127,9 +108,7 @@ export function UserCreateForm({
 
         {createUser.error && (
           <p role="alert">
-            {createUser.error instanceof Error
-              ? createUser.error.message
-              : "Failed to create user"}
+            {createUser.error instanceof Error ? createUser.error.message : "Failed to create user"}
           </p>
         )}
       </fieldset>

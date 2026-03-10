@@ -3,8 +3,7 @@ import type { StoreApi, UseBoundStore } from "zustand";
 import { useStoreWithEqualityFn } from "zustand/traditional";
 
 // Shallow equality for objects/arrays to minimize re-renders
-export const shallowEqual = <T>(a: T, b: T): boolean =>
-  shallow(a as any, b as any);
+export const shallowEqual = <T>(a: T, b: T): boolean => shallow(a as any, b as any);
 
 // Memoize a single-arg function (selector/combiner) with last-arg cache
 export const memoizeOne = <A, R>(fn: (arg: A) => R) => {
@@ -25,7 +24,7 @@ export const memoizeOne = <A, R>(fn: (arg: A) => R) => {
 // Create a memoized selector with optional custom equality for the output value
 export const createMemoSelector = <S, R>(
   selector: (state: S) => R,
-  isEqual: (a: R, b: R) => boolean = Object.is
+  isEqual: (a: R, b: R) => boolean = Object.is,
 ) => {
   let hasValue = false;
   let lastState: S | undefined;
@@ -48,7 +47,7 @@ export const createMemoSelector = <S, R>(
 export const createSelector = <S, A extends any[], R>(
   inputs: { [K in keyof A]: (state: S) => A[K] },
   combiner: (...args: A) => R,
-  isEqual: (a: R, b: R) => boolean = Object.is
+  isEqual: (a: R, b: R) => boolean = Object.is,
 ) => {
   let hasValue = false;
   let lastArgs: A | undefined;
@@ -78,7 +77,7 @@ export const createSelector = <S, A extends any[], R>(
 // Keyed selector cache (per id) to avoid large caches and recomputations
 export const createKeyedSelector = <K extends string | number, S, R>(
   compute: (state: S, key: K) => R,
-  isEqual: (a: R, b: R) => boolean = Object.is
+  isEqual: (a: R, b: R) => boolean = Object.is,
 ) => {
   const cache = new Map<K, (state: S) => R>();
   return (key: K) => {
@@ -108,7 +107,7 @@ export const createKeyedSelector = <K extends string | number, S, R>(
 // Hook helper: apply shallow equality to a selector for a given store
 export const useShallow = <S, R>(
   useStore: UseBoundStore<StoreApi<S>>,
-  selector: (state: S) => R
+  selector: (state: S) => R,
 ): R => useStoreWithEqualityFn(useStore, selector, shallow);
 
 // Stable object pick from a store using shallow equality
@@ -122,7 +121,7 @@ export const selectKeys =
 
 export const usePick = <S extends object, K extends keyof S>(
   useStore: UseBoundStore<StoreApi<S>>,
-  keys: readonly K[]
+  keys: readonly K[],
 ) => useStoreWithEqualityFn(useStore, selectKeys<S, K>(keys), shallow);
 
 // Stable callback creator to avoid re-renders when passing actions into props

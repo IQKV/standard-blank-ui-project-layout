@@ -42,9 +42,7 @@ export function UserEditForm({
     try {
       // Only send fields that have values
       const updateData = Object.fromEntries(
-        Object.entries(data).filter(
-          ([_, value]) => value !== "" && value !== undefined
-        )
+        Object.entries(data).filter(([_, value]) => value !== "" && value !== undefined),
       ) as UpdateUserData;
 
       const result = await updateUser.mutateAsync({ userId, data: updateData });
@@ -121,9 +119,7 @@ export function UserEditForm({
 
         {updateUser.error && (
           <p role="alert">
-            {updateUser.error instanceof Error
-              ? updateUser.error.message
-              : "Failed to update user"}
+            {updateUser.error instanceof Error ? updateUser.error.message : "Failed to update user"}
           </p>
         )}
       </fieldset>

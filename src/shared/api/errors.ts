@@ -37,8 +37,7 @@ const isCanceled = (err: any): boolean => {
 const isTimeout = (err: any): boolean => {
   return (
     err?.code === "ECONNABORTED" ||
-    (typeof err?.message === "string" &&
-      err.message.toLowerCase().includes("timeout"))
+    (typeof err?.message === "string" && err.message.toLowerCase().includes("timeout"))
   );
 };
 
@@ -55,8 +54,7 @@ export const normalizeAxiosError = (error: unknown): NormalizedApiError => {
     const code = err.code;
     const url = err.config?.url;
     const method = err.config?.method?.toUpperCase();
-    const requestId =
-      (err.response?.headers?.["x-request-id"] as string) || undefined;
+    const requestId = (err.response?.headers?.["x-request-id"] as string) || undefined;
 
     let kind: ApiErrorKind = ApiErrorKind.Unknown;
 
@@ -84,8 +82,7 @@ export const normalizeAxiosError = (error: unknown): NormalizedApiError => {
 
     // Prefer server-provided message, fall back to Axios message
     const serverMessage =
-      (typeof err.response?.data?.message === "string" &&
-        err.response?.data?.message) ||
+      (typeof err.response?.data?.message === "string" && err.response?.data?.message) ||
       (typeof (err.response?.data as any)?.error === "string" &&
         (err.response?.data as any)?.error);
 
@@ -107,8 +104,7 @@ export const normalizeAxiosError = (error: unknown): NormalizedApiError => {
 
   // Non-Axios errors
   const genericMessage =
-    (error as any)?.message ||
-    (typeof error === "string" ? (error as string) : "Unknown error");
+    (error as any)?.message || (typeof error === "string" ? (error as string) : "Unknown error");
   return {
     kind: ApiErrorKind.Unknown,
     message: genericMessage,
@@ -116,9 +112,7 @@ export const normalizeAxiosError = (error: unknown): NormalizedApiError => {
   };
 };
 
-export const isNormalizedApiError = (
-  value: unknown
-): value is NormalizedApiError => {
+export const isNormalizedApiError = (value: unknown): value is NormalizedApiError => {
   return (
     !!value &&
     typeof value === "object" &&
@@ -132,26 +126,20 @@ export const getUserMessage = (
   opts?: {
     map?: Partial<Record<ApiErrorKind, string>>;
     includeRequestId?: boolean;
-  }
+  },
 ): string => {
   const defaultMap: Record<ApiErrorKind, string> = {
     [ApiErrorKind.Timeout]: "Request timed out. Please try again.",
-    [ApiErrorKind.Network]:
-      "Network error. Check your connection and try again.",
+    [ApiErrorKind.Network]: "Network error. Check your connection and try again.",
     [ApiErrorKind.Canceled]: "Request was canceled.",
     [ApiErrorKind.Unauthorized]: "You need to sign in to continue.",
-    [ApiErrorKind.Forbidden]:
-      "You don’t have permission to perform this action.",
+    [ApiErrorKind.Forbidden]: "You don’t have permission to perform this action.",
     [ApiErrorKind.NotFound]: "The requested resource was not found.",
-    [ApiErrorKind.Conflict]:
-      "The request could not be completed due to a conflict.",
-    [ApiErrorKind.TooManyRequests]:
-      "Too many requests. Please slow down and try again later.",
-    [ApiErrorKind.Validation]:
-      "Some inputs are invalid. Please review the form.",
+    [ApiErrorKind.Conflict]: "The request could not be completed due to a conflict.",
+    [ApiErrorKind.TooManyRequests]: "Too many requests. Please slow down and try again later.",
+    [ApiErrorKind.Validation]: "Some inputs are invalid. Please review the form.",
     [ApiErrorKind.ClientError]: "There was an issue with your request.",
-    [ApiErrorKind.ServerError]:
-      "A server error occurred. Please try again later.",
+    [ApiErrorKind.ServerError]: "A server error occurred. Please try again later.",
     [ApiErrorKind.Unknown]: "Something went wrong. Please try again.",
   };
 

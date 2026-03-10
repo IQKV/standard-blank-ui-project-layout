@@ -102,7 +102,7 @@ describe("helpers", () => {
       expect(mockHistory.pushState).toHaveBeenCalledWith(
         {},
         "",
-        expect.stringContaining("newParam=newValue")
+        expect.stringContaining("newParam=newValue"),
       );
     });
 
@@ -114,9 +114,7 @@ describe("helpers", () => {
           has: vi.fn().mockReturnValue(true),
           append: vi.fn(),
         };
-        toString = vi
-          .fn()
-          .mockReturnValue("https://example.com/test?existing=param");
+        toString = vi.fn().mockReturnValue("https://example.com/test?existing=param");
       } as any;
 
       addQueryStringToUrl("existing", "param");

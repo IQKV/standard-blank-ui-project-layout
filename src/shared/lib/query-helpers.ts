@@ -1,9 +1,4 @@
-import type {
-  MutationKey,
-  QueryKey,
-  QueryClient,
-  Updater,
-} from "@tanstack/react-query";
+import type { MutationKey, QueryKey, QueryClient, Updater } from "@tanstack/react-query";
 
 // Generic key helpers
 export const createKeys = <TPrefix extends string>(prefix: TPrefix) => ({
@@ -18,7 +13,7 @@ export const createKeys = <TPrefix extends string>(prefix: TPrefix) => ({
 export function optimisticUpdateList<TItem>(
   queryClient: QueryClient,
   key: QueryKey,
-  updater: Updater<TItem[], TItem[]>
+  updater: Updater<TItem[], TItem[]>,
 ) {
   const previous = queryClient.getQueryData<TItem[]>(key);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -30,7 +25,7 @@ export function optimisticUpdateList<TItem>(
 export function optimisticUpdateDetail<TItem>(
   queryClient: QueryClient,
   key: QueryKey,
-  updater: Updater<TItem, TItem>
+  updater: Updater<TItem, TItem>,
 ) {
   const previous = queryClient.getQueryData<TItem>(key);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -42,42 +37,29 @@ export function optimisticUpdateDetail<TItem>(
 export const mutationOnMutate = <TListItem>(
   queryClient: QueryClient,
   listKey?: QueryKey,
-  updater?: (current: TListItem[] | undefined) => TListItem[]
+  updater?: (current: TListItem[] | undefined) => TListItem[],
 ) => {
   return async () => {
     if (!listKey || !updater) return {};
     await queryClient.cancelQueries({ queryKey: listKey });
     const previous = queryClient.getQueryData<TListItem[]>(listKey);
-    queryClient.setQueryData<TListItem[] | undefined>(
-      listKey,
-      updater(previous)
-    );
+    queryClient.setQueryData<TListItem[] | undefined>(listKey, updater(previous));
     return { previous } as { previous: TListItem[] | undefined };
   };
 };
 
-export const mutationOnError = <TListItem>(
-  queryClient: QueryClient,
-  listKey?: QueryKey
-) => {
-  return (
-    _err: unknown,
-    _variables: unknown,
-    context?: { previous?: TListItem[] }
-  ) => {
+export const mutationOnError = <TListItem>(queryClient: QueryClient, listKey?: QueryKey) => {
+  return (_err: unknown, _variables: unknown, context?: { previous?: TListItem[] }) => {
     if (!listKey) return;
     if (context?.previous) {
-      queryClient.setQueryData<TListItem[] | undefined>(
-        listKey,
-        context.previous
-      );
+      queryClient.setQueryData<TListItem[] | undefined>(listKey, context.previous);
     }
   };
 };
 
 export const mutationOnSettled = (
   queryClient: QueryClient,
-  invalidateKeys: Array<QueryKey | { queryKey: QueryKey }>
+  invalidateKeys: Array<QueryKey | { queryKey: QueryKey }>,
 ) => {
   return async () => {
     for (const key of invalidateKeys) {

@@ -53,11 +53,7 @@ const createWrapper = () => {
   });
 
   return ({ children }: { children: ReactNode }) => {
-    return React.createElement(
-      QueryClientProvider,
-      { client: queryClient },
-      children
-    );
+    return React.createElement(QueryClientProvider, { client: queryClient }, children);
   };
 };
 
@@ -124,9 +120,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(loginData)).rejects.toThrow(
-        "Invalid credentials"
-      );
+      await expect(result.current.mutateAsync(loginData)).rejects.toThrow("Invalid credentials");
     });
 
     it("should handle network errors", async () => {
@@ -142,9 +136,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(loginData)).rejects.toThrow(
-        "Network error"
-      );
+      await expect(result.current.mutateAsync(loginData)).rejects.toThrow("Network error");
     });
   });
 
@@ -174,9 +166,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync()).rejects.toThrow(
-        "Logout failed"
-      );
+      await expect(result.current.mutateAsync()).rejects.toThrow("Logout failed");
     });
   });
 
@@ -225,9 +215,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(registerData)).rejects.toThrow(
-        "Validation failed"
-      );
+      await expect(result.current.mutateAsync(registerData)).rejects.toThrow("Validation failed");
     });
 
     it("should handle email already exists error", async () => {
@@ -248,7 +236,7 @@ describe("auth queries", () => {
       });
 
       await expect(result.current.mutateAsync(registerData)).rejects.toThrow(
-        "Email already exists"
+        "Email already exists",
       );
     });
   });
@@ -281,9 +269,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(emailData)).rejects.toThrow(
-        "Invalid email format"
-      );
+      await expect(result.current.mutateAsync(emailData)).rejects.toThrow("Invalid email format");
     });
 
     it("should handle user not found", async () => {
@@ -295,9 +281,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(emailData)).rejects.toThrow(
-        "User not found"
-      );
+      await expect(result.current.mutateAsync(emailData)).rejects.toThrow("User not found");
     });
   });
 
@@ -329,9 +313,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(token)).rejects.toThrow(
-        "Invalid or expired token"
-      );
+      await expect(result.current.mutateAsync(token)).rejects.toThrow("Invalid or expired token");
     });
 
     it("should handle expired token", async () => {
@@ -343,9 +325,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(token)).rejects.toThrow(
-        "Token has expired"
-      );
+      await expect(result.current.mutateAsync(token)).rejects.toThrow("Token has expired");
     });
   });
 
@@ -387,9 +367,9 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(
-        result.current.mutateAsync({ token, resetData })
-      ).rejects.toThrow("Passwords do not match");
+      await expect(result.current.mutateAsync({ token, resetData })).rejects.toThrow(
+        "Passwords do not match",
+      );
     });
 
     it("should handle expired token during reset", async () => {
@@ -406,9 +386,9 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(
-        result.current.mutateAsync({ token, resetData })
-      ).rejects.toThrow("Token has expired");
+      await expect(result.current.mutateAsync({ token, resetData })).rejects.toThrow(
+        "Token has expired",
+      );
     });
   });
 
@@ -433,9 +413,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync()).rejects.toThrow(
-        "Refresh token expired"
-      );
+      await expect(result.current.mutateAsync()).rejects.toThrow("Refresh token expired");
     });
 
     it("should handle invalid refresh token", async () => {
@@ -446,9 +424,7 @@ describe("auth queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync()).rejects.toThrow(
-        "Invalid refresh token"
-      );
+      await expect(result.current.mutateAsync()).rejects.toThrow("Invalid refresh token");
     });
   });
 });

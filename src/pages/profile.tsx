@@ -65,10 +65,7 @@ function ProfilePage() {
 
         <section>
           <h2>Update Profile</h2>
-          <UserProfileForm
-            onSuccess={handleUpdateSuccess}
-            onError={handleUpdateError}
-          />
+          <UserProfileForm onSuccess={handleUpdateSuccess} onError={handleUpdateError} />
         </section>
       </main>
     </div>

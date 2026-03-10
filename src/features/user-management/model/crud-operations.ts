@@ -8,11 +8,7 @@ import {
   useBulkUpdateUsers,
   userKeys,
 } from "@/entities/user";
-import type {
-  CreateUserRequest,
-  UpdateUserData,
-  IdParam,
-} from "@/entities/user";
+import type { CreateUserRequest, UpdateUserData, IdParam } from "@/entities/user";
 
 // CREATE USER with business logic
 export const useCreateUserWithValidation = () => {
@@ -46,13 +42,7 @@ export const useUpdateUserWithValidation = () => {
 
   return {
     ...updateUser,
-    mutateAsync: async ({
-      userId,
-      data,
-    }: {
-      userId: IdParam;
-      data: UpdateUserData;
-    }) => {
+    mutateAsync: async ({ userId, data }: { userId: IdParam; data: UpdateUserData }) => {
       // Feature-level validation and business logic
       const processedData = { ...data };
 
@@ -115,9 +105,7 @@ export const useBulkUpdateUsersWithValidation = () => {
 
   return {
     ...bulkUpdate,
-    mutateAsync: async (
-      updates: Array<{ id: IdParam; data: UpdateUserData }>
-    ) => {
+    mutateAsync: async (updates: Array<{ id: IdParam; data: UpdateUserData }>) => {
       // Feature-level validation and processing
       const processedUpdates = updates.map((update) => ({
         ...update,
@@ -146,10 +134,7 @@ export const useUserSearch = () => {
     // Could implement debounced search, caching, etc.
     return queryClient.fetchQuery({
       queryKey: userKeys.list(filters),
-      queryFn: () =>
-        import("@/entities/user").then(({ userApi }) =>
-          userApi.getAll(filters)
-        ),
+      queryFn: () => import("@/entities/user").then(({ userApi }) => userApi.getAll(filters)),
     });
   };
 

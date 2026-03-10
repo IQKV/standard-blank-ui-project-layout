@@ -55,11 +55,7 @@ const createWrapper = () => {
   });
 
   return ({ children }: { children: ReactNode }) => {
-    return React.createElement(
-      QueryClientProvider,
-      { client: queryClient },
-      children
-    );
+    return React.createElement(QueryClientProvider, { client: queryClient }, children);
   };
 };
 
@@ -88,11 +84,7 @@ describe("user queries", () => {
     it("should generate correct query keys", () => {
       expect(userKeys.all).toEqual(["user"]);
       expect(userKeys.lists()).toEqual(["user", "list"]);
-      expect(userKeys.list({ page: 1 })).toEqual([
-        "user",
-        "list",
-        { filters: { page: 1 } },
-      ]);
+      expect(userKeys.list({ page: 1 })).toEqual(["user", "list", { filters: { page: 1 } }]);
       expect(userKeys.details()).toEqual(["user", "detail"]);
       expect(userKeys.detail("1")).toEqual(["user", "detail", "1"]);
       expect(userKeys.me()).toEqual(["user", "me"]);
@@ -240,9 +232,7 @@ describe("user queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync(userData)).rejects.toThrow(
-        "Validation failed"
-      );
+      await expect(result.current.mutateAsync(userData)).rejects.toThrow("Validation failed");
     });
   });
 
@@ -283,9 +273,9 @@ describe("user queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(
-        result.current.mutateAsync({ userId: "1", data: updateData })
-      ).rejects.toThrow("Invalid email format");
+      await expect(result.current.mutateAsync({ userId: "1", data: updateData })).rejects.toThrow(
+        "Invalid email format",
+      );
     });
   });
 
@@ -316,9 +306,7 @@ describe("user queries", () => {
         wrapper: createWrapper(),
       });
 
-      await expect(result.current.mutateAsync("999")).rejects.toThrow(
-        "User not found"
-      );
+      await expect(result.current.mutateAsync("999")).rejects.toThrow("User not found");
     });
   });
 

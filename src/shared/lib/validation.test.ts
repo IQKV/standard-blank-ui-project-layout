@@ -46,9 +46,7 @@ describe("validation utilities", () => {
       try {
         schema.parse("");
       } catch (error) {
-        expect((error as z.ZodError).errors[0].message).toBe(
-          "Custom error message"
-        );
+        expect((error as z.ZodError).errors[0].message).toBe("Custom error message");
       }
     });
   });

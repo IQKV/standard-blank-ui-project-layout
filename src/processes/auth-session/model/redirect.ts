@@ -1,15 +1,11 @@
-import {
-  PREVIOUS_URL_KEY,
-  DEFAULT_FALLBACK_PATH,
-  LOGIN_PATH,
-} from "./constants";
+import { PREVIOUS_URL_KEY, DEFAULT_FALLBACK_PATH, LOGIN_PATH } from "./constants";
 
 /**
  * Restore previous URL after successful login and clear the stored key.
  * Returns true if a redirect was performed.
  */
 export const restorePreviousUrlAfterLogin = (
-  fallbackPath: string = DEFAULT_FALLBACK_PATH
+  fallbackPath: string = DEFAULT_FALLBACK_PATH,
 ): boolean => {
   try {
     const prev = window?.localStorage?.getItem(PREVIOUS_URL_KEY);

@@ -17,11 +17,7 @@ export const prettyDate = (date: string, tz: string): string => {
   return dayjs.utc(date).tz(tz).format("MMM D, YYYY h:mma");
 };
 
-export const formatDate = (
-  date: string,
-  format: string,
-  tz: string
-): string => {
+export const formatDate = (date: string, format: string, tz: string): string => {
   return dayjs.utc(date).tz(tz).format(format);
 };
 
@@ -37,10 +33,7 @@ export const relativeDate = (date: string): string => {
   return dayjs().to(dateInUTC);
 };
 
-export const utcToTz = (
-  date: undefined | string | Date,
-  tz: string
-): string | undefined => {
+export const utcToTz = (date: undefined | string | Date, tz: string): string | undefined => {
   if (!date) {
     return undefined;
   }

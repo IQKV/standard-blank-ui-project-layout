@@ -62,11 +62,7 @@ export function UserBulkActions({
           Bulk Update
         </button>
 
-        <button
-          type="button"
-          onClick={() => setShowDeleteConfirm(true)}
-          data-danger="true"
-        >
+        <button type="button" onClick={() => setShowDeleteConfirm(true)} data-danger="true">
           Bulk Delete
         </button>
 
@@ -91,8 +87,8 @@ export function UserBulkActions({
           </header>
 
           <p>
-            Are you sure you want to delete {selectedUserIds.length} user(s)?
-            This action cannot be undone.
+            Are you sure you want to delete {selectedUserIds.length} user(s)? This action cannot be
+            undone.
           </p>
 
           <div>
@@ -130,12 +126,7 @@ interface BulkUpdateFormProps {
   error: Error | null;
 }
 
-function BulkUpdateForm({
-  onSubmit,
-  onCancel,
-  isLoading,
-  error,
-}: BulkUpdateFormProps) {
+function BulkUpdateForm({ onSubmit, onCancel, isLoading, error }: BulkUpdateFormProps) {
   const [updateData, setUpdateData] = useState<UpdateUserData>({});
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -143,9 +134,7 @@ function BulkUpdateForm({
 
     // Only send fields that have values
     const filteredData = Object.fromEntries(
-      Object.entries(updateData).filter(
-        ([_, value]) => value !== "" && value !== undefined
-      )
+      Object.entries(updateData).filter(([_, value]) => value !== "" && value !== undefined),
     ) as UpdateUserData;
 
     if (Object.keys(filteredData).length === 0) {
@@ -207,9 +196,7 @@ function BulkUpdateForm({
         </div>
 
         {error && (
-          <p role="alert">
-            {error instanceof Error ? error.message : "Failed to update users"}
-          </p>
+          <p role="alert">{error instanceof Error ? error.message : "Failed to update users"}</p>
         )}
       </fieldset>
     </form>

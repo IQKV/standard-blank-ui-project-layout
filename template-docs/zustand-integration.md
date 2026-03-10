@@ -589,12 +589,7 @@ import type { StateCreator } from "zustand";
 
 export const createStore = <T>(
   name: string,
-  initializer: StateCreator<
-    T,
-    [["zustand/immer", never], ["zustand/devtools", never]],
-    [],
-    T
-  >
+  initializer: StateCreator<T, [["zustand/immer", never], ["zustand/devtools", never]], [], T>,
 ) => {
   return create<T>()(devtools(immer(initializer), { name }));
 };
@@ -625,7 +620,7 @@ export const createStore = <T>(
     [["zustand/immer", never]], // Immer middleware
     [["zustand/devtools", never]], // Devtools middleware
     T
-  >
+  >,
 ) => {
   return create<T>()(devtools(immer(initializer), { name }));
 };

@@ -7,13 +7,7 @@ import {
   UserDeleteConfirmation,
   UserBulkActions,
 } from "@/features/user-management";
-import {
-  UserList,
-  useUsers,
-  type User,
-  type UserFilters,
-  type IdParam,
-} from "@/entities/user";
+import { UserList, useUsers, type User, type UserFilters, type IdParam } from "@/entities/user";
 import { useAuthIntegration } from "@/processes/auth-session";
 import { useNotifications } from "@/shared";
 
@@ -104,9 +98,7 @@ export function UsersPage() {
 
   const toggleUserSelection = (userId: IdParam) => {
     setSelectedUserIds((prev) =>
-      prev.includes(userId)
-        ? prev.filter((id) => id !== userId)
-        : [...prev, userId]
+      prev.includes(userId) ? prev.filter((id) => id !== userId) : [...prev, userId],
     );
   };
 
@@ -114,9 +106,7 @@ export function UsersPage() {
     if (selectedUserIds.length === users.length) {
       setSelectedUserIds([]);
     } else {
-      setSelectedUserIds(
-        users.map((user) => user.id).filter(Boolean) as IdParam[]
-      );
+      setSelectedUserIds(users.map((user) => user.id).filter(Boolean) as IdParam[]);
     }
   };
 
@@ -199,14 +189,10 @@ export function UsersPage() {
 
               <div>
                 <h2>Actions</h2>
-                <button onClick={() => setViewMode("create")}>
-                  Create New User
-                </button>
+                <button onClick={() => setViewMode("create")}>Create New User</button>
 
                 <button onClick={handleSelectAll}>
-                  {selectedUserIds.length === users.length
-                    ? "Deselect All"
-                    : "Select All"}
+                  {selectedUserIds.length === users.length ? "Deselect All" : "Select All"}
                 </button>
               </div>
             </section>
@@ -261,10 +247,7 @@ export function UsersPage() {
                   ))}
                 </div>
               ) : (
-                <p>
-                  No users found. Try adjusting your filters or create a new
-                  user.
-                </p>
+                <p>No users found. Try adjusting your filters or create a new user.</p>
               )}
             </section>
           </>
@@ -323,12 +306,8 @@ function UserCard({ user }: { user: User }) {
       </header>
 
       <div>
-        {user.role && (
-          <span data-role={user.role.toLowerCase()}>{user.role}</span>
-        )}
-        {user.status && (
-          <span data-status={user.status.toLowerCase()}>{user.status}</span>
-        )}
+        {user.role && <span data-role={user.role.toLowerCase()}>{user.role}</span>}
+        {user.status && <span data-status={user.status.toLowerCase()}>{user.status}</span>}
       </div>
 
       {user.last_login_at && (

@@ -54,7 +54,7 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
         setIsSubmitting(false);
       }
     },
-    [login, onSuccess, onError]
+    [login, onSuccess, onError],
   );
 
   return (
@@ -64,13 +64,7 @@ export function LoginForm({ onSuccess, onError }: LoginFormProps) {
 
         <div>
           <label htmlFor="email">Email Address</label>
-          <input
-            name="email"
-            type="email"
-            id="email"
-            autoComplete="email"
-            required
-          />
+          <input name="email" type="email" id="email" autoComplete="email" required />
           {errors?.email && <p role="alert">{errors.email}</p>}
         </div>
 

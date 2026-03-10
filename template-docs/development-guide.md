@@ -303,7 +303,7 @@ const userUpdateSchema = z
     {
       message: "Password fields required when changing password",
       path: ["currentPassword"],
-    }
+    },
   );
 ```
 
@@ -454,17 +454,11 @@ Recommended extensions for optimal development experience:
 // src/entities/user/model/queries.ts
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { userApi } from "../api/user-api";
-import {
-  createKeys,
-  mutationOnMutate,
-  mutationOnError,
-  mutationOnSettled,
-} from "@/shared/lib";
+import { createKeys, mutationOnMutate, mutationOnError, mutationOnSettled } from "@/shared/lib";
 
 export const userKeys = createKeys("user");
 
-export const useUsers = () =>
-  useQuery({ queryKey: userKeys.lists(), queryFn: userApi.getAll });
+export const useUsers = () => useQuery({ queryKey: userKeys.lists(), queryFn: userApi.getAll });
 
 export const useUser = (id: string) =>
   useQuery({
@@ -599,12 +593,7 @@ Use a shared relation index to track parent-child mappings without duplicating f
 
 ```typescript
 // Example: users ↔ roles relationships
-import {
-  createRelationKeys,
-  setRelation,
-  unsetRelation,
-  getChildren,
-} from "@/shared/lib";
+import { createRelationKeys, setRelation, unsetRelation, getChildren } from "@/shared/lib";
 import { useQueryClient, useQuery } from "@tanstack/react-query";
 
 const relKeys = createRelationKeys("user-role");
@@ -617,14 +606,12 @@ export const useUserRolesIds = (userId: string) =>
 
 export const useLinkUserToRole = () => {
   const qc = useQueryClient();
-  return (userId: string, roleId: string) =>
-    setRelation(qc, relKeys.index(), userId, roleId);
+  return (userId: string, roleId: string) => setRelation(qc, relKeys.index(), userId, roleId);
 };
 
 export const useUnlinkUserFromRole = () => {
   const qc = useQueryClient();
-  return (userId: string, roleId: string) =>
-    unsetRelation(qc, relKeys.index(), userId, roleId);
+  return (userId: string, roleId: string) => unsetRelation(qc, relKeys.index(), userId, roleId);
 };
 ```
 

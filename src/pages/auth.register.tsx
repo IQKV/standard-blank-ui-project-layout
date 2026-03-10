@@ -44,10 +44,7 @@ function RegisterPage() {
       </header>
 
       <main>
-        <RegisterForm
-          onSuccess={handleRegisterSuccess}
-          onError={handleRegisterError}
-        />
+        <RegisterForm onSuccess={handleRegisterSuccess} onError={handleRegisterError} />
 
         <footer>
           <p>

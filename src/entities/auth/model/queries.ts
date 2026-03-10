@@ -25,15 +25,13 @@ export const useAuthLogout = () => {
 
 export const useAuthRegister = () => {
   return useMutation({
-    mutationFn: (registerData: UserRegistrationRequest) =>
-      authApi.register(registerData),
+    mutationFn: (registerData: UserRegistrationRequest) => authApi.register(registerData),
   });
 };
 
 export const useAuthForgotPassword = () => {
   return useMutation({
-    mutationFn: (emailData: { email: string }) =>
-      authApi.forgotPassword(emailData),
+    mutationFn: (emailData: { email: string }) => authApi.forgotPassword(emailData),
   });
 };
 
@@ -45,13 +43,8 @@ export const useAuthPasswordResetTokenVerify = () => {
 
 export const useAuthPasswordReset = () => {
   return useMutation({
-    mutationFn: ({
-      token,
-      resetData,
-    }: {
-      token: string;
-      resetData: ResetPasswordRequest;
-    }) => authApi.resetPassword(token, resetData),
+    mutationFn: ({ token, resetData }: { token: string; resetData: ResetPasswordRequest }) =>
+      authApi.resetPassword(token, resetData),
   });
 };
 

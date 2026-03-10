@@ -44,9 +44,7 @@ describe("handleAuthRedirect", () => {
     const err = makeError(ApiErrorKind.Unauthorized);
     handleAuthRedirect(err);
 
-    expect(window.localStorage.getItem("previous_url")).toBe(
-      window.location.href
-    );
+    expect(window.localStorage.getItem("previous_url")).toBe(window.location.href);
     expect(replaceSpy).toHaveBeenCalledWith("/auth/login");
   });
 
@@ -54,9 +52,7 @@ describe("handleAuthRedirect", () => {
     const err = makeError(ApiErrorKind.Forbidden);
     handleAuthRedirect(err);
 
-    expect(window.localStorage.getItem("previous_url")).toBe(
-      window.location.href
-    );
+    expect(window.localStorage.getItem("previous_url")).toBe(window.location.href);
     expect(replaceSpy).toHaveBeenCalledWith("/auth/login");
   });
 

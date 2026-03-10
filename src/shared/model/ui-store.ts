@@ -50,9 +50,7 @@ interface UIActions {
   closeAllModals: () => void;
 
   // Notification actions
-  addNotification: (
-    notification: Omit<UIState["notifications"][0], "id" | "timestamp">
-  ) => void;
+  addNotification: (notification: Omit<UIState["notifications"][0], "id" | "timestamp">) => void;
   removeNotification: (id: string) => void;
   clearNotifications: () => void;
 
@@ -70,115 +68,106 @@ const initialState: UIState = {
   globalLoading: {},
 };
 
-export const useUIStore = createStore<UIState & UIActions>(
-  "ui-store",
-  (set: any) => ({
-    ...initialState,
+export const useUIStore = createStore<UIState & UIActions>("ui-store", (set: any) => ({
+  ...initialState,
 
-    // Theme actions
-    setTheme: (theme: UIState["theme"]) =>
-      set((state: any) => {
-        state.theme = theme;
-      }),
+  // Theme actions
+  setTheme: (theme: UIState["theme"]) =>
+    set((state: any) => {
+      state.theme = theme;
+    }),
 
-    // Sidebar actions
-    toggleSidebar: () =>
-      set((state: any) => {
-        state.sidebarOpen = !state.sidebarOpen;
-      }),
+  // Sidebar actions
+  toggleSidebar: () =>
+    set((state: any) => {
+      state.sidebarOpen = !state.sidebarOpen;
+    }),
 
-    setSidebarOpen: (open: boolean) =>
-      set((state: any) => {
-        state.sidebarOpen = open;
-      }),
+  setSidebarOpen: (open: boolean) =>
+    set((state: any) => {
+      state.sidebarOpen = open;
+    }),
 
-    toggleSidebarCollapsed: () =>
-      set((state: any) => {
-        state.sidebarCollapsed = !state.sidebarCollapsed;
-      }),
+  toggleSidebarCollapsed: () =>
+    set((state: any) => {
+      state.sidebarCollapsed = !state.sidebarCollapsed;
+    }),
 
-    setSidebarCollapsed: (collapsed: boolean) =>
-      set((state: any) => {
-        state.sidebarCollapsed = collapsed;
-      }),
+  setSidebarCollapsed: (collapsed: boolean) =>
+    set((state: any) => {
+      state.sidebarCollapsed = collapsed;
+    }),
 
-    // Modal actions
-    openModal: (modalId: string, data?: unknown) =>
-      set((state: any) => {
-        state.modals[modalId] = {
-          isOpen: true,
-          data,
-        };
-      }),
+  // Modal actions
+  openModal: (modalId: string, data?: unknown) =>
+    set((state: any) => {
+      state.modals[modalId] = {
+        isOpen: true,
+        data,
+      };
+    }),
 
-    closeModal: (modalId: string) =>
-      set((state: any) => {
-        if (state.modals[modalId]) {
-          state.modals[modalId].isOpen = false;
-          delete state.modals[modalId].data;
-        }
-      }),
+  closeModal: (modalId: string) =>
+    set((state: any) => {
+      if (state.modals[modalId]) {
+        state.modals[modalId].isOpen = false;
+        delete state.modals[modalId].data;
+      }
+    }),
 
-    closeAllModals: () =>
-      set((state: any) => {
-        state.modals = {};
-      }),
+  closeAllModals: () =>
+    set((state: any) => {
+      state.modals = {};
+    }),
 
-    // Notification actions
-    addNotification: (
-      notification: Omit<UIState["notifications"][0], "id" | "timestamp">
-    ) =>
-      set((state: any) => {
-        const now = Date.now();
-        const last = state.notifications[state.notifications.length - 1];
-        // Deduplicate rapid identical notifications to prevent loops
-        if (
-          last &&
-          last.type === notification.type &&
-          last.title === notification.title &&
-          last.message === notification.message &&
-          now - last.timestamp < 1000
-        ) {
-          return;
-        }
-        const id = `notification-${now}-${Math.random()
-          .toString(36)
-          .substring(2, 11)}`;
-        state.notifications.push({
-          ...notification,
-          id,
-          timestamp: now,
-        });
-      }),
+  // Notification actions
+  addNotification: (notification: Omit<UIState["notifications"][0], "id" | "timestamp">) =>
+    set((state: any) => {
+      const now = Date.now();
+      const last = state.notifications[state.notifications.length - 1];
+      // Deduplicate rapid identical notifications to prevent loops
+      if (
+        last &&
+        last.type === notification.type &&
+        last.title === notification.title &&
+        last.message === notification.message &&
+        now - last.timestamp < 1000
+      ) {
+        return;
+      }
+      const id = `notification-${now}-${Math.random().toString(36).substring(2, 11)}`;
+      state.notifications.push({
+        ...notification,
+        id,
+        timestamp: now,
+      });
+    }),
 
-    removeNotification: (id: string) =>
-      set((state: any) => {
-        state.notifications = state.notifications.filter(
-          (n: any) => n.id !== id
-        );
-      }),
+  removeNotification: (id: string) =>
+    set((state: any) => {
+      state.notifications = state.notifications.filter((n: any) => n.id !== id);
+    }),
 
-    clearNotifications: () =>
-      set((state: any) => {
-        state.notifications = [];
-      }),
+  clearNotifications: () =>
+    set((state: any) => {
+      state.notifications = [];
+    }),
 
-    // Global loading actions
-    setGlobalLoading: (key: string, loading: boolean) =>
-      set((state: any) => {
-        if (loading) {
-          state.globalLoading[key] = true;
-        } else {
-          delete state.globalLoading[key];
-        }
-      }),
+  // Global loading actions
+  setGlobalLoading: (key: string, loading: boolean) =>
+    set((state: any) => {
+      if (loading) {
+        state.globalLoading[key] = true;
+      } else {
+        delete state.globalLoading[key];
+      }
+    }),
 
-    clearGlobalLoading: () =>
-      set((state: any) => {
-        state.globalLoading = {};
-      }),
-  })
-);
+  clearGlobalLoading: () =>
+    set((state: any) => {
+      state.globalLoading = {};
+    }),
+}));
 
 // Selectors for optimized subscriptions
 export const useTheme = () => useUIStore((state) => state.theme);

@@ -140,9 +140,7 @@ export const useCancelEmailChange = () => {
     mutateAsync: async (userId: string | number) => {
       // Feature-level validation
       const validatedInput = validateUserQuery({ userId });
-      const result = await cancelEmailChangeMutation.mutateAsync(
-        validatedInput.userId
-      );
+      const result = await cancelEmailChangeMutation.mutateAsync(validatedInput.userId);
 
       // Business logic: invalidate related queries
       queryClient.invalidateQueries({ queryKey: userKeys.detail(userId) });
@@ -161,9 +159,7 @@ export const useResendConfirmation = () => {
     ...resendConfirmationMutation,
     mutateAsync: async (userId: string | number) => {
       const validatedInput = validateUserQuery({ userId });
-      const result = await resendConfirmationMutation.mutateAsync(
-        validatedInput.userId
-      );
+      const result = await resendConfirmationMutation.mutateAsync(validatedInput.userId);
       // Additional business logic: could add rate limiting, notifications, etc.
       return result;
     },

@@ -16,13 +16,9 @@ interface PersistedData<T> {
 }
 
 // Simple persistence middleware for Zustand stores
-const isBrowser =
-  typeof window !== "undefined" && typeof document !== "undefined";
+const isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
 
-export const persist = <T>(
-  config: StateCreator<T>,
-  options: PersistOptions<T>
-) => {
+export const persist = <T>(config: StateCreator<T>, options: PersistOptions<T>) => {
   const {
     name,
     storage = isBrowser ? localStorage : undefined,
@@ -47,14 +43,14 @@ export const persist = <T>(
             JSON.stringify({
               state: stateToStore,
               version,
-            })
+            }),
           );
         } catch (error) {
           console.warn(`Failed to persist state for ${name}:`, error);
         }
       },
       get,
-      api
+      api,
     );
 
     // Hydrate from storage on initialization
@@ -66,8 +62,7 @@ export const persist = <T>(
 
           // Validate the parsed structure
           if (parsed && typeof parsed === "object" && "state" in parsed) {
-            const { state: persistedData, version: persistedVersion = 0 } =
-              parsed;
+            const { state: persistedData, version: persistedVersion = 0 } = parsed;
 
             let stateToRestore = persistedData;
 
@@ -80,10 +75,7 @@ export const persist = <T>(
             if (stateToRestore && typeof stateToRestore === "object") {
               // Safely merge partial state into the full state object
               // Using type assertion since we're merging partial restored state
-              Object.assign(
-                persistedState as Record<string, any>,
-                stateToRestore
-              );
+              Object.assign(persistedState as Record<string, any>, stateToRestore);
             }
 
             // Call rehydration callback
@@ -102,7 +94,7 @@ export const persist = <T>(
 // Utility to clear persisted state
 export const clearPersistedState = (
   name: string,
-  storage: Storage = isBrowser ? localStorage : memoryStorage
+  storage: Storage = isBrowser ? localStorage : memoryStorage,
 ) => {
   try {
     storage.removeItem(name);
@@ -114,7 +106,7 @@ export const clearPersistedState = (
 // Utility to check if state exists in storage
 export const hasPersistedState = (
   name: string,
-  storage: Storage = isBrowser ? localStorage : memoryStorage
+  storage: Storage = isBrowser ? localStorage : memoryStorage,
 ): boolean => {
   try {
     return storage.getItem(name) !== null;
@@ -127,7 +119,7 @@ export const hasPersistedState = (
 // Session storage variant
 export const sessionPersist = <T>(
   config: StateCreator<T>,
-  options: Omit<PersistOptions<T>, "storage">
+  options: Omit<PersistOptions<T>, "storage">,
 ) => {
   return persist(config, {
     ...options,
@@ -170,7 +162,7 @@ export const memoryStorage = new MemoryStorage();
 // Memory storage variant
 export const memoryPersist = <T>(
   config: StateCreator<T>,
-  options: Omit<PersistOptions<T>, "storage">
+  options: Omit<PersistOptions<T>, "storage">,
 ) => {
   return persist(config, {
     ...options,

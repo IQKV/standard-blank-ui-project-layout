@@ -28,15 +28,12 @@ export default tseslint.config(
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "@tanstack/router/create-route-property-order": "error",
-      "react-refresh/only-export-components": [
-        "warn",
-        { allowConstantExport: true },
-      ],
+      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
       "lingui/t-call-in-function": 2,
       "lingui/no-single-variables-to-translate": 2,
       "lingui/no-expression-in-message": 2,
       "lingui/no-single-tag-to-translate": 2,
       "lingui/no-trans-inside-trans": 2,
     },
-  }
+  },
 );
