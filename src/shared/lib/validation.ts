@@ -12,7 +12,7 @@ export const createRequiredField = <T extends z.ZodTypeAny>(schema: T, message?:
 };
 
 // Common validation patterns
-export const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+export const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
 export const urlRegex = /^https?:\/\/.+/;
 export const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 

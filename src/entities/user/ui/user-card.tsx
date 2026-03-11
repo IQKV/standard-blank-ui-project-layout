@@ -2,11 +2,11 @@ import type { User } from "../model/types";
 
 interface UserCardProps {
   user: User;
-  className?: string;
+  _className?: string;
 }
 
 // Entity-level UI component - pure data display, no business logic
-export function UserCard({ user, className = "" }: UserCardProps) {
+export function UserCard({ user, _className = "" }: UserCardProps) {
   return (
     <article>
       <header>

@@ -1,5 +1,5 @@
 import { useDeleteUserWithConfirmation } from "../model/crud-operations";
-import type { User, IdParam } from "@/entities/user";
+import type { User } from "@/entities/user";
 
 interface UserDeleteConfirmationProps {
   user: User;

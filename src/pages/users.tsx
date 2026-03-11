@@ -7,7 +7,7 @@ import {
   UserDeleteConfirmation,
   UserBulkActions,
 } from "@/features/user-management";
-import { UserList, useUsers, type User, type UserFilters, type IdParam } from "@/entities/user";
+import { useUsers, type User, type UserFilters, type IdParam } from "@/entities/user";
 import { useAuthIntegration } from "@/processes/auth-session";
 import { useNotifications } from "@/shared";
 

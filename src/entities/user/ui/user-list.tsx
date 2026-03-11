@@ -3,12 +3,12 @@ import { UserCard } from "./user-card";
 
 interface UserListProps {
   users: User[];
-  className?: string;
+  _className?: string;
   onUserClick?: (user: User) => void;
 }
 
 // Entity-level UI component - pure data display, no business logic
-export function UserList({ users, className = "", onUserClick }: UserListProps) {
+export function UserList({ users, _className = "", onUserClick }: UserListProps) {
   if (users.length === 0) {
     return (
       <section>

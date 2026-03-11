@@ -9,7 +9,7 @@ const getBaseUrl = () => {
     return (
       config.apiConfig.baseUrl || import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api"
     );
-  } catch (error) {
+  } catch (_error) {
     // Fallback for development/testing
     return import.meta.env.VITE_API_BASE_URL || "http://localhost:3000/api";
   }

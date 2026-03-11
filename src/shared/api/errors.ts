@@ -143,7 +143,7 @@ export const getUserMessage = (
     [ApiErrorKind.Unknown]: "Something went wrong. Please try again.",
   };
 
-  const map = { ...defaultMap, ...(opts?.map || {}) };
+  const map = { ...defaultMap, ...opts?.map };
   const base = map[err.kind] || err.message || defaultMap[ApiErrorKind.Unknown];
 
   // Optionally include a request ID to help trace production issues

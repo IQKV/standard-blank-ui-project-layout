@@ -1,4 +1,4 @@
-import type { MutationKey, QueryKey, QueryClient, Updater } from "@tanstack/react-query";
+import type { QueryKey, QueryClient, Updater } from "@tanstack/react-query";
 
 // Generic key helpers
 export const createKeys = <TPrefix extends string>(prefix: TPrefix) => ({

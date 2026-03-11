@@ -65,7 +65,7 @@ describe("API base configuration", () => {
         ...api,
         interceptors: {
           response: {
-            use: vi.fn((onFulfilled, onRejected) => {
+            use: vi.fn((onFulfilled, _onRejected) => {
               // Test the success case
               const result = onFulfilled(mockResponse);
               expect(result).toBe(mockResponse);
@@ -86,7 +86,7 @@ describe("API base configuration", () => {
 
       // Get the actual interceptor functions
       const interceptorCalls = vi.fn();
-      const mockAxios = {
+      const _mockAxios = {
         interceptors: {
           response: {
             use: interceptorCalls,
@@ -95,7 +95,7 @@ describe("API base configuration", () => {
       };
 
       // Simulate setting up the interceptor
-      const onFulfilled = (response: any) => response;
+      const _onFulfilled = (response: any) => response;
       const onRejected = (error: any) => {
         const normalized = normalizeAxiosError(error);
         return Promise.reject(normalized);

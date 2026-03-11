@@ -21,7 +21,6 @@
     "noUncheckedSideEffectImports": true,
     /* Exclude Node.js types for browser-only code */
     "types": [],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }

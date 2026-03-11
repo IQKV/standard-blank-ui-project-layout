@@ -8,7 +8,7 @@
  */
 
 const INTEGRITY_CHECKSUM = "19f0248EDIT_THIS_TOKEN";
-const IS_MOCKED_RESPONSE = Symbol("isMockedResponse");
+const _IS_MOCKED_RESPONSE = Symbol("isMockedResponse");
 const activeClientIds = new Set();
 
 self.addEventListener("install", function () {
@@ -38,14 +38,14 @@ self.addEventListener("message", async function (event) {
 
   switch (event.data?.type) {
     case "KEEPALIVE_REQUEST": {
-      sendToClient(client, {
+      void sendToClient(client, {
         type: "KEEPALIVE_RESPONSE",
       });
       break;
     }
 
     case "INTEGRITY_CHECK_REQUEST": {
-      sendToClient(client, {
+      void sendToClient(client, {
         type: "INTEGRITY_CHECK_RESPONSE",
         payload: INTEGRITY_CHECKSUM,
       });
@@ -55,7 +55,7 @@ self.addEventListener("message", async function (event) {
     case "MOCK_ACTIVATE": {
       activeClientIds.add(clientId);
 
-      sendToClient(client, {
+      void sendToClient(client, {
         type: "MOCKING_ENABLED",
         payload: true,
       });
@@ -82,7 +82,7 @@ self.addEventListener("message", async function (event) {
   }
 });
 
-async function passthrough(event, client, allClients) {
+async function passthrough(event, _client, _allClients) {
   const { request } = event.data.payload;
 
   return fetch(request.url, {
@@ -92,7 +92,7 @@ async function passthrough(event, client, allClients) {
   });
 }
 
-async function resolveResponse(event, client, allClients) {
+async function resolveResponse(event, client, _allClients) {
   const { payload } = event.data;
   const { requestId } = payload;
 
@@ -107,12 +107,12 @@ async function resolveResponse(event, client, allClients) {
     return;
   }
 
-  const { request, serializedResponse } = pooledRequest;
+  const { _request, serializedResponse } = pooledRequest;
 
   const mockedResponse = await deserializeResponse(serializedResponse);
   const clonedResponse = mockedResponse.clone();
 
-  sendToClient(client, {
+  void sendToClient(client, {
     type: "RESPONSE",
     payload: {
       requestId,

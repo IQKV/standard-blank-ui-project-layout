@@ -18,7 +18,7 @@ export const initializeQueryClient = () => {
     const config = getAppConfig();
     // Update query client with app-specific config if needed
     queryClient.setDefaultOptions(config.reactQueryConfig.defaultOptions || {});
-  } catch (error) {
+  } catch (_error) {
     // Config not yet available, use defaults
     console.warn("Query client initialized with default config");
   }
