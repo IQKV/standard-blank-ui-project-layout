@@ -196,7 +196,7 @@ App Layer ────┐
 
 - ✅ TypeScript configuration
 - ✅ Strict ESLint rules with React best practices
-- ✅ Consistent code formatting with Prettier
+- ✅ Consistent code formatting with oxfmt
 - ✅ Pre-commit hooks for quality gates
 
 ### **Data Management**

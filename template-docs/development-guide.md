@@ -404,7 +404,7 @@ pnpm preview          # Preview production build
 pnpm lint             # Run ESLint
 pnpm lint:fix         # Fix ESLint issues
 pnpm formatter:check   # Check Prettier formatting
-pnpm formatter:write   # Format code with Prettier
+pnpm formatter:write   # Format code with oxfmt
 pnpm type-check       # TypeScript type checking
 
 # Testing
