@@ -178,7 +178,7 @@ App Layer ────┐
 ### **Development Tools**
 
 - **oxlint** - Code linting with modern rules
-- **Prettier** - Code formatting
+- **oxfmt** - Code formatting
 - **Vitest** - Fast unit testing
 - **Playwright** - E2E testing
 - **Storybook** - Component development

@@ -30,7 +30,7 @@ This template provides a complete, production-ready foundation for modern React 
 ### Code Quality
 
 - **oxlint** - Modern linting with React 19 and TypeScript rules
-- **Prettier** - Consistent code formatting
+- **oxfmt** - Consistent code formatting
 - **Stylelint** - CSS/SCSS linting and formatting
 - **Husky** - Git hooks for pre-commit validation
 - **Lint-staged** - Run linters on staged files only

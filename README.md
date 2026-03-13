@@ -246,5 +246,5 @@ After creating your project from this template:
 ### Quality Gates
 
 - **oxlint** - JavaScript/TypeScript linting
-- **Prettier** - Code formatting enforcement
+- **oxfmt** - Code formatting enforcement
 - **Stylelint** - CSS/SCSS linting
