@@ -403,8 +403,8 @@ pnpm preview          # Preview production build
 # Code Quality
 pnpm lint             # Run ESLint
 pnpm lint:fix         # Fix ESLint issues
-pnpm formatter:check   # Check Prettier formatting
-pnpm formatter:write   # Format code with oxfmt
+pnpm formatter:check  # Check Prettier formatting
+pnpm formatter:write  # Format code with oxfmt
 pnpm type-check       # TypeScript type checking
 
 # Testing
@@ -413,10 +413,6 @@ pnpm test:coverage    # Run tests with coverage
 pnpm test:ui          # Run tests with UI
 pnpm e2e              # Run E2E tests
 pnpm e2e:ui           # Run E2E tests with UI
-
-# Storybook
-pnpm storybook        # Start Storybook
-pnpm storybook:build  # Build Storybook
 
 # Internationalization
 pnpm messages:extract # Extract translation messages
@@ -430,7 +426,7 @@ Recommended extensions for optimal development experience:
 - **ES7+ React/Redux/React-Native snippets**
 - **TypeScript Importer**
 - **Prettier - Code formatter**
-- **ESLint**
+- **oxlint**
 - **Auto Rename Tag**
 - **Bracket Pair Colorizer**
 - **GitLens**

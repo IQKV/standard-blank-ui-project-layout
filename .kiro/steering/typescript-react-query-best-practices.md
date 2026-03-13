@@ -262,9 +262,9 @@ This document outlines the best practices for using react-query in React applica
 
 ### 7.3 Linting and Formatting
 
-- **ESLint:** Use ESLint to enforce coding standards and prevent errors. Configure ESLint to use a popular style guide like Airbnb or Google.
+- **oxlint:** Use oxlint to enforce coding standards and prevent errors. Configure oxlint to use a popular style guide like Airbnb or Google.
 
-- **Prettier:** Use Prettier to automatically format your code. This ensures that your code is consistently formatted and easy to read.
+- **oxfmt:** Use oxfmt to automatically format your code. This ensures that your code is consistently formatted and easy to read.
 
 ### 7.4 Deployment Best Practices
 

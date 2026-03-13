@@ -74,7 +74,7 @@ Add a detailed introduction about the project here, everything you want the read
 
 - FSD boundaries with public API barrels
 - Typed forms, notifications, and devtools
-- Vite, ESLint/Prettier, Vitest/Playwright, Storybook, Lingui
+- Vite, oxlint/oxfmt, Vitest/Playwright, Lingui
 - Processes: Auth session state via `useAuthSession` (alias of `useAuthIntegration`) and `useAuthEffects`; TanStack Query client integration
 - Features: React Hook Form + Zod for forms; feature state via Zustand form store (`useFormStore`) and feature-level validation
 - Entities: Pure API methods (e.g., `authApi`) and mutations (`useAuthLogin`, `useAuthRegister`, etc.)

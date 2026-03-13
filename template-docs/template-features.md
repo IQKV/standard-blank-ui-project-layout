@@ -29,7 +29,7 @@ This template provides a complete, production-ready foundation for modern React 
 
 ### Code Quality
 
-- **ESLint** - Modern linting with React 19 and TypeScript rules
+- **oxlint** - Modern linting with React 19 and TypeScript rules
 - **Prettier** - Consistent code formatting
 - **Stylelint** - CSS/SCSS linting and formatting
 - **Husky** - Git hooks for pre-commit validation
@@ -162,12 +162,11 @@ src/
 pnpm dev              # Start development server
 pnpm test             # Run tests
 pnpm test:ui          # Run tests with UI
-pnpm storybook        # Start Storybook
 
 # Quality Assurance
 pnpm lint             # Lint code
 pnpm type-check       # Check TypeScript
-pnpm formatter:check   # Check formatting
+pnpm formatter:check  # Check formatting
 
 # Production
 pnpm build            # Build for production

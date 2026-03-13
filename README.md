@@ -67,7 +67,7 @@ React + TypeScript + Vite + TanStack Router Template
 
 ### 🔍 **Code Quality**
 
-- 🔍 **ESLint + Prettier** - Modern linting and code formatting
+- 🔍 **oxlint + oxfmt** - Modern linting and code formatting
 - 🎭 **React Icons** - Beautiful icon library
 - 👷 **GitHub Actions** - Automated workflow and CI/CD
 - 🔒️ **Dependabot** - Automated dependency updates and security monitoring
@@ -245,6 +245,6 @@ After creating your project from this template:
 
 ### Quality Gates
 
-- **ESLint** - JavaScript/TypeScript linting
+- **oxlint** - JavaScript/TypeScript linting
 - **Prettier** - Code formatting enforcement
 - **Stylelint** - CSS/SCSS linting

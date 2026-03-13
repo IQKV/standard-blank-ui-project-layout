@@ -177,7 +177,7 @@ App Layer ────┐
 
 ### **Development Tools**
 
-- **ESLint** - Code linting with modern rules
+- **oxlint** - Code linting with modern rules
 - **Prettier** - Code formatting
 - **Vitest** - Fast unit testing
 - **Playwright** - E2E testing
