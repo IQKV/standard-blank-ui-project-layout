@@ -11,14 +11,14 @@
     "typescript",
     "vite"
   ],
-  "homepage": "https://github.com/IQKV/standard-blank-ui-project-layout#readme",
+  "homepage": "https://github.com/dimdnk/standard-blank-ui-project-layout#readme",
   "bugs": {
-    "url": "https://github.com/IQKV/standard-blank-ui-project-layout/issues"
+    "url": "https://github.com/dimdnk/standard-blank-ui-project-layout/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/IQKV/standard-blank-ui-project-layout.git"
+    "url": "https://github.com/dimdnk/standard-blank-ui-project-layout.git"
   },
   "type": "module",
   "scripts": {

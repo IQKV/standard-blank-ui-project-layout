@@ -10,10 +10,10 @@
 > - 🎯 **TypeScript** - Full type safety from API to UI
 > - ⚡ **Vite** - Lightning-fast development experience
 > - 🧪 **Complete testing setup** - Unit, integration, and E2E testing ready
-> - 📦 **Modern tooling** - ESLint, Prettier, Husky, and more configured
-> - 🔒 **Production ready** - Security best practices and performance optimizations
+> - 📦 **Modern tooling** - oxlint, oxfmt, Husky, and more configured
+> - 🔒 **Production ready** – Security best practices and performance optimizations
 >
-> Click [Use this template](https://github.com/IQKV/standard-blank-ui-project-layout/generate) to get started!
+> Click [Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate) to get started!
 
 ---
 
@@ -90,10 +90,10 @@ React + TypeScript + Vite + TanStack Router Template
 
 ```shell script
 # Use this template
-Click **[Use this template](https://github.com/IQKV/standard-blank-ui-project-layout/generate)** to create your new repository
+Click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)** to create your new repository
 
 # Or clone manually
-git clone https://github.com/IQKV/standard-blank-ui-project-layout.git my-app
+git clone https://github.com/dimdnk/standard-blank-ui-project-layout.git my-app
 cd my-app
 
 # Install dependencies
@@ -203,7 +203,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ### Quick Start
 
-1. Click **[Use this template](https://github.com/IQKV/standard-blank-ui-project-layout/generate)**
+1. Click **[Use this template](https://github.com/dimdnk/standard-blank-ui-project-layout/generate)**
 2. Clone your new repository
 3. Run `pnpm install && pnpm dev`
 4. Start building your app! 🎉
