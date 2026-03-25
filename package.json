@@ -145,7 +145,7 @@
     "msw-storybook-addon": "^2.0.6",
     "nx": "^22.5.4",
     "oxfmt": "^0.42.0",
-    "oxlint": "^1.56.0",
+    "oxlint": "^1.57.0",
     "oxlint-tsgolint": "^0.17.3",
     "postcss": "^8.5.8",
     "postcss-simple-vars": "^7.0.1",
