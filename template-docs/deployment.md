@@ -85,7 +85,7 @@ CMD ["nginx", "-g", "daemon off;"]
 ### Production Environment Variables
 
 ```bash
-# .env.production
+# .env.prd
 VITE_API_URL=https://your-api.com/api
 VITE_APP_NAME="Your App Name"
 NODE_ENV=production
