@@ -40,7 +40,7 @@ export interface AppSettingsState {
   // App metadata
   version: string;
   buildNumber: string;
-  environment: "development" | "staging" | "production";
+  environment: "sit" | "uat" | "prd";
 
   // Persistence state
   isLoaded: boolean;
