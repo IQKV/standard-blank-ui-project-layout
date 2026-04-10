@@ -97,7 +97,7 @@ const initialState: AppSettingsState = {
   featureFlags: {},
   version: "1.0.0",
   buildNumber: "1",
-  environment: "development",
+  environment: "sit",
   isLoaded: false,
   lastSaved: null,
 };
