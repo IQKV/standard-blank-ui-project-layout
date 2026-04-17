@@ -36,7 +36,9 @@ export const getClientLocale = () => {
 };
 
 export async function dynamicActivateLocale(locale: string) {
-  const activeLocale = availableLocales.includes(locale) ? locale : "en";
+  const activeLocale = (availableLocales as string[]).includes(locale)
+    ? (locale as SupportedLocales)
+    : "en";
   const module = await import(`../../../locales/${locale}.po`);
   i18n.load(activeLocale, module.messages);
   i18n.activate(activeLocale);
@@ -45,8 +47,8 @@ export async function dynamicActivateLocale(locale: string) {
 export const getSupportedLocale = (userLocale: string) => {
   const normalizedLocale = userLocale.toLowerCase();
 
-  if (availableLocales.includes(normalizedLocale)) {
-    return normalizedLocale;
+  if ((availableLocales as string[]).includes(normalizedLocale)) {
+    return normalizedLocale as SupportedLocales;
   }
 
   const mainLanguage = normalizedLocale.split("-")[0];
