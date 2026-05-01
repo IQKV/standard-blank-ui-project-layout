@@ -56,7 +56,7 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@dr.pogodin/react-helmet": "^3.1.1",
     "@hookform/resolvers": "^5.2.2",
-    "@lingui/core": "^6.0.0",
+    "@lingui/core": "^6.0.1",
     "@lingui/format-po": "^6.0.0",
     "@lingui/react": "^6.0.0",
     "@microsoft/fetch-event-source": "^2.0.1",
